@@ -1,0 +1,131 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1202 775" role="img" aria-labelledby="title desc">
+  <title id="title">PK-F03 平康坊内部布局示意</title>
+  <desc id="desc">北向上。实线表示文献支持的相对关系，虚线表示假设的道路、地块和建筑轮廓。不是考古平面图。</desc>
+  <style>
+    text { font-family: "Noto Sans CJK SC","Microsoft YaHei",sans-serif; fill:#242c31; font-size:17px }
+    .title { font-size:25px; font-weight:bold }
+    .note { font-size:14px }
+    .road { fill:#e0c4a7; stroke:#946947; stroke-width:.8; stroke-dasharray:5 3 }
+    .parcel { fill:#eee9de; stroke:#a5947d; stroke-width:1.1; stroke-dasharray:6 4 }
+    .focus { fill:#e2f0f7; stroke:#39768d; stroke-width:2; stroke-dasharray:7 4 }
+    .building { fill:#bfdae7; stroke:#39768d; stroke-width:1.2; stroke-dasharray:3 2 }
+    .house { fill:#cab59b; stroke:#815e40; stroke-width:1; stroke-dasharray:3 2 }
+    .relation { fill:none; stroke:#326888; stroke-width:2 }
+    .boundary { stroke-dasharray:7 4 }
+    .route { fill:none; stroke:#91551f; stroke-width:1.8; stroke-dasharray:5 4 }
+    .label { font-weight:bold; font-size:15px }
+    .frame { fill:none; stroke:#3a454a; stroke-width:2.5 }
+    .gate { stroke:#39768d; stroke-width:2; fill:#fff }
+    .provisional { stroke:#9a6d48; stroke-width:2; fill:#fff; stroke-dasharray:2 2 }
+  </style>
+  <defs>
+    <g id="yard">
+      <rect x="15" y="9" width="22" height="9" class="house"/>
+      <rect x="7" y="24" width="8" height="14" class="house"/>
+      <rect x="37" y="24" width="8" height="14" class="house"/>
+      <path d="M26 38v16" class="route"/>
+    </g>
+    <g id="pair">
+      <use href="#yard"/>
+      <use href="#yard" x="55"/>
+    </g>
+  </defs>
+  <rect width="1202" height="775" fill="#fff"/>
+  <text x="36" y="37" class="title">PK-F03　平康坊内部布局示意</text>
+  <text x="36" y="65" class="note">以750年为参照 · 路线与院落轮廓是假设 · 图内比例不是考古测绘</text>
+  <path d="M1151 153v-40l-6 10m6-10 6 10" class="frame"/>
+  <text x="1151" y="105" text-anchor="middle">北</text>
+  <g id="site">
+    <rect x="90" y="90" width="1022" height="500" fill="#fbf8f1"/>
+    <g id="rd-02" class="road">
+      <rect x="90" y="335" width="1022" height="10"/>
+      <rect x="596" y="90" width="10" height="500"/>
+    </g>
+    <g id="rd-03" class="road">
+      <rect x="601" y="478" width="439" height="4"/>
+      <rect x="728" y="470" width="4" height="10"/>
+      <rect x="938" y="470" width="4" height="10"/>
+    </g>
+    <g id="rd-04" class="road">
+      <rect x="306" y="202" width="4" height="137"/>
+      <rect x="136" y="202" width="465" height="4"/>
+      <rect x="601" y="199" width="464" height="4"/>
+      <rect x="838" y="201" width="4" height="139"/>
+      <rect x="324" y="341" width="4" height="141"/>
+      <rect x="132" y="478" width="469" height="4"/>
+      <rect x="537" y="517" width="59" height="4"/>
+      <rect x="737" y="480" width="4" height="44"/>
+      <rect x="739" y="522" width="55" height="4"/>
+    </g>
+    <g id="pk-06" class="parcel">
+      <g id="bg-01"><rect x="136" y="125" width="156" height="77"/><use href="#pair" x="159" y="148"/></g>
+      <g id="bg-02"><rect x="350" y="125" width="195" height="77"/><use href="#pair" x="387" y="148"/></g>
+      <g id="bg-03"><rect x="350" y="236" width="195" height="99"/><use href="#pair" x="392" y="281"/></g>
+      <g id="bg-04"><rect x="654" y="122" width="163" height="77"/><use href="#pair" x="680" y="145"/></g>
+      <g id="bg-05"><rect x="858" y="122" width="195" height="77"/><use href="#pair" x="900" y="145"/></g>
+      <g id="bg-06"><rect x="655" y="240" width="161" height="95"/><use href="#pair" x="681" y="281"/></g>
+      <g id="bg-07"><rect x="858" y="240" width="195" height="95"/><use href="#pair" x="900" y="281"/></g>
+      <g id="bg-08"><rect x="350" y="378" width="175" height="100"/><use href="#pair" x="382" y="424"/></g>
+      <g id="bg-09"><rect x="680" y="520" width="179" height="58"/><use href="#pair" transform="translate(713 525) translate(0 53) scale(1 -1)"/></g>
+    </g>
+    <g id="pk-09">
+      <rect x="137" y="380" width="160" height="98" class="parcel"/>
+      <text x="217" y="404" text-anchor="middle" class="note">PK-09 西门南旧宅线索</text>
+      <use href="#pair" x="160" y="424"/>
+    </g>
+    <g id="pk-08">
+      <rect x="377" y="482" width="160" height="81" class="parcel"/>
+      <path d="M537 519H596" class="route"/>
+      <text x="457" y="502" text-anchor="middle" class="note">PK-08 南门西旧宅线索</text>
+      <rect x="426" y="524" width="22" height="11" class="house"/>
+      <rect x="459" y="509" width="18" height="8" class="house"/>
+      <rect x="459" y="543" width="18" height="8" class="house"/>
+    </g>
+    <text x="346" y="113" text-anchor="middle" class="note">BG-01～03 背景院落</text>
+    <text x="845" y="113" text-anchor="middle" class="note">BG-04～07 背景院落</text>
+    <text x="436" y="416" text-anchor="middle" class="note">BG-08</text>
+    <text x="902" y="548" text-anchor="middle" class="note">BG-09</text>
+    <path d="M730 354H940l-8-4m8 4-8 4" class="relation"/>
+    <g id="pk-02">
+      <rect x="650" y="365" width="160" height="105" class="focus"/>
+      <text x="730" y="387" text-anchor="middle" class="label">PK-02 菩提寺</text>
+      <rect x="675" y="416" width="5" height="5" class="building"/>
+      <rect x="721.5" y="402" width="17" height="10" class="building"/>
+      <rect x="773" y="430" width="12" height="7" class="building"/>
+      <text x="683" y="449" text-anchor="middle" class="note">西钟楼</text>
+    </g>
+    <g id="pk-01">
+      <rect x="865" y="365" width="150" height="105" class="focus"/>
+      <text x="940" y="387" text-anchor="middle" class="label">PK-01 李林甫宅</text>
+      <rect x="934" y="425" width="12" height="8" class="building"/>
+      <path d="M932 406l4-2h8l4 2v5h-16z" class="building"/>
+      <rect x="899" y="431" width="7" height="22" class="house"/>
+      <rect x="974" y="431" width="7" height="22" class="house"/>
+      <rect x="979" y="447" width="30" height="17" class="focus"/>
+      <text x="1039" y="454" class="note">PK-03*</text>
+    </g>
+    <path d="M601 587V480h339m-210 0v-10m210 10v-10" class="route"/>
+    <text x="805" y="511" class="note" text-anchor="middle">假设连接巷 · 非文献所记“南街”定位</text>
+    <text x="344" y="367" class="note" text-anchor="middle">RD-02　十字街示意 · 实际宽度未核</text>
+    <text x="616" y="323" class="note">RD-02</text>
+    <path d="M90 338V90h509m4 0h509v248m0 4v248H603m-4 0H90V342" class="frame boundary"/>
+    <circle cx="601" cy="90" r="5" class="provisional"/>
+    <circle cx="1112" cy="340" r="5" class="provisional"/>
+    <circle cx="90" cy="340" r="5" class="gate"/>
+    <circle cx="601" cy="590" r="5" class="gate"/>
+    <text x="613" y="115" class="note">北门占位（晚唐旁证）</text>
+    <text x="1096" y="329" text-anchor="end" class="note">东门可移除</text>
+    <text x="107" y="329" class="note">西门</text>
+    <text x="614" y="577" class="note">南门（入口起点）</text>
+  </g>
+  <text x="90" y="617" class="note">西南角 (0,0) · X 向东 · Y 向北</text>
+  <path d="M990 604v12m0-6h100m0-6v12" class="frame"/>
+  <text x="1040" y="633" text-anchor="middle" class="note">100 米（示意图比例）</text>
+  <path d="M90 657h27" class="relation"/>
+  <text x="124" y="662" class="note">实线／实边标记：文献支持相对关系或门的存在，不支持精确坐标</text>
+  <rect x="657" y="650" width="24" height="14" class="parcel"/>
+  <text x="690" y="662" class="note">虚线：假设建筑、地块、街线或路线</text>
+  <text x="90" y="695" class="note">PK-08：王志愔旧宅线索；PK-09：褚遂良旧宅线索。院落轮廓不明，750年的宅主未核。</text>
+  <text x="90" y="726" class="note">* 嘉猷观为宅东南角可切换占位；万安观／阳化寺缺可靠坐标，晚唐三曲不进入主层。</text>
+  <text x="90" y="753" class="note">背景院落与巷网均为假设；坊南局部关系见 PK-F04。</text>
+</svg>

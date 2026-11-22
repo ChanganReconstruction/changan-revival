@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 518" role="img" aria-labelledby="title desc">
+  <title id="title">PK-F01 平康坊坊区关系示意</title>
+  <desc id="desc">平康坊北为崇仁坊与春明门街，东邻东市，南为宣阳坊。菩提寺在南门之东，李林甫宅在寺东。</desc>
+  <style>
+    text { font-family: "Noto Sans CJK SC","Microsoft YaHei",sans-serif; fill: #26211e; font-size: 18px }
+    .title { font-size: 24px; font-weight: bold }
+    .note { font-size: 15px }
+    .zone { fill: #f5eadd; stroke: #aa8b6e }
+    .assumed { fill: none; stroke: #9a6d48; stroke-width: 2; stroke-dasharray: 8 5 }
+    .recorded { fill: #e4f2fa; stroke: #326888; stroke-width: 2 }
+  </style>
+  <rect width="900" height="518" fill="#fff"/>
+  <text x="28" y="38" class="title">PK-F01　平康坊坊区关系示意</text>
+  <text x="28" y="65" class="note">天宝时期关系示意 · 不按比例 · 门位、街线和宅界不可量取</text>
+  <path d="M810 135V95l-6 10m6-10 6 10" fill="none" stroke="#26211e" stroke-width="2"/>
+  <text x="810" y="84" text-anchor="middle">北</text>
+  <rect x="159" y="88" width="550" height="44" rx="6" class="zone"/>
+  <text x="434" y="116" text-anchor="middle">崇仁坊</text>
+  <rect x="159" y="138" width="550" height="40" fill="#ece9e3"/>
+  <text x="434" y="165" text-anchor="middle">RD-01 春明门街</text>
+  <rect x="159" y="194" width="550" height="199" rx="4" class="zone"/>
+  <path d="M159 205v-11h550v199H159z M159 291h550 M432 194v199" class="assumed"/>
+  <text x="177" y="240">平康坊</text>
+  <text x="176" y="281" class="note">RD-02 十字街骨架（推定）</text>
+  <rect x="734" y="194" width="134" height="199" rx="6" class="zone"/>
+  <text x="801" y="299" text-anchor="middle">东市</text>
+  <rect x="159" y="428" width="550" height="43" rx="6" class="zone"/>
+  <text x="434" y="456" text-anchor="middle">宣阳坊</text>
+  <circle cx="432" cy="194" r="7" fill="#fff" stroke="#9a6d48" stroke-width="2"/>
+  <text x="447" y="220" class="note">北门（晚唐旁证）</text>
+  <circle cx="709" cy="291" r="7" fill="#fff" stroke="#9a6d48" stroke-width="2"/>
+  <text x="696" y="278" text-anchor="end" class="note">东门占位</text>
+  <circle cx="159" cy="291" r="7" class="recorded"/>
+  <text x="143" y="297" text-anchor="end" class="note">西门</text>
+  <circle cx="432" cy="393" r="7" class="recorded"/>
+  <text x="432" y="416" text-anchor="middle" class="note">南门</text>
+  <circle cx="509" cy="350" r="6" class="recorded"/>
+  <text x="509" y="375" text-anchor="middle" class="note">PK-02 菩提寺</text>
+  <circle cx="638" cy="350" r="6" class="recorded"/>
+  <text x="638" y="375" text-anchor="middle" class="note">PK-01 李林甫宅</text>
+  <text x="28" y="500" class="note">蓝点：有文献位置关系，具体坐标未定。虚线及空心点：模型占位。</text>
+</svg>

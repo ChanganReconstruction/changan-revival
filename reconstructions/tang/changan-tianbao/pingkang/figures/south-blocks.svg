@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 402" role="img" aria-labelledby="title desc">
+  <title id="title">PK-F02 平康坊坊南建筑关系示意</title>
+  <desc id="desc">菩提寺的钟楼在西，李林甫宅在菩提寺以东。李林甫宅内正堂在月堂之前，嘉猷观属宅东南角。图不按比例。</desc>
+  <style>
+    text { font-family: "Noto Sans CJK SC","Microsoft YaHei",sans-serif; fill: #26211e; font-size: 17px }
+    .title { font-size: 24px; font-weight: bold }
+    .label { font-size: 19px; font-weight: bold }
+    .note { font-size: 14px }
+    .panel { fill: #fcfaf6; stroke: #c5b6a3 }
+    .recorded { fill: #e4f2fa; stroke: #326888; stroke-width: 2 }
+    .assumed { fill: #f7ece1; stroke: #986c48; stroke-width: 2; stroke-dasharray: 6 4 }
+    .line { fill: none; stroke: #326888; stroke-width: 2 }
+  </style>
+  <rect width="900" height="402" fill="#fff"/>
+  <text x="26" y="37" class="title">PK-F02　坊南建筑关系示意</text>
+  <text x="26" y="64" class="note">不按比例 · 左图表达东西关系，右图表达宅内前后关系，不指定宅门朝向</text>
+  <rect x="26" y="84" width="429" height="252" rx="6" class="panel"/>
+  <text x="42" y="110" class="label">寺宅东西关系</text>
+  <text x="45" y="142" class="note">西</text>
+  <path d="M75 136h330l-10-5m10 5-10 5" class="line"/>
+  <text x="419" y="142" class="note">东</text>
+  <rect x="47" y="168" width="257" height="124" rx="4" class="assumed"/>
+  <text x="175" y="194" text-anchor="middle">PK-02 菩提寺</text>
+  <rect x="59" y="209" width="82" height="56" rx="4" class="recorded"/>
+  <text x="100" y="242" text-anchor="middle">钟楼</text>
+  <rect x="155" y="217" width="134" height="40" rx="4" class="assumed"/>
+  <text x="222" y="242" text-anchor="middle" class="note">佛殿／食堂待排</text>
+  <rect x="317" y="210" width="120" height="55" rx="4" class="recorded"/>
+  <text x="377" y="242" text-anchor="middle">李林甫宅</text>
+  <text x="47" y="315" class="note">食堂东壁、大佛殿内槽北壁预留壁画面板。</text>
+  <rect x="471" y="84" width="403" height="252" rx="6" class="panel"/>
+  <text x="487" y="110" class="label">PK-01 李宅前后关系</text>
+  <rect x="491" y="148" width="68" height="48" rx="4" class="assumed"/>
+  <text x="525" y="177" text-anchor="middle">前院</text>
+  <rect x="590" y="148" width="71" height="48" rx="4" class="recorded"/>
+  <text x="625" y="177" text-anchor="middle">正堂</text>
+  <rect x="721" y="148" width="113" height="48" rx="4" class="recorded"/>
+  <text x="777" y="177" text-anchor="middle">后方月堂</text>
+  <path d="M559 172h31l-6-4m6 4-6 4 M661 172h60l-6-4m6 4-6 4" class="line"/>
+  <rect x="491" y="229" width="343" height="56" rx="4" class="assumed"/>
+  <text x="662" y="252" text-anchor="middle" class="note">PK-03 嘉猷观：宅东南角，可切换</text>
+  <text x="662" y="273" text-anchor="middle" class="note">建置确年未核，不能确认750年状态</text>
+  <text x="491" y="315" class="note">月堂矩形仅作图例，不表示实际平面。</text>
+  <text x="26" y="372" class="note">蓝框：文献支持的对象或相对关系；虚线：未定轮廓、暂定组团或可切换对象。</text>
+</svg>

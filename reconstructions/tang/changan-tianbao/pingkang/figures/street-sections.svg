@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 810" role="img" aria-labelledby="title desc">
+  <title id="title">PK-F05 道路断面与入口关系示意</title>
+  <desc id="desc">三类道路关系和两种入口示意。图不按比例，不代表平康坊已知断面。</desc>
+  <style>
+    text { font-family: "Noto Sans CJK SC", "Microsoft YaHei", sans-serif; fill: #26211e; font-size: 16px }
+    .heading { font-size: 24px; font-weight: bold }
+    .label { font-size: 18px; font-weight: bold }
+    .panel { fill: #fcfaf6; stroke: #c5b6a3 }
+    .wall { fill: #c9a47e; stroke: #67523c; stroke-width: 2 }
+    .ground { fill: #ebd6b8; stroke: #67523c; stroke-width: 2 }
+    .dim { stroke: #633e26; stroke-width: 2; fill: none }
+    .drain { stroke: #326888; stroke-width: 2; fill: none; stroke-dasharray: 5 4 }
+  </style>
+  <rect width="900" height="810" fill="#fff"/>
+  <text x="28" y="35" class="heading">道路断面与入口节点</text>
+  <text x="28" y="62">不按比例 · 仅示意空间关系 · 蓝色虚线表示假设排水设施</text>
+
+  <g transform="translate(24 81)">
+    <rect width="852" height="124" rx="7" class="panel"/>
+    <text x="16" y="25" class="label">ST-01　坊外大街／坊间道路</text>
+    <path d="M87 77h678v16H87z" class="ground"/>
+    <path d="M87 77V44h22v33m634 0V44h22v33" class="wall"/>
+    <path d="M132 77l7 11h14l7-11m532 0l7 11h14l7-11" class="drain"/>
+    <path d="M172 97v10m0-5h508m0-5v10" class="dim"/>
+    <text x="426" y="70" text-anchor="middle">宽度未填（春明门街断面待核）</text>
+  </g>
+  <g transform="translate(24 217)">
+    <rect width="852" height="124" rx="7" class="panel"/>
+    <text x="16" y="25" class="label">ST-02　坊内主街</text>
+    <path d="M211 77h430v16H211z" class="ground"/>
+    <path d="M211 77V45h20v32m390 0V45h20v32" class="wall"/>
+    <path d="M251 77l7 11h13l7-11" class="drain"/>
+    <path d="M296 97v10m0-5h310m0-5v10" class="dim"/>
+    <text x="451" y="70" text-anchor="middle">净路面</text>
+    <text x="720" y="76" text-anchor="middle">沟位仅示意</text>
+  </g>
+  <g transform="translate(24 353)">
+    <rect width="852" height="124" rx="7" class="panel"/>
+    <text x="16" y="25" class="label">ST-03　支巷／宅间通道</text>
+    <path d="M291 77h270v16H291z" class="ground"/>
+    <path d="M291 77V42h18v35m234 0V42h18v35" class="wall"/>
+    <path d="M309 97v10m0-5h234m0-5v10" class="dim"/>
+    <text x="426" y="70" text-anchor="middle">净路面</text>
+    <text x="684" y="76" text-anchor="middle">宽度、排水未核</text>
+  </g>
+  <g transform="translate(24 489)">
+    <rect width="852" height="140" rx="7" class="panel"/>
+    <text x="16" y="25" class="label">ST-04　坊门接街（沿行进方向剖面）</text>
+    <path d="M68 102h716v16H68z" class="ground"/>
+    <path d="M338 102l8 12h36l8-12" class="drain"/>
+    <path d="M326 102h75m18 0V63h63v39m-77-39l45-20 46 20z" class="dim"/>
+    <text x="190" y="91" text-anchor="middle">坊外路面</text>
+    <text x="362" y="89" text-anchor="middle">过沟构件</text>
+    <text x="636" y="91" text-anchor="middle">接坊内路面</text>
+  </g>
+  <g transform="translate(24 641)">
+    <rect width="852" height="140" rx="7" class="panel"/>
+    <text x="16" y="25" class="label">ST-05　宅门接路（沿行进方向剖面）</text>
+    <path d="M80 101h692v16H80z" class="ground"/>
+    <path d="M400 101V64h62v37m-76-37l45-19 45 19z" class="dim"/>
+    <path d="M413 101v-10h35v10" class="wall"/>
+    <text x="198" y="89" text-anchor="middle">巷面</text>
+    <text x="431" y="84" text-anchor="middle">步行门槛</text>
+    <text x="638" y="89" text-anchor="middle">院路／院地</text>
+    <text x="426" y="134" text-anchor="middle">门槛和路面高差仅示意，未见本址测量。</text>
+  </g>
+</svg>
