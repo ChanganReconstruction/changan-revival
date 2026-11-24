@@ -180,14 +180,14 @@ Transitions与Generative可以由同一人员维护，但在项目中保持独�
 
 ## 4. 项目目录结构
 
-**当前交付：** [唐 · 天宝长安复原](reconstructions/tang/changan-tianbao/README.md)，包含通用形制手册、平康坊和荐福寺浮图院专项资料。目前交付的是史料与复原文档，示意图不作为测绘图或制作规格。
+**当前交付：** [唐 · 天宝长安复原](reconstructions/changan-tianbao/README.md)，包含通用形制手册、平康坊和荐福寺浮图院专项资料。目前交付的是史料与复原文档，示意图不作为测绘图或制作规格。
 
 下方是规划中的模块结构，不是当前仓库目录。后续按实际协作需要逐步增加模块工作目录。
 
 ```text
 changan-revival/
 │
-├── reconstructions/          # 按时代和复原对象组织的交付资料
+├── reconstructions/          # 按复原专题组织的交付资料，如 changan-tianbao/
 ├── research/                 # 史料检索与历史复原
 ├── geometry/                 # 城市基础几何建模
 ├── visual/                   # 城市视觉及精细贴图
