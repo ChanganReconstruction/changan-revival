@@ -1,0 +1,167 @@
+{
+    "palette": {
+        "background": "#fbfaf6",
+        "ink": "#2f2a24",
+        "muted": "#6c604f",
+        "grid": "#e8e1d4",
+        "frame": "#4a4238"
+    },
+    "types": {
+        "ward-boundary": {
+            "fill": "#f4f0e6",
+            "stroke": "#b9ae9b",
+            "strokeWidth": 1.2,
+            "fillOpacity": 0.9
+        },
+        "ward-wall": {
+            "fill": "#c9bda8",
+            "stroke": "#5d4a35",
+            "strokeWidth": 1,
+            "fillOpacity": 0.95
+        },
+        "street": {
+            "fill": "#e6dfd0",
+            "stroke": "#b8ac97",
+            "strokeWidth": 1,
+            "fillOpacity": 0.95
+        },
+        "street-external": {
+            "fill": "#e2d9c7",
+            "stroke": "#b8ac97",
+            "strokeWidth": 1,
+            "fillOpacity": 0.95
+        },
+        "street-cross": {
+            "fill": "#e6dfd0",
+            "stroke": "#b8ac97",
+            "strokeWidth": 1,
+            "fillOpacity": 0.95
+        },
+        "zone": {
+            "fill": "#eae4d6",
+            "stroke": "#9a8a72",
+            "strokeWidth": 1.2,
+            "fillOpacity": 0.4
+        },
+        "gate": {
+            "fill": "#fffdf8",
+            "stroke": "#6b5f4f",
+            "strokeWidth": 1.5
+        },
+        "temple": {
+            "fill": "#eadfce",
+            "stroke": "#8a5a2b",
+            "strokeWidth": 1.6,
+            "fillOpacity": 0.75
+        },
+        "daoist-temple": {
+            "fill": "#e7e2d2",
+            "stroke": "#6f7a4a",
+            "strokeWidth": 1.6,
+            "fillOpacity": 0.75
+        },
+        "residence": {
+            "fill": "#dde5ea",
+            "stroke": "#4f6b7a",
+            "strokeWidth": 1.6,
+            "fillOpacity": 0.75
+        },
+        "open-ground": {
+            "fill": "#eef0e4",
+            "stroke": "#8a9270",
+            "strokeWidth": 1.2,
+            "fillOpacity": 0.6
+        },
+        "findspot": {
+            "fill": "#8a5a2b",
+            "stroke": "#4a4238",
+            "strokeWidth": 1
+        },
+        "hall": {
+            "fill": "#e8d7bd",
+            "stroke": "#7a4f2a",
+            "strokeWidth": 1.8,
+            "fillOpacity": 0.85
+        },
+        "corridor": {
+            "fill": "#efe8da",
+            "stroke": "#a08b6f",
+            "strokeWidth": 0.8,
+            "fillOpacity": 0.55
+        },
+        "stable": {
+            "fill": "#e0d8c6",
+            "stroke": "#7d6a4f",
+            "strokeWidth": 1.1,
+            "fillOpacity": 0.55
+        },
+        "service": {
+            "fill": "#e6e0d2",
+            "stroke": "#8d7d66",
+            "strokeWidth": 1,
+            "fillOpacity": 0.5
+        },
+        "wing": {
+            "fill": "#e9dfcf",
+            "stroke": "#8b6b4a",
+            "strokeWidth": 1.2,
+            "fillOpacity": 0.6
+        },
+        "well": {
+            "fill": "#cfdce0",
+            "stroke": "#4f6b7a",
+            "strokeWidth": 1
+        },
+        "dining-hall": {
+            "fill": "#e3d6c4",
+            "stroke": "#7a4f2a",
+            "strokeWidth": 1.5,
+            "fillOpacity": 0.85
+        },
+        "bell-tower": {
+            "fill": "#d9cbb6",
+            "stroke": "#5d4a35",
+            "strokeWidth": 1.5,
+            "fillOpacity": 0.85
+        },
+        "courtyard-wall": {
+            "fill": "#c9bda8",
+            "stroke": "#5d4a35",
+            "strokeWidth": 0.8
+        },
+        "vegetation": {
+            "fill": "#cfdcc0",
+            "stroke": "#6f7a4a",
+            "strokeWidth": 0.8,
+            "fillOpacity": 0.8
+        },
+        "dimension": {
+            "fill": "none",
+            "stroke": "#5d4a35",
+            "strokeWidth": 1,
+            "fillOpacity": 1
+        }
+    },
+    "inference": {
+        "documented": {
+            "dash": null,
+            "opacity": 1
+        },
+        "likely": {
+            "dash": "7 4",
+            "opacity": 0.95
+        },
+        "alternative": {
+            "dash": "4 3",
+            "opacity": 0.9
+        },
+        "schematic": {
+            "dash": "3 4",
+            "opacity": 0.75
+        },
+        "typological": {
+            "dash": "1 4",
+            "opacity": 0.45
+        }
+    }
+}

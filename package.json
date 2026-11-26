@@ -7,9 +7,13 @@
     },
     "scripts": {
         "check": "biome check .",
-        "format": "biome format --write ."
+        "format": "biome format --write .",
+        "render:ward": "node scripts/ward-render/render.ts",
+        "render:agent": "node scripts/ward-render/render.ts --all"
     },
     "devDependencies": {
-        "@biomejs/biome": "2.6.8"
+        "@biomejs/biome": "2.6.8",
+        "@embedpdf/fonts-sc": "1.0.0",
+        "@napi-rs/canvas": "1.2.1"
     }
 }

@@ -1,0 +1,6 @@
+{
+    "ward": "example",
+    "outputs": [
+        { "id": "ward-plan", "input": "ward.geojson", "title": "坊门示意" }
+    ]
+}

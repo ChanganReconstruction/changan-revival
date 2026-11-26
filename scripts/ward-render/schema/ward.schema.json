@@ -1,0 +1,159 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "title": "里坊平面 GeoJSON",
+    "type": "object",
+    "required": ["type", "features"],
+    "properties": {
+        "type": { "const": "FeatureCollection" },
+        "features": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+                "type": "object",
+                "required": ["type", "properties", "geometry"],
+                "properties": {
+                    "type": { "const": "Feature" },
+                    "properties": {
+                        "type": "object",
+                        "required": [
+                            "id",
+                            "type",
+                            "grade",
+                            "inference",
+                            "source"
+                        ],
+                        "properties": {
+                            "id": { "type": "string", "minLength": 1 },
+                            "layer": {
+                                "type": "string",
+                                "description": "可选。未填时绘图器按 type 决定绘制层；显式填写可覆盖。",
+                                "enum": [
+                                    "ward",
+                                    "ward-wall",
+                                    "street",
+                                    "zone",
+                                    "open-ground",
+                                    "residence",
+                                    "temple",
+                                    "daoist-temple",
+                                    "corridor",
+                                    "stable",
+                                    "service",
+                                    "wing",
+                                    "hall",
+                                    "dining-hall",
+                                    "bell-tower",
+                                    "courtyard-wall",
+                                    "gate",
+                                    "findspot",
+                                    "well",
+                                    "vegetation",
+                                    "dimension",
+                                    "label"
+                                ]
+                            },
+                            "type": { "type": "string", "minLength": 1 },
+                            "name": { "type": "string" },
+                            "label": { "type": "string" },
+                            "grade": {
+                                "type": "string",
+                                "enum": ["A", "B", "C", "D"]
+                            },
+                            "inference": {
+                                "type": "string",
+                                "enum": [
+                                    "documented",
+                                    "likely",
+                                    "alternative",
+                                    "schematic",
+                                    "typological"
+                                ]
+                            },
+                            "source": { "type": "string", "minLength": 1 },
+                            "note": { "type": "string" },
+                            "labelPoint": {
+                                "type": "array",
+                                "prefixItems": [
+                                    { "type": "number" },
+                                    { "type": "number" }
+                                ],
+                                "minItems": 2,
+                                "maxItems": 2
+                            },
+                            "position_precision": {
+                                "type": "string",
+                                "enum": [
+                                    "gate",
+                                    "street",
+                                    "adjacent",
+                                    "quadrant",
+                                    "point",
+                                    "schematic",
+                                    "none"
+                                ]
+                            },
+                            "period": {
+                                "type": "string",
+                                "enum": [
+                                    "sui",
+                                    "early-tang",
+                                    "high-tang",
+                                    "late-tang"
+                                ]
+                            },
+                            "tianbao_visible": {
+                                "type": "string",
+                                "enum": ["yes", "no", "unknown"]
+                            },
+                            "parent": { "type": "string" },
+                            "size_class": {
+                                "type": "string",
+                                "enum": ["S", "M", "L"]
+                            },
+                            "label_priority": {
+                                "type": "integer",
+                                "minimum": 1,
+                                "maximum": 3
+                            },
+                            "label_kind": {
+                                "type": "string",
+                                "enum": [
+                                    "object",
+                                    "quadrant",
+                                    "note",
+                                    "dimension"
+                                ]
+                            },
+                            "street_class": {
+                                "type": "string",
+                                "enum": ["external", "cross", "lane"]
+                            },
+                            "width": {
+                                "type": "number",
+                                "exclusiveMinimum": 0
+                            },
+                            "width_basis": {
+                                "type": "string",
+                                "enum": ["documented", "analogy", "schematic"]
+                            }
+                        },
+                        "additionalProperties": true
+                    },
+                    "geometry": {
+                        "type": "object",
+                        "required": ["type", "coordinates"],
+                        "properties": {
+                            "type": {
+                                "type": "string",
+                                "enum": ["Point", "LineString", "Polygon"]
+                            }
+                        },
+                        "additionalProperties": true
+                    }
+                },
+                "additionalProperties": true
+            }
+        }
+    },
+    "additionalProperties": true
+}
