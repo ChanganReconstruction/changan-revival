@@ -3,7 +3,7 @@
     "features": [
         {
             "type": "Feature",
-            "properties": {"id": "PK-WARD", "type": "ward-boundary", "layer": "label", "source": "PK-S01 / PK-S02", "grade": "C", "inference": "schematic", "note": "沿用 ward.geojson 的 650 步×350 步方案；坐标借用该说的折算值，不是测绘。闭合框仅留作范围数据，出图以坊墙带表示边界，避免封住门口。"},
+            "properties": {"id": "PK-WARD", "type": "ward-boundary", "layer": "label", "source": "PK-S01 / PK-S02", "grade": "C", "inference": "schematic", "note": "沿用旧试绘的 650 步×350 步方案；坐标借用该说的折算值，不是测绘。闭合框仅留作范围数据，出图以坊墙带表示边界，避免封住门口。"},
             "geometry": {"type": "Polygon", "coordinates": [[[0,0],[955.5,0],[955.5,514.5],[0,514.5],[0,0]]]}
         },
         {

@@ -28,7 +28,7 @@ pnpm render:ward --manifest reconstructions/changan-tianbao/pingkang/data/manife
 
 ## 验证
 
-PNG 不入 Git。按图生成及命名规则见[绘图器使用指南](../../../../scripts/ward-render/README.md)；已入库的旧 SVG 不属于本版渲染清单。
+PNG 不入 Git。按图生成及命名规则见[绘图器使用指南](../../../../scripts/ward-render/README.md)。本版不依赖 SVG。
 
 校验全部数据（不写图）：
 
