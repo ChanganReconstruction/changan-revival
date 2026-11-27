@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="640" height="360" viewBox="0 0 640 360" role="img" aria-labelledby="title desc">
   <title id="title">JF-F01 浮图院文献关系</title>
-  <desc id="desc">大荐福寺在北、浮图院在南，两门隔街相对；塔图标不表示院中位置。</desc>
+  <desc id="desc">大荐福寺在北、浮图院在南，两门隔街相对；图中不定位院址、门址或塔的院内坐标。</desc>
   <rect width="640" height="360" fill="#f8f6f0"/>
   <g font-family="sans-serif" fill="#252b2d">
     <text x="24" y="33" font-size="20">JF-F01｜浮图院文献关系</text>
@@ -14,8 +14,8 @@
     <text x="320" y="220" font-size="15">浮图院门北开</text>
     <rect x="90" y="235" width="460" height="84" rx="8" fill="#e5edf0"/>
     <text x="115" y="265" font-size="18">安仁坊西北隅 · 浮图院</text>
-    <text x="115" y="290" font-size="15">院内有塔；门塔同轴与约 39 米间距是本版设定。</text>
-    <text x="115" y="307" font-size="13">其余建筑无本址清单：仅北宋碑提到塔外副阶。</text>
+    <text x="115" y="290" font-size="15">院内有塔；塔与院门是否同轴、相距多远均未定。</text>
+    <text x="115" y="307" font-size="13">两门对向不等于已知门址或院界。</text>
     <text x="24" y="337" font-size="14">依据：《唐两京城坊考》卷二 · 关系示意，不按比例</text>
   </g>
 </svg>

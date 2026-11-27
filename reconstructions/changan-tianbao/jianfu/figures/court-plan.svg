@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="720" height="660" viewBox="0 0 720 660" role="img" aria-labelledby="title desc">
   <title id="title">JF-F02 浮图院采用总平面</title>
-  <desc id="desc">比例为每米6图面单位。院墙外皮东西72米、南北78米；北门与塔同轴。虚线另示可选的塔副阶（1116年碑）与两座无名配屋。</desc>
+  <desc id="desc">仅用于量取展示方案，每米6图面单位。方案院墙外皮东西72米、南北78米；北门与塔同轴为布置选择。虚线另示可选的塔副阶（参考1116年碑文转引，形制为假设）与两座无名配屋。</desc>
   <rect width="720" height="660" fill="#f8f6f0"/>
   <g fill="#252b2d" font-family="sans-serif">
     <text x="24" y="36" font-size="22">JF-F02｜浮图院采用总平面</text>
@@ -32,7 +32,7 @@
     <text x="126" y="102">北墙 Y=42</text><text x="360" y="116">JF-02 北门</text>
     <text x="348" y="203">JF-04 北引道</text><text x="217" y="348" text-anchor="end">JF-01 台基／塔心</text>
     <text x="108" y="559">JF-03 院墙</text><text x="462" y="490">JF-05 附屋（可选）</text>
-    <text x="392" y="300" font-size="13">JF-06 副阶（1116，可选）</text>
+    <text x="392" y="300" font-size="13">JF-06 副阶占位（可选）</text>
     <text x="128" y="512" font-size="13" text-anchor="end">JF-07 西配屋（可选）</text>
     <text x="570" y="116" font-size="18">↑ 北</text><text x="555" y="352">X 东 →</text>
     <text x="24" y="630" font-size="14">实边为采用轮廓或柱轴；虚线为出檐，或默认关闭的可切换／可移除体量。</text>

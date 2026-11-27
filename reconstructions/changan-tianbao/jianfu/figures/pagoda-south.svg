@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="740" height="810" viewBox="0 0 740 810" role="img" aria-labelledby="title desc">
-  <title id="title">JF-F03 小雁塔天宝方案南立面</title>
-  <desc id="desc">塔台与十五级塔身按逐级表的照片近似几何绘制；第1–13级按现存檐口读数，第14–15级与塔顶为碑图示意补全。虚线副阶为后世文献备选，默认不启用。</desc>
+  <title id="title">JF-F03 小雁塔展示方案南立面（非测绘）</title>
+  <desc id="desc">按展示参数绘制；第1–13级参照现存轮廓，逐级檐高未获可复核量值，第14–15级与塔顶为展示补全。虚线副阶为后世文献备选，默认不启用。</desc>
   <rect width="740" height="810" fill="#f8f6f0"/>
   <style>
     .body {fill:#c9b99c;stroke:#594d40;stroke-width:.075}
@@ -11,8 +11,8 @@
     .optional {fill:none;stroke:#8a6f52;stroke-width:.085;stroke-dasharray:.32 .22;opacity:.75}
   </style>
   <g font-family="sans-serif" fill="#252b2d">
-    <text x="24" y="35" font-size="22">JF-F03｜荐福寺塔 · 750 方案南立面</text>
-    <text x="24" y="60" font-size="14">檐口据正面照片反算（未校正透视）；第14–15级、塔顶为示意补全。</text>
+    <text x="24" y="35" font-size="22">JF-F03｜荐福寺塔 · 展示方案南立面</text>
+    <text x="24" y="60" font-size="14">标高为项目院面起算的方案值，非测绘；上两级及塔刹为展示补全。</text>
   </g>
   <!-- Z is up, in metres. Eave mouldings are simplified silhouettes. -->
   <g transform="translate(335 751) scale(12.5 -12.5)">
@@ -71,15 +71,15 @@
   <g font-family="sans-serif" fill="#252b2d" font-size="14">
     <text x="478" y="119">50.55 · 本版刹顶</text>
     <text x="478" y="170">46.50 · 第15级上口</text>
-    <text x="478" y="207">43.60 · 第13级檐口</text>
+    <text x="478" y="207">43.60 · 第13级上口（方案）</text>
     <text x="478" y="624">10.20 · 首檐上口</text>
     <text x="478" y="711">3.20 · 台面（另说 3.5）</text>
     <text x="478" y="755">0.00 · 院面</text>
     <text x="335" y="790" text-anchor="middle">23.38 m · 台基两外边</text>
     <text x="24" y="138">第14–15级及刹：</text>
-    <text x="24" y="160">碑图示意，尺寸推定</text>
+    <text x="24" y="160">展示补全，原尺寸未定</text>
     <text x="24" y="269">第1–13级：</text>
-    <text x="24" y="291">现存形制参照，檐高为照片近似</text>
-    <text x="24" y="330">虚线 = 副阶 JF-06（1116 年碑，可切换）</text>
+    <text x="24" y="291">参照现存轮廓，檐高是展示值</text>
+    <text x="24" y="330">虚线 = 副阶占位（1116 年碑文转引，可切换）</text>
   </g>
 </svg>

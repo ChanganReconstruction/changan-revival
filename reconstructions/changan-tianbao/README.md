@@ -3,6 +3,8 @@
 - [街巷与建筑形制手册](handbook/README.md)：道路、住宅、寺观与构件的文献、考古和图像参考。
 - [里坊资料汇编模板](ward-template.md)：各坊共用的目录、字段、分级与编号规则。
 - [坊市资料构建工作准则](ward-workflow.md)：从网上检索、核验出处，到整理目录与检查交付。
+- [建筑群复原模板](ensemble-template.md)：院落、重点单体及构件的分期、证据、参数、图版和交付验收标准。
+- [建筑群复原工作准则](ensemble-workflow.md)：从查史料和测绘，到编制总平面、核对单体和验收。
 - [平康坊复原资料汇编](pingkang/README.md)：坊域、对象、空间关系、证据与缺口，含坊级布局与院落关系试绘。
 - [平康坊证据索引](pingkang/evidence-index.csv)：按对象查出处、年代、已知关系和未证实事项。
 - [平康坊程序化平面数据与本地图](pingkang/data/README.md)：供 agent 阅读的试点 PNG 由协作者本地生成，不随 Git 提交。
