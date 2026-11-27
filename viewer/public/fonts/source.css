@@ -1,0 +1,8 @@
+/* Noto Serif SC，SIL Open Font License 1.1；许可见同目录 OFL.txt。 */
+@font-face {
+    font-family: "Changan Serif";
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url("/fonts/changan-serif.ttf") format("truetype");
+}

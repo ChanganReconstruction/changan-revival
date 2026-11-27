@@ -37,6 +37,7 @@ pnpm install --frozen-lockfile
 pnpm check
 ```
 
-Biome 由项目依赖提供，不用全局安装。`pnpm check` 只检查，不修改文件；需要格式化时运行 `pnpm format`。Biome 不处理 Markdown、MDX 或 `reconstructions/` 中随复原文档交付的 SVG。
+Biome 由项目依赖提供，不用全局安装。`pnpm check` 运行 Biome 和 Viewer 的 TypeScript 类型检查，不修改文件；需要格式化时运行 `pnpm format`。
+Biome 不处理 Markdown、MDX 或 `reconstructions/` 中随复原文档交付的 SVG；Viewer 原型的页面、源码和测试暂保留原有风格，不纳入 Biome。Viewer 单元测试单独运行 `pnpm --filter viewer test`。
 
 升级工具时，在同一个拉取请求中更新相关版本声明、配置和锁文件。

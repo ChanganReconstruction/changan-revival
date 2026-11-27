@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#e6dfc9" />
+    <meta name="description" content="一城烟火，万里来朝。以低多边形建筑与细腻光影重访盛唐长安。" />
+    <title>长安 · 一城盛唐</title>
+  </head>
+  <body>
+    <canvas id="world" aria-label="唐代长安城交互三维场景"></canvas>
+    <div id="loading" role="status">
+      <div class="loading-seal">唐</div>
+      <h1>长安</h1>
+      <p>正在铺陈一城盛唐</p>
+      <div class="loading-line"><span></span></div>
+      <small>山河为卷 · 坊市成诗</small>
+    </div>
+    <div id="interface">
+      <header class="masthead">
+        <a class="brand" href="#" aria-label="返回长安全城视角" id="home">
+          <span class="seal">唐</span>
+          <span><strong>长安</strong><small>一 城 盛 唐</small></span>
+        </a>
+        <div class="edition"><span></span> 开元 · 天宝 <i></i> 城市山河图志 / 01</div>
+        <div class="header-actions">
+          <button id="help-button" class="quiet-button" aria-label="打开游览说明">游览须知 <span>↗</span></button>
+          <button id="fullscreen" class="icon-button" aria-label="切换全屏">
+            <svg viewBox="0 0 24 24" width="19" height="19" aria-hidden="true"
+              fill="none" stroke="currentColor" stroke-width="1.3">
+              <path d="M9 4H4v5m11-5h5v5M4 15v5h5m11-5v5h-5" />
+            </svg>
+          </button>
+        </div>
+      </header>
+
+      <div class="compass" aria-label="指北针"><span>北</span><div id="compass-needle">↑</div><small>南</small></div>
+      <div id="labels" aria-hidden="true"></div>
+
+      <section class="view-story" aria-live="polite">
+        <div class="eyebrow"><span id="view-number">01</span><span class="short-rule"></span>长 安 十 二 时 辰</div>
+        <h1 id="view-name">万国长安</h1>
+        <p class="poem" id="view-subtitle">一城烟火 · 万里来朝</p>
+        <p class="description" id="view-description"></p>
+        <div class="story-meta"><span>盛唐意象 · 艺术化复原</span><span>西元 713—756</span></div>
+      </section>
+
+      <aside class="atlas" aria-label="长安城市方位图">
+        <div class="atlas-title"><span>长安舆图</span><span>北 ↑</span></div>
+        <svg id="minimap" viewBox="-920 -1220 1840 2040" role="group" aria-label="可点选的长安坊区图">
+          <g id="map-wards"></g>
+          <path d="M-840-820H840V710H-840Z M330-1180H710V-744H330Z" class="map-wall" />
+          <path d="M-250-795H250V-285H-250Z M0-285V710" class="map-axis" />
+          <circle id="map-target" cx="0" cy="-120" r="24" />
+        </svg>
+        <div class="atlas-footer"><span>一百零八坊</span><span>点坊入览 ↗</span></div>
+      </aside>
+
+      <footer class="explorer">
+        <div class="toolbar">
+          <div class="time-control" role="group" aria-label="选择时辰">
+            <span class="control-label">光 阴</span>
+            <button data-hour="dawn">清晨</button>
+            <button data-hour="day">日中</button>
+            <button data-hour="golden" class="active" aria-pressed="true">金色时分</button>
+            <button data-hour="night">入夜</button>
+          </div>
+          <div class="display-control">
+            <button id="tour" aria-pressed="false"><span class="play-symbol">▷</span> 自动巡游</button>
+            <button id="toggle-labels" aria-pressed="true">地名 <span class="toggle-dot"></span></button>
+            <label class="quality-label">画质
+              <select id="quality" aria-label="画质选择">
+                <option value="low">流畅</option>
+                <option value="medium" selected>标准</option>
+                <option value="high">精致</option>
+              </select>
+            </label>
+            <label class="quality-label">渲染比例
+              <select id="render-scale" aria-label="渲染比例选择">
+                <option value="1">100%</option>
+                <option value=".85">85%</option>
+                <option value=".7">70%</option>
+              </select>
+            </label>
+            <button id="hide-ui" title="快捷键 H">隐去界面 ↘</button>
+          </div>
+        </div>
+        <nav id="view-nav" class="view-nav" aria-label="城市游览机位"></nav>
+        <div class="bottomline">
+          <span>拖动环顾 <b>·</b> 滚轮缩放 <b>·</b> 右键平移</span>
+          <span class="center-caption">山 河 为 卷 ， 坊 市 成 诗</span>
+          <button id="stats-button" title="显示性能统计">THREE.JS <b>·</b> LOW POLY <span>↗</span></button>
+        </div>
+      </footer>
+      <div id="stats" hidden></div>
+    </div>
+    <button id="restore-ui" hidden>显 示 界 面 <kbd>H</kbd></button>
+    <dialog id="help">
+      <button id="close-help" class="dialog-close" aria-label="关闭说明">×</button>
+      <span class="eyebrow">长 安 游 记</span>
+      <h2>走进一城盛唐</h2>
+      <p>拖动鼠标环顾城市，滚轮靠近或远离，右键拖动平移。触屏可单指旋转、双指缩放与平移。</p>
+      <p>下方横向浏览十八景与坊市样板，切换四种光阴；「自动巡游」依次游览。「H」隐去界面，Esc 停止巡游。</p>
+      <p>桌面可点右侧小地图查看各坊名称与特点；「暮鼓夜禁」自动入夜，游览坊门随昼夜开合。</p>
+      <hr />
+      <h3>关于这座长安</h3>
+      <p>以开元—天宝为年代意象，参考长安里坊、宫城和两市。坊名沿用原项目表，部分为推定；尺度、位置与院落均作艺术化压缩，并非逐坊考古复原。</p>
+      <p>建筑采用共享低多边形原型与实例化绘制。屋顶轮廓来自几何，瓦垄、夯土与石纹来自程序材质。</p>
+      <div class="source-links">
+        <a href="https://beijing.smartdeng.com/" target="_blank" rel="noreferrer">视觉参考：北京·五环之内 ↗</a>
+        <a href="https://www.tup.tsinghua.edu.cn/upload/books/yz/072223-01.pdf" target="_blank" rel="noreferrer">形制参考：唐代木构 ↗</a>
+      </div>
+      <small>本项目独立实现，未使用参考站的城市模型与贴图。</small>
+    </dialog>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

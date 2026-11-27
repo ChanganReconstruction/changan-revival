@@ -8,6 +8,7 @@
 | --- | --- |
 | [`reconstructions/`](reconstructions/) | 复原资料、源数据和正式交付。天宝长安内容放在 [`reconstructions/changan-tianbao/`](reconstructions/changan-tianbao/)，按对象归档；坊市、院落绘图的 GeoJSON 和清单放在对应的 `data/` 下。 |
 | [`scripts/`](scripts/) | 仓库内的工具代码、测试和最小示例，不放实际复原数据或生成产物。坊市、院落平面图的生成命令见[绘图器使用指南](scripts/ward-render/README.md)。 |
+| [`viewer/`](viewer/) | Three.js 展示应用和程序化低模；使用根目录的 pnpm workspace 和锁文件，正式大资产不随应用入库。 |
 | `build/` | 本地生成产物、缓存和试验图。根目录下的整个 `build/` 都被 Git 忽略；不要在这里保存唯一的源数据或正式交付。 |
 
 优先在任务所属目录修改；不要根据项目规划提前创建模块目录或引入未约定的工具链。
