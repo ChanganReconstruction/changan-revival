@@ -177,6 +177,7 @@ Transitions与Generative可以由同一人员维护，但在项目中保持独�
 **主要交付：** 可运行的唐长安城三维漫游展示系统。
 
 当前已纳入基于 Three.js 和 Vite 的[低多边形浏览原型](viewer/README.md)。
+安装依赖后，在仓库根目录运行 `pnpm preview:viewer`，打开 <http://localhost:5174/> 预览。
 它在浏览器内生成全城展示底图，暂不含过渡视频和3DGS，不作为考古复原交付。
 
 ## 4. 项目目录结构

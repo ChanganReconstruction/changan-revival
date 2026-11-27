@@ -11,6 +11,8 @@ import { createCity } from './world/city';
 import { CLASSIC_VIEWS, PLACES, VIEWS, type Ward } from './world/layout';
 import { districtFor } from './world/districts';
 import { parseRenderScale, renderDimensions, type RenderScale } from './render/resolution';
+import { PAGODAS } from './world/temple-pagodas';
+import { createJianfusiDemo } from './jianfusi-demo';
 
 const $ = <T extends HTMLElement = HTMLElement>(selector: string): T => {
   const element = document.querySelector<T>(selector);
@@ -95,6 +97,7 @@ async function start() {
   // 先让加载界面完成一帧，再生成城市，避免首屏无反馈。
   await new Promise<void>((resolve) => requestAnimationFrame(() => resolve()));
   const city = createCity(scene, materials);
+  const jianfusi = createJianfusiDemo($('#jianfusi-demo'), invalidate);
 
   const target = new THREE.WebGLRenderTarget(innerWidth, innerHeight, { samples: 2 });
   const composer = new EffectComposer(renderer, target);
@@ -185,6 +188,45 @@ async function start() {
   let labelsEnabled = params.get('labels') !== '0';
   const viewKeys: string[] = ['city', 'basin', ...CLASSIC_VIEWS, 'manor', 'artisan', 'craft'];
   const nav = $('#view-nav');
+  function openJianfusi(trigger: HTMLElement) {
+    flight = null;
+    setTour(false);
+    jianfusi.open(trigger);
+  }
+
+  // 只拾取小雁塔的包围盒，不遍历全城实例。OrbitControls 的拖动不能触发入口。
+  const tower = PAGODAS.xiaoyan;
+  const towerBounds = new THREE.Box3(
+    new THREE.Vector3(tower.x - tower.width / 2, 0, tower.z - tower.width / 2),
+    new THREE.Vector3(tower.x + tower.width / 2, tower.height + 2, tower.z + tower.width / 2),
+  );
+  const raycaster = new THREE.Raycaster();
+  const pointer = new THREE.Vector2();
+  let tap: { id: number; x: number; y: number } | undefined;
+  function hitsTower(event: PointerEvent) {
+    const rect = canvas.getBoundingClientRect();
+    pointer.set((event.clientX - rect.left) / rect.width * 2 - 1,
+      1 - (event.clientY - rect.top) / rect.height * 2);
+    camera.updateMatrixWorld();
+    raycaster.setFromCamera(pointer, camera);
+    return raycaster.ray.intersectsBox(towerBounds);
+  }
+  canvas.addEventListener('pointerdown', (event) => {
+    tap = event.isPrimary && event.button === 0 && hitsTower(event)
+      ? { id: event.pointerId, x: event.clientX, y: event.clientY } : undefined;
+  });
+  canvas.addEventListener('pointermove', (event) => {
+    if (tap?.id === event.pointerId && Math.hypot(event.clientX - tap.x, event.clientY - tap.y) > 6) {
+      tap = undefined;
+    }
+  });
+  canvas.addEventListener('pointercancel', () => { tap = undefined; });
+  canvas.addEventListener('pointerup', (event) => {
+    const start = tap;
+    tap = undefined;
+    if (start?.id === event.pointerId && Math.hypot(event.clientX - start.x, event.clientY - start.y) <= 6
+      && hitsTower(event)) openJianfusi(canvas);
+  });
   const navSubtitles: Record<string, string> = {
     city: '盛唐全景', avenue: '都城中轴', palace: '大明宫阙', market: '西市棚肆',
     pagoda: '慈恩浮图', lake: '城南园林', craft: '密居近赏', manor: '府第深院',
@@ -399,7 +441,7 @@ async function start() {
 
   function frame(now: number) {
     requestAnimationFrame(frame);
-    if (document.hidden) { previousFrame = now; return; }
+    if (document.hidden || jianfusi.active) { previousFrame = now; return; }
     const delta = Math.min((now - previousFrame) / 1000, 0.05);
     previousFrame = now;
     if (flight) {

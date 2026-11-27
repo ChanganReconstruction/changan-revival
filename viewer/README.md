@@ -232,7 +232,7 @@
 
 ```sh
 pnpm install --frozen-lockfile
-pnpm --filter viewer dev --port 5174
+pnpm preview:viewer
 ```
 
 打包并本地预览生产版本：
@@ -246,6 +246,40 @@ pnpm --filter viewer preview --port 4174
 生产部署将 `viewer/dist/` 整体放到静态 HTTP 服务，不直接双击 HTML；服务器无需安装 Node.js。
 
 ## 操作与样板入口
+
+**荐福寺庭院 · 本地样板**：仓库根目录放置 `jianfusi.mp4` 和 `古塔庭院_完整高斯高清漫游.html`，
+然后从根目录运行：
+
+```sh
+pnpm --filter viewer prepare:jianfusi
+pnpm preview:viewer
+```
+
+打开 `http://localhost:5174/`，从默认全城视角自由漫游，看到小雁塔时直接点击塔身。
+引入短片开始播放时，庭院页在 iframe 中后台加载。视频结束、庭院渲染首帧后才切入漫游；
+如果庭院仍在加载，保留视频末帧。任何时候都可以返回长安。
+城市和庭院均沿用原有机位；返回长安时回到点击前的城市视角。
+
+准备命令不改动原始资产，只在 `viewer/public/jianfusi-demo/` 生成带交接桥接的本地副本，
+原件和副本均由 Git 忽略。庭院是约 334 MB 的完整导出；若准备后执行 Vite 构建，
+该测试副本也会被复制进 `viewer/dist/`，不要把这份含大资产的本地构建当正式发布包。
+启动开发服务器后，可从仓库根目录运行 `pnpm --filter viewer exec node tests/jianfusi-browser.mjs`
+用真实资产验证塔身点击、视频播放、完整模型交接和返回长安。
+
+**改用内网资源**：编辑 [`public/jianfusi.config.json`](public/jianfusi.config.json)，
+或直接编辑静态站点目录里的 `jianfusi.config.json`，然后刷新 Viewer，无需重新构建：
+
+```json
+{
+    "videoUrl": "http://10.15.22.3:8080/changan/jianfusi.mp4",
+    "courtyardUrl": "http://10.15.22.3:8080/changan/jianfusi.html"
+}
+```
+
+将 `prepare:jianfusi` 生成的 `courtyard.html` 上传为 `jianfusi.html`，不要直接上传原始庭院导出：
+生成版包含首帧通知，支持跨域交接。相对路径以配置文件所在目录为基准。
+资源服务器须允许 Viewer 嵌入庭院页面（如设置了 `Content-Security-Policy: frame-ancestors`
+或 `X-Frame-Options`，不要拦截 Viewer）；若 Viewer 用 HTTPS，资源也应使用 HTTPS，避免浏览器拦截混合内容。
 
 左键旋转、滚轮缩放、右键平移；触屏单指旋转，双指缩放或平移。
 底部景观条可横向滚动；`H` 隐藏/恢复界面，`Esc` 停止巡游。
