@@ -1,0 +1,25 @@
+{
+    "type": "FeatureCollection",
+    "features": [
+        {
+            "type": "Feature",
+            "properties": {"id": "PK-WANAN-YAO-FORMER", "type": "residence", "name": "姚元崇宅旧址", "labelPoint": [56,48], "source": "PK-S02 / PK-S07", "grade": "A", "inference": "schematic", "note": "前身关系示意；块面不表示宅界、南北线位或两宅间距。"},
+            "geometry": {"type": "Polygon", "coordinates": [[[0,19],[112,19],[112,70],[0,70],[0,19]]]}
+        },
+        {
+            "type": "Feature",
+            "properties": {"id": "PK-WANAN-TAIPING-FORMER", "type": "residence", "name": "太平公主宅旧址", "labelPoint": [200,48], "source": "PK-S02 / PK-S07", "grade": "A", "inference": "schematic", "note": "坊志记在姚元崇宅次东；不把前身的占位块用作并观后的观界。"},
+            "geometry": {"type": "Polygon", "coordinates": [[[144,19],[256,19],[256,70],[144,70],[144,19]]]}
+        },
+        {
+            "type": "Feature",
+            "properties": {"id": "PK-WANAN-W", "type": "note", "layer": "label", "name": "西", "source": "PK-S02", "grade": "A", "inference": "documented"},
+            "geometry": {"type": "Point", "coordinates": [56,83]}
+        },
+        {
+            "type": "Feature",
+            "properties": {"id": "PK-WANAN-E", "type": "note", "layer": "label", "name": "次东", "source": "PK-S02", "grade": "A", "inference": "documented"},
+            "geometry": {"type": "Point", "coordinates": [200,83]}
+        }
+    ]
+}

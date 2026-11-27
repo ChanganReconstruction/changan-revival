@@ -1,0 +1,200 @@
+{
+    "type": "FeatureCollection",
+    "features": [
+        {
+            "type": "Feature",
+            "properties": {"id": "PK-WARD", "type": "ward-boundary", "layer": "label", "source": "PK-S01 / PK-S02", "grade": "C", "inference": "schematic", "note": "沿用 ward.geojson 的 650 步×350 步方案；坐标借用该说的折算值，不是测绘。闭合框仅留作范围数据，出图以坊墙带表示边界，避免封住门口。"},
+            "geometry": {"type": "Polygon", "coordinates": [[[0,0],[955.5,0],[955.5,514.5],[0,514.5],[0,0]]]}
+        },
+        {
+            "type": "Feature",
+            "properties": {"id": "PK-WALL-01", "type": "ward-wall", "source": "PK-S01 / PK-S02", "grade": "C", "inference": "schematic", "note": "所有墙带及断口仅表达坊墙与开门的关系；墙厚、门宽和线位未核。"},
+            "geometry": {"type": "Polygon", "coordinates": [[[0,0],[471,0],[471,8],[0,8],[0,0]]]}
+        },
+        {
+            "type": "Feature",
+            "properties": {"id": "PK-WALL-02", "type": "ward-wall", "source": "PK-S01 / PK-S02", "grade": "C", "inference": "schematic"},
+            "geometry": {"type": "Polygon", "coordinates": [[[507,0],[955.5,0],[955.5,8],[507,8],[507,0]]]}
+        },
+        {
+            "type": "Feature",
+            "properties": {"id": "PK-WALL-03", "type": "ward-wall", "source": "PK-S01 / PK-S02", "grade": "C", "inference": "schematic"},
+            "geometry": {"type": "Polygon", "coordinates": [[[0,506.5],[471,506.5],[471,514.5],[0,514.5],[0,506.5]]]}
+        },
+        {
+            "type": "Feature",
+            "properties": {"id": "PK-WALL-04", "type": "ward-wall", "source": "PK-S01 / PK-S02", "grade": "C", "inference": "schematic"},
+            "geometry": {"type": "Polygon", "coordinates": [[[507,506.5],[955.5,506.5],[955.5,514.5],[507,514.5],[507,506.5]]]}
+        },
+        {
+            "type": "Feature",
+            "properties": {"id": "PK-WALL-05", "type": "ward-wall", "source": "PK-S01 / PK-S02", "grade": "C", "inference": "schematic"},
+            "geometry": {"type": "Polygon", "coordinates": [[[0,8],[8,8],[8,220],[0,220],[0,8]]]}
+        },
+        {
+            "type": "Feature",
+            "properties": {"id": "PK-WALL-06", "type": "ward-wall", "source": "PK-S01 / PK-S02", "grade": "C", "inference": "schematic"},
+            "geometry": {"type": "Polygon", "coordinates": [[[0,256],[8,256],[8,506.5],[0,506.5],[0,256]]]}
+        },
+        {
+            "type": "Feature",
+            "properties": {"id": "PK-WALL-07", "type": "ward-wall", "source": "PK-S01 / PK-S02", "grade": "C", "inference": "schematic", "note": "东门只见概述转述，断口属于试绘方案。"},
+            "geometry": {"type": "Polygon", "coordinates": [[[947.5,8],[955.5,8],[955.5,220],[947.5,220],[947.5,8]]]}
+        },
+        {
+            "type": "Feature",
+            "properties": {"id": "PK-WALL-08", "type": "ward-wall", "source": "PK-S01 / PK-S02", "grade": "C", "inference": "schematic"},
+            "geometry": {"type": "Polygon", "coordinates": [[[947.5,256],[955.5,256],[955.5,506.5],[947.5,506.5],[947.5,256]]]}
+        },
+        {
+            "type": "Feature",
+            "properties": {"id": "PK-RD-01", "type": "street-external", "street_class": "external", "name": "春明门街", "labelPoint": [240,541], "source": "PK-S02", "grade": "A", "inference": "schematic", "width_basis": "仅为表现道路带，非史料街宽。", "note": "在平康坊与崇仁坊之间有据。"},
+            "geometry": {"type": "Polygon", "coordinates": [[[-60,518],[1015,518],[1015,564],[-60,564],[-60,518]]]}
+        },
+        {
+            "type": "Feature",
+            "properties": {"id": "PK-RD-02", "type": "street-cross", "street_class": "cross", "name": "十字街†", "labelPoint": [679,238], "source": "PK-S02 / PK-S05", "grade": "A", "inference": "alternative", "width_basis": "仅为表现道路带，非史料街宽。", "note": "两直街相交并直通图上坊门，是便于读图的通行方案。实际线位、交角、宽度及坊门是否共轴未核；北门、东门尤其待核。"},
+            "geometry": {"type": "Polygon", "coordinates": [[[0,223],[473,223],[473,0],[505,0],[505,223],[955.5,223],[955.5,253],[505,253],[505,518],[473,518],[473,253],[0,253],[0,223]]]}
+        },
+        {
+            "type": "Feature",
+            "properties": {"id": "PK-GT-01", "type": "gate", "name": "南门", "labelPoint": [489,-30], "source": "PK-S02", "grade": "A", "inference": "schematic", "note": "门所在侧有据，缺口为占位，不代表确切门位。"},
+            "geometry": {"type": "Point", "coordinates": [489,4]}
+        },
+        {
+            "type": "Feature",
+            "properties": {"id": "PK-GT-02", "type": "gate", "name": "北门†", "labelPoint": [554,484], "source": "PK-S05 / PK-S02", "grade": "A", "inference": "alternative", "note": "《北里志》晚唐记载，另有省北门异文；天宝状态待核。"},
+            "geometry": {"type": "Point", "coordinates": [489,510.5]}
+        },
+        {
+            "type": "Feature",
+            "properties": {"id": "PK-GT-03", "type": "gate", "name": "西门", "labelPoint": [-30,238], "source": "PK-S02", "grade": "A", "inference": "schematic", "note": "门所在侧有据，缺口为占位，不代表确切门位。"},
+            "geometry": {"type": "Point", "coordinates": [4,238]}
+        },
+        {
+            "type": "Feature",
+            "properties": {"id": "PK-GT-04", "type": "gate", "name": "东门？†", "labelPoint": [1012,238], "source": "PK-S01", "grade": "C", "inference": "alternative", "note": "只见四面开门的概述转述，是否有东门、门位及接街均待原始材料核实。"},
+            "geometry": {"type": "Point", "coordinates": [951.5,238]}
+        },
+        {
+            "type": "Feature",
+            "properties": {"id": "PK-B1-01", "type": "temple", "name": "菩提寺", "labelPoint": [583,103], "source": "PK-S02 / PK-S03", "grade": "A", "inference": "schematic", "position_precision": "gate", "note": "在南门东；块面只占位，不表示寺界、进深或到门距离。"},
+            "geometry": {"type": "Polygon", "coordinates": [[[523,45],[648,45],[648,129],[523,129],[523,45]]]}
+        },
+        {
+            "type": "Feature",
+            "properties": {"id": "PK-B2-01", "type": "residence", "name": "李林甫宅", "labelPoint": [783,170], "source": "PK-S02 / PK-S03", "grade": "A", "inference": "schematic", "position_precision": "quadrant", "note": "坊东南隅、菩提寺东；隅内位置、形状和宅界未定。"},
+            "geometry": {"type": "Polygon", "coordinates": [[[687.96,28],[898.17,28],[898.17,197.885],[687.96,197.885],[687.96,28]]]}
+        },
+        {
+            "type": "Feature",
+            "properties": {"id": "PK-B1-03", "type": "daoist-temple", "name": "万安观", "labelPoint": [148,116], "source": "PK-S02 / PK-S07", "grade": "A", "inference": "schematic", "position_precision": "quadrant", "note": "西南隅有据，隅内位置未定；方块不表示观界。"},
+            "geometry": {"type": "Polygon", "coordinates": [[[75,57],[225,57],[225,141],[75,141],[75,57]]]}
+        },
+        {
+            "type": "Feature",
+            "properties": {"id": "PK-SW-NOTE", "type": "note", "layer": "label", "name": "西南隅，隅内未定", "label_kind": "note", "source": "PK-S02", "grade": "A", "inference": "documented"},
+            "geometry": {"type": "Point", "coordinates": [148,80]}
+        },
+        {
+            "type": "Feature",
+            "properties": {"id": "PK-SE-NOTE", "type": "note", "layer": "label", "name": "东南隅 · 菩提寺东", "label_kind": "note", "source": "PK-S02 / PK-S03", "grade": "A", "inference": "documented"},
+            "geometry": {"type": "Point", "coordinates": [783,136]}
+        },
+        {
+            "type": "Feature",
+            "properties": {"id": "PK-BELL", "type": "note", "layer": "label", "name": "钟楼在寺西", "label_kind": "note", "source": "PK-S03", "grade": "A", "inference": "documented", "note": "注记位于菩提寺占位块内，不表示钟楼的具体点位；另见院落图。"},
+            "geometry": {"type": "Point", "coordinates": [582,69]}
+        },
+        {
+            "type": "Feature",
+            "properties": {"id": "PK-MOON-HALL", "type": "note", "layer": "label", "name": "月堂在正堂后", "label_kind": "note", "source": "PK-S06", "grade": "A", "inference": "documented", "note": "只标宅内前后关系，不把前后换算成南北；另见院落图。"},
+            "geometry": {"type": "Point", "coordinates": [783,104]}
+        },
+        {
+            "type": "Feature",
+            "properties": {"id": "PK-B1-02", "type": "temple", "name": "阳化寺†", "labelPoint": [602,345], "source": "PK-S02", "grade": "A", "inference": "alternative", "position_precision": "street", "note": "十字街北；没有街北的东西定位，所选块面只是占位；天宝存续待核。"},
+            "geometry": {"type": "Polygon", "coordinates": [[[535,315],[669,315],[669,373],[535,373],[535,315]]]}
+        },
+        {
+            "type": "Feature",
+            "properties": {"id": "PK-B1-04", "type": "daoist-temple", "name": "嘉猷观†", "labelPoint": [831,65], "source": "PK-S02 / PK-S04", "grade": "A", "inference": "alternative", "position_precision": "quadrant", "note": "李林甫宅东南隅，析置时间待核；嵌套是析宅关系示意，不表示宅、观在 750 年共存。"},
+            "geometry": {"type": "Polygon", "coordinates": [[[769,42],[889,42],[889,89],[769,89],[769,42]]]}
+        },
+        {
+            "type": "Feature",
+            "properties": {"id": "PK-B2-05", "type": "residence", "name": "褚遂良宅†", "labelPoint": [86,189], "source": "PK-S02", "grade": "A", "inference": "alternative", "position_precision": "gate", "note": "西门南；天宝存续待核。块面为占位。"},
+            "geometry": {"type": "Polygon", "coordinates": [[[14,167],[160,167],[160,211],[14,211],[14,167]]]}
+        },
+        {
+            "type": "Feature",
+            "properties": {"id": "PK-B2-06", "type": "residence", "name": "王志愔宅†", "labelPoint": [360,71], "source": "PK-S02", "grade": "A", "inference": "alternative", "position_precision": "gate", "note": "南门西；天宝存续待核。块面为占位。"},
+            "geometry": {"type": "Polygon", "coordinates": [[[286,41],[434,41],[434,101],[286,101],[286,41]]]}
+        },
+        {
+            "type": "Feature",
+            "properties": {"id": "PK-B2-07", "type": "residence", "name": "崔泰之宅†", "labelPoint": [360,155], "source": "PK-S02", "grade": "A", "inference": "alternative", "position_precision": "adjacent", "note": "王志愔宅次北；天宝存续待核。块面为占位。"},
+            "geometry": {"type": "Polygon", "coordinates": [[[286,126],[434,126],[434,184],[286,184],[286,126]]]}
+        },
+        {
+            "type": "Feature",
+            "properties": {"id": "PK-B2-03", "type": "residence", "name": "韦澄宅†", "labelPoint": [263,190], "source": "PK-S02", "grade": "A", "inference": "alternative", "position_precision": "quadrant", "note": "西南隅；隅内位置和天宝存续均未定。点为占位。"},
+            "geometry": {"type": "Point", "coordinates": [205,190]}
+        },
+        {
+            "type": "Feature",
+            "properties": {"id": "PK-B2-04", "type": "residence", "name": "兰陵长公主宅†", "labelPoint": [151,29], "source": "PK-S02", "grade": "A", "inference": "alternative", "position_precision": "quadrant", "note": "西南隅；不由卒地反推天宝宅主。点为占位，与万安观、韦澄宅的相互次序未定。"},
+            "geometry": {"type": "Point", "coordinates": [55,29]}
+        },
+        {
+            "type": "Feature",
+            "properties": {"id": "PK-CONTEXT-N", "type": "note", "layer": "label", "name": "崇仁坊", "source": "PK-S02", "grade": "A", "inference": "documented"},
+            "geometry": {"type": "Point", "coordinates": [479,614]}
+        },
+        {
+            "type": "Feature",
+            "properties": {"id": "PK-CONTEXT-E", "type": "note", "layer": "label", "name": "东市", "source": "PK-S02", "grade": "A", "inference": "documented"},
+            "geometry": {"type": "Point", "coordinates": [1021,363]}
+        },
+        {
+            "type": "Feature",
+            "properties": {"id": "PK-CONTEXT-S", "type": "note", "layer": "label", "name": "宣阳坊", "source": "PK-S02", "grade": "A", "inference": "documented"},
+            "geometry": {"type": "Point", "coordinates": [479,-89]}
+        },
+        {
+            "type": "Feature",
+            "properties": {"id": "PK-B2-02", "type": "note", "layer": "label", "name": "‡ 西北隅：李穆宅旧址", "source": "PK-S02", "grade": "A", "inference": "documented", "position_precision": "quadrant", "note": "天宝前的同址沿革；非 750 年宅第。"},
+            "geometry": {"type": "Point", "coordinates": [229,411]}
+        },
+        {
+            "type": "Feature",
+            "properties": {"id": "PK-B6-01", "type": "note", "layer": "label", "name": "后为王府、鞠场；天宝前已废", "label_kind": "note", "source": "PK-S02", "grade": "A", "inference": "documented", "position_precision": "quadrant", "note": "同一旧址的沿革，不另定王府、鞠场各自边界。"},
+            "geometry": {"type": "Point", "coordinates": [229,377]}
+        },
+        {
+            "type": "Feature",
+            "properties": {"id": "PK-B7-01", "type": "note", "layer": "label", "name": "‡ 北里三曲（晚唐）", "source": "PK-S05 / PK-S02", "grade": "A", "inference": "documented", "position_precision": "gate", "note": "《北里志》作入北门东回，另有省略北门的异文；用题注区分晚唐，不画成天宝路网。"},
+            "geometry": {"type": "Point", "coordinates": [748,449]}
+        },
+        {
+            "type": "Feature",
+            "properties": {"id": "PK-B7-01-REL", "type": "note", "layer": "label", "name": "北门东回；北曲循墙，南、中曲通十字街", "label_kind": "note", "source": "PK-S05", "grade": "A", "inference": "documented"},
+            "geometry": {"type": "Point", "coordinates": [748,421]}
+        },
+        {
+            "type": "Feature",
+            "properties": {"id": "PK-B7-02", "type": "note", "layer": "label", "name": "‡ 东北隅：鎏金银茶托出土", "label_kind": "note", "source": "PK-S08", "grade": "A", "inference": "documented", "position_precision": "quadrant", "note": "1957 年出土，同批有晚唐纪年器；此为出土方位，不指认茶库或宅第。"},
+            "geometry": {"type": "Point", "coordinates": [818,397]}
+        },
+        {
+            "type": "Feature",
+            "properties": {"id": "PK-WAN-AN-FORMER", "type": "note", "layer": "label", "name": "‡ 万安观旧址：姚元崇宅，次东太平公主宅", "label_kind": "note", "source": "PK-S02 / PK-S07", "grade": "A", "inference": "documented", "note": "图外注连接到万安观名称，只表达置观以前的宅第关系，不另画两处天宝宅地。"},
+            "geometry": {"type": "Point", "coordinates": [197,-35]}
+        },
+        {
+            "type": "Feature",
+            "properties": {"id": "PK-LI-FORMER", "type": "note", "layer": "label", "name": "‡ 李宅原为李靖宅，后见废蛮院旧址记载", "label_kind": "note", "source": "PK-S02 / PK-S06", "grade": "A", "inference": "documented", "note": "同址沿革；不把废蛮院当作另一个地块或天宝名称。"},
+            "geometry": {"type": "Point", "coordinates": [795,-35]}
+        }
+    ]
+}
