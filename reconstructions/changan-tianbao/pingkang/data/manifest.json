@@ -1,0 +1,42 @@
+{
+    "ward": "pingkang",
+    "outputs": [
+        {
+            "id": "ward-plan-review",
+            "input": "ward-layout-review.geojson",
+            "title": "平康坊 · 天宝坊级布局试绘",
+            "subtitle": "750 年参照；坊框按 650 步×350 步说试绘。† 天宝状态待核；‡ 异期旧址或出土旁证。",
+            "note": "直街接门为试绘方案，实际街线、宽度、门位及地块轮廓未定；留白不表示空地。"
+        },
+        {
+            "id": "courtyard-puti-si-review",
+            "input": "courtyards/puti-si-review.geojson",
+            "title": "菩提寺 · 钟楼方位",
+            "subtitle": "据《寺塔记》：钟楼在寺西，李林甫宅在寺东。",
+            "note": "框线与块面只表示寺内外及东西关系。佛殿、食堂有载，但院内位置不明。"
+        },
+        {
+            "id": "courtyard-li-linfu-review",
+            "input": "courtyards/li-linfu-review.geojson",
+            "title": "李林甫宅 · 正堂与月堂",
+            "subtitle": "据《开天传信记》：正堂之后别置月堂。图上只读前后，不读南北。",
+            "north": false,
+            "note": "两堂块面只占位，不表示形状、门向、共轴或间距；“却月之形”具体所指未定。"
+        },
+        {
+            "id": "courtyard-jia-you-guan-review",
+            "input": "courtyards/jia-you-guan-review.geojson",
+            "title": "嘉猷观 · 李宅东南隅析置",
+            "subtitle": "据《长安志》：从李宅东南隅析出。† 置观、赐额及改观时序待核。",
+            "note": "叠画仅示析宅关系，不表示宅、观在 750 年共存。精思院在观内，院内具体位置未载。"
+        },
+        {
+            "id": "courtyard-wan-an-guan-review",
+            "input": "courtyards/wan-an-guan-review.geojson",
+            "title": "万安观 · 置观前的旧宅关系",
+            "subtitle": "坊西南隅：姚元崇宅在西，其次东为太平公主宅。两块只示先前位置关系。",
+            "north": false,
+            "note": "本图不是天宝七载置观后的内部平面；观界、殿宇与影堂位置未定。"
+        }
+    ]
+}

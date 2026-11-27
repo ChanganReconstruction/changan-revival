@@ -1,0 +1,20 @@
+{
+    "type": "FeatureCollection",
+    "features": [
+        {
+            "type": "Feature",
+            "properties": {"id": "PK-B2-01", "type": "courtyard-wall", "name": "李林甫宅原范围（示意）", "labelPoint": [93,112], "source": "PK-S02", "grade": "A", "inference": "schematic", "note": "大框表示析置之前的包含关系，不是实地宅界。"},
+            "geometry": {"type": "Polygon", "coordinates": [[[0,0],[200,0],[200,142],[0,142],[0,0]]]}
+        },
+        {
+            "type": "Feature",
+            "properties": {"id": "PK-B1-04", "type": "daoist-temple", "name": "嘉猷观†", "labelPoint": [151,42], "source": "PK-S02 / PK-S07", "grade": "A", "inference": "alternative", "note": "从李宅东南隅析出，块面不表示观界、比例、门向或精思院落位；天宝状态待核。"},
+            "geometry": {"type": "Polygon", "coordinates": [[[102,0],[200,0],[200,63],[102,63],[102,0]]]}
+        },
+        {
+            "type": "Feature",
+            "properties": {"id": "PK-JIAYOU-SE", "type": "note", "layer": "label", "name": "宅东南隅析出", "label_kind": "note", "source": "PK-S02", "grade": "A", "inference": "documented"},
+            "geometry": {"type": "Point", "coordinates": [151,18]}
+        }
+    ]
+}

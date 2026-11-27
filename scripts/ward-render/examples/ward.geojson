@@ -1,0 +1,17 @@
+{
+    "type": "FeatureCollection",
+    "features": [
+        {
+            "type": "Feature",
+            "geometry": { "type": "Point", "coordinates": [10, 20] },
+            "properties": {
+                "id": "gate-south",
+                "type": "gate",
+                "source": "S01",
+                "grade": "A",
+                "inference": "schematic",
+                "name": "南门"
+            }
+        }
+    ]
+}

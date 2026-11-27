@@ -1,0 +1,25 @@
+{
+    "type": "FeatureCollection",
+    "features": [
+        {
+            "type": "Feature",
+            "properties": {"id": "PK-B1-01", "type": "courtyard-wall", "name": "菩提寺", "labelPoint": [90,122], "source": "PK-S02 / PK-S03", "grade": "A", "inference": "schematic", "note": "虚框仅区分寺内外，不表示实际寺墙、寺界或寺门。"},
+            "geometry": {"type": "Polygon", "coordinates": [[[0,0],[180,0],[180,110],[0,110],[0,0]]]}
+        },
+        {
+            "type": "Feature",
+            "properties": {"id": "PK-PUTI-BELL", "type": "bell-tower", "name": "钟楼", "labelPoint": [43,60], "source": "PK-S03", "grade": "A", "inference": "schematic", "note": "钟楼在寺西；块面只占位，不表示基址、尺度或南北位置。"},
+            "geometry": {"type": "Polygon", "coordinates": [[[16,38],[70,38],[70,77],[16,77],[16,38]]]}
+        },
+        {
+            "type": "Feature",
+            "properties": {"id": "PK-B2-01", "type": "residence", "name": "李林甫宅", "labelPoint": [237,72], "source": "PK-S03", "grade": "A", "inference": "schematic", "note": "寺东的外部参照，宅界及寺宅之间的距离未知。"},
+            "geometry": {"type": "Polygon", "coordinates": [[[198,28],[276,28],[276,92],[198,92],[198,28]]]}
+        },
+        {
+            "type": "Feature",
+            "properties": {"id": "PK-PUTI-EAST", "type": "note", "layer": "label", "name": "寺外 · 东侧", "label_kind": "note", "source": "PK-S03", "grade": "A", "inference": "documented"},
+            "geometry": {"type": "Point", "coordinates": [237,49]}
+        }
+    ]
+}

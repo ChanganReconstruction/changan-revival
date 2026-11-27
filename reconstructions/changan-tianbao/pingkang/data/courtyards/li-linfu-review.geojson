@@ -1,0 +1,25 @@
+{
+    "type": "FeatureCollection",
+    "features": [
+        {
+            "type": "Feature",
+            "properties": {"id": "PK-LI-MAIN-HALL", "type": "hall", "name": "正堂（前）", "labelPoint": [114,36], "source": "PK-S06", "grade": "A", "inference": "schematic", "note": "占位块，不是正堂形制，也不表示正堂在全宅中的位置。"},
+            "geometry": {"type": "Polygon", "coordinates": [[[67,16],[161,16],[161,51],[67,51],[67,16]]]}
+        },
+        {
+            "type": "Feature",
+            "properties": {"id": "PK-LI-MOON-HALL", "type": "hall", "name": "月堂（正堂后）", "labelPoint": [114,102], "source": "PK-S06", "grade": "A", "inference": "schematic", "note": "不把“却月之形”直接指定为建筑平面、屋顶或台基形制；不表示两堂共轴。"},
+            "geometry": {"type": "Polygon", "coordinates": [[[67,81],[161,81],[161,116],[67,116],[67,81]]]}
+        },
+        {
+            "type": "Feature",
+            "properties": {"id": "PK-LI-FRONT", "type": "note", "layer": "label", "name": "前", "source": "PK-S06", "grade": "A", "inference": "documented"},
+            "geometry": {"type": "Point", "coordinates": [28,36]}
+        },
+        {
+            "type": "Feature",
+            "properties": {"id": "PK-LI-BACK", "type": "note", "layer": "label", "name": "后", "source": "PK-S06", "grade": "A", "inference": "documented"},
+            "geometry": {"type": "Point", "coordinates": [28,102]}
+        }
+    ]
+}

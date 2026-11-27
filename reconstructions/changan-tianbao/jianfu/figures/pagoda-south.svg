@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="740" height="810" viewBox="0 0 740 810" role="img" aria-labelledby="title desc">
+  <title id="title">JF-F03 小雁塔展示方案南立面（非测绘）</title>
+  <desc id="desc">按展示参数绘制；第1–13级参照现存轮廓，逐级檐高未获可复核量值，第14–15级与塔顶为展示补全。虚线副阶为后世文献备选，默认不启用。</desc>
+  <rect width="740" height="810" fill="#f8f6f0"/>
+  <style>
+    .body {fill:#c9b99c;stroke:#594d40;stroke-width:.075}
+    .inferred {fill:#d7c5a1;stroke:#916943;stroke-width:.075}
+    .eave {fill:#a18d72;stroke:#594d40;stroke-width:.060}
+    .eave.upper {fill:#b49b77;stroke:#916943}
+    .opening {fill:#4d4840}
+    .optional {fill:none;stroke:#8a6f52;stroke-width:.085;stroke-dasharray:.32 .22;opacity:.75}
+  </style>
+  <g font-family="sans-serif" fill="#252b2d">
+    <text x="24" y="35" font-size="22">JF-F03｜荐福寺塔 · 展示方案南立面</text>
+    <text x="24" y="60" font-size="14">标高为项目院面起算的方案值，非测绘；上两级及塔刹为展示补全。</text>
+  </g>
+  <!-- Z is up, in metres. Eave mouldings are simplified silhouettes. -->
+  <g transform="translate(335 751) scale(12.5 -12.5)">
+    <path d="M-15 0H15" fill="none" stroke="#625a4b" stroke-width=".07"/>
+    <rect x="-11.69" y="0" width="23.38" height="3.2" class="body"/>
+    <path d="M-11.69 3.08h23.38" stroke="#594d40" stroke-width=".045"/>
+    <rect x="-2.6" y="0" width="5.2" height="3.2" fill="#c6bfb0" stroke="#594d40" stroke-width=".07"/>
+    <path d="M-2.6 .32h5.2m-5.2 .32h5.2m-5.2 .32h5.2m-5.2 .32h5.2m-5.2 .32h5.2m-5.2 .32h5.2m-5.2 .32h5.2m-5.2 .32h5.2m-5.2 .32h5.2" fill="none" stroke="#766e5e" stroke-width=".035"/>
+    <path class="body" d="M5.69 3.2L5.6 10.2L5.45 13.9L5.35 17.7L5.25 21.2L5.1 24.5L4.95 27.5L4.75 30.3L4.5 32.6L4.25 34.8L3.9 36.8L3.6 38.7L3.35 40.3L2.9 43.6H-2.9L-3.35 40.3L-3.6 38.7L-3.9 36.8L-4.25 34.8L-4.5 32.6L-4.75 30.3L-4.95 27.5L-5.1 24.5L-5.25 21.2L-5.35 17.7L-5.45 13.9L-5.6 10.2L-5.69 3.2Z"/>
+    <path class="inferred" d="M2.9 43.6 2.45 45.1 2 46.5H-2 L-2.45 45.1 L-2.9 43.6Z"/>
+    <g class="eave">
+      <path d="M-5.64 9.095H5.64L6.5 10.08L5.6 10.2H-5.6L-6.5 10.08Z"/>
+      <path d="M-5.49 12.88H5.49L6.35 13.78L5.45 13.9H-5.45L-6.35 13.78Z"/>
+      <path d="M-5.39 16.68H5.39L6.25 17.58L5.35 17.7H-5.35L-6.25 17.58Z"/>
+      <path d="M-5.29 20.265H5.29L6.05 21.08L5.25 21.2H-5.25L-6.05 21.08Z"/>
+      <path d="M-5.14 23.65H5.14L5.8 24.38L5.1 24.5H-5.1L-5.8 24.38Z"/>
+      <path d="M-4.99 26.65H4.99L5.65 27.38L4.95 27.5H-4.95L-5.65 27.38Z"/>
+      <path d="M-4.79 29.535H4.79L5.55 30.18L4.75 30.3H-4.75L-5.55 30.18Z"/>
+      <path d="M-4.54 31.92H4.54L5.3 32.48L4.5 32.6H-4.5L-5.3 32.48Z"/>
+      <path d="M-4.29 34.12H4.29L5.05 34.68L4.25 34.8H-4.25L-5.05 34.68Z"/>
+      <path d="M-3.94 36.205H3.94L4.7 36.68L3.9 36.8H-3.9L-4.7 36.68Z"/>
+      <path d="M-3.64 38.105H3.64L4.4 38.58L3.6 38.7H-3.6L-4.4 38.58Z"/>
+      <path d="M-3.39 39.79H3.39L3.95 40.18L3.35 40.3H-3.35L-3.95 40.18Z"/>
+      <path d="M-2.94 43.09H2.94L3.5 43.48L2.9 43.6H-2.9L-3.5 43.48Z"/>
+    </g>
+    <g class="eave upper">
+      <path d="M-2.49 44.59H2.49L3.05 44.98L2.45 45.1H-2.45L-3.05 44.98Z"/>
+      <path d="M-2.04 46.075H2.04L2.5 46.38L2 46.5H-2L-2.5 46.38Z"/>
+    </g>
+    <path d="M-1.39 3.2V5.85A1.39 1.39 0 0 0 1.39 5.85V3.2" fill="#dbd1bd"/>
+    <g class="opening">
+      <path d="M-1.15 3.2V5.85A1.15 1.15 0 0 0 1.15 5.85V3.2Z"/>
+      <path d="M-0.45 11.4V11.95A0.45 0.45 0 0 0 0.45 11.95V11.4Z"/>
+      <path d="M-0.45 14.5V15.25A0.45 0.45 0 0 0 0.45 15.25V14.5Z"/>
+      <path d="M-0.45 18.1V18.85A0.45 0.45 0 0 0 0.45 18.85V18.1Z"/>
+      <path d="M-0.4 21.7V22.4A0.4 0.4 0 0 0 0.4 22.4V21.7Z"/>
+      <path d="M-0.4 25.1V25.8A0.4 0.4 0 0 0 0.4 25.8V25.1Z"/>
+      <path d="M-0.4 28V28.6A0.4 0.4 0 0 0 0.4 28.6V28Z"/>
+      <path d="M-0.35 30.8V31.25A0.35 0.35 0 0 0 0.35 31.25V30.8Z"/>
+      <path d="M-0.35 33.2V33.55A0.35 0.35 0 0 0 0.35 33.55V33.2Z"/>
+      <path d="M-0.3 35.4V35.7A0.3 0.3 0 0 0 0.3 35.7V35.4Z"/>
+      <path d="M-0.3 37.3V37.6A0.3 0.3 0 0 0 0.3 37.6V37.3Z"/>
+      <path d="M-0.25 39.2V39.35A0.25 0.25 0 0 0 0.25 39.35V39.2Z"/>
+      <path d="M-0.25 41V41.25A0.25 0.25 0 0 0 0.25 41.25V41Z"/>
+    </g>
+    <path class="inferred" d="M-2 46.5L-.8 47.4 -.64 47.9H.64L.8 47.4 2 46.5Z"/>
+    <path d="M-.515 47.9L-.26 48.5H-.125V49.8L-.27 49.98Q-.23 50.27 0 50.55Q.23 50.27 .27 49.98L.125 49.8V48.5H.26L.515 47.9Z" fill="#675448"/>
+    <path d="M-.45 48.62h.9m-.86 .24h.82m-.78 .24h.74m-.70 .24h.66m-.62 .24h.58" fill="none" stroke="#675448" stroke-width=".11"/>
+    <g class="optional">
+      <path d="M-8.65 7.5H8.65M-8.65 7.5L-5.7 8.3M8.65 7.5L5.7 8.3"/>
+      <path d="M-8.1 3.2V7.5M8.1 3.2V7.5"/>
+    </g>
+    <path d="M10 0V50.55M9.65 0h.70m-.70 3.2h.70m-.70 10.2h.70m-.70 43.6h.70m-.70 46.5h.70m-.70 50.55h.70" fill="none" stroke="#5d5a51" stroke-width=".065"/>
+    <path d="M-11.69 -1.35h23.38m-23.38 .25v-.5m23.38 .5v-.5" fill="none" stroke="#5d5a51" stroke-width=".065"/>
+  </g>
+  <g font-family="sans-serif" fill="#252b2d" font-size="14">
+    <text x="478" y="119">50.55 · 本版刹顶</text>
+    <text x="478" y="170">46.50 · 第15级上口</text>
+    <text x="478" y="207">43.60 · 第13级上口（方案）</text>
+    <text x="478" y="624">10.20 · 首檐上口</text>
+    <text x="478" y="711">3.20 · 台面（另说 3.5）</text>
+    <text x="478" y="755">0.00 · 院面</text>
+    <text x="335" y="790" text-anchor="middle">23.38 m · 台基两外边</text>
+    <text x="24" y="138">第14–15级及刹：</text>
+    <text x="24" y="160">展示补全，原尺寸未定</text>
+    <text x="24" y="269">第1–13级：</text>
+    <text x="24" y="291">参照现存轮廓，檐高是展示值</text>
+    <text x="24" y="330">虚线 = 副阶占位（1116 年碑文转引，可切换）</text>
+  </g>
+</svg>

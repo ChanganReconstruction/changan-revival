@@ -1,0 +1,182 @@
+{
+    "palette": {
+        "background": "#ffffff",
+        "ink": "#000000",
+        "muted": "#777777",
+        "grid": "#ffffff",
+        "frame": "#000000"
+    },
+    "fallback": {
+        "fill": "#ffffff",
+        "stroke": "#000000",
+        "strokeWidth": 1,
+        "fillOpacity": 1
+    },
+    "types": {
+        "ward-boundary": {
+            "fill": "#ffffff",
+            "stroke": "#777777",
+            "strokeWidth": 1.2,
+            "fillOpacity": 1
+        },
+        "ward-wall": {
+            "fill": "#000000",
+            "stroke": "#000000",
+            "strokeWidth": 1,
+            "fillOpacity": 1
+        },
+        "street": {
+            "fill": "#eeeeee",
+            "stroke": "#777777",
+            "strokeWidth": 1,
+            "fillOpacity": 1
+        },
+        "street-external": {
+            "fill": "#eeeeee",
+            "stroke": "#777777",
+            "strokeWidth": 1,
+            "fillOpacity": 1
+        },
+        "street-cross": {
+            "fill": "#eeeeee",
+            "stroke": "#777777",
+            "strokeWidth": 1,
+            "fillOpacity": 1
+        },
+        "zone": {
+            "fill": "#ffffff",
+            "stroke": "#777777",
+            "strokeWidth": 1.2,
+            "fillOpacity": 1,
+            "pattern": "dots"
+        },
+        "gate": {
+            "fill": "#ffffff",
+            "stroke": "#000000",
+            "strokeWidth": 1.5,
+            "fillOpacity": 1
+        },
+        "temple": {
+            "fill": "#ffffff",
+            "stroke": "#000000",
+            "strokeWidth": 1.8,
+            "fillOpacity": 1,
+            "pattern": "diagonal"
+        },
+        "daoist-temple": {
+            "fill": "#ffffff",
+            "stroke": "#000000",
+            "strokeWidth": 1.8,
+            "fillOpacity": 1,
+            "pattern": "cross"
+        },
+        "residence": {
+            "fill": "#ffffff",
+            "stroke": "#000000",
+            "strokeWidth": 1.6,
+            "fillOpacity": 1
+        },
+        "open-ground": {
+            "fill": "#ffffff",
+            "stroke": "#777777",
+            "strokeWidth": 1.2,
+            "fillOpacity": 1,
+            "pattern": "dots"
+        },
+        "findspot": {
+            "fill": "#000000",
+            "stroke": "#000000",
+            "strokeWidth": 1,
+            "fillOpacity": 1
+        },
+        "hall": {
+            "fill": "#777777",
+            "stroke": "#000000",
+            "strokeWidth": 1.8,
+            "fillOpacity": 1
+        },
+        "corridor": {
+            "fill": "none",
+            "stroke": "#777777",
+            "strokeWidth": 0.8,
+            "fillOpacity": 1
+        },
+        "stable": {
+            "fill": "#ffffff",
+            "stroke": "#777777",
+            "strokeWidth": 1.1,
+            "fillOpacity": 1
+        },
+        "service": {
+            "fill": "#ffffff",
+            "stroke": "#777777",
+            "strokeWidth": 1,
+            "fillOpacity": 1
+        },
+        "wing": {
+            "fill": "#ffffff",
+            "stroke": "#777777",
+            "strokeWidth": 1.2,
+            "fillOpacity": 1
+        },
+        "well": {
+            "fill": "#ffffff",
+            "stroke": "#000000",
+            "strokeWidth": 1,
+            "fillOpacity": 1
+        },
+        "dining-hall": {
+            "fill": "#777777",
+            "stroke": "#000000",
+            "strokeWidth": 1.5,
+            "fillOpacity": 1
+        },
+        "bell-tower": {
+            "fill": "#777777",
+            "stroke": "#000000",
+            "strokeWidth": 1.5,
+            "fillOpacity": 1
+        },
+        "courtyard-wall": {
+            "fill": "#000000",
+            "stroke": "#000000",
+            "strokeWidth": 0.8,
+            "fillOpacity": 1
+        },
+        "vegetation": {
+            "fill": "#ffffff",
+            "stroke": "#777777",
+            "strokeWidth": 0.8,
+            "fillOpacity": 1,
+            "pattern": "dots"
+        },
+        "dimension": {
+            "fill": "none",
+            "stroke": "#000000",
+            "strokeWidth": 1,
+            "fillOpacity": 1
+        }
+    },
+    "inference": {
+        "documented": {
+            "dash": null,
+            "opacity": 1
+        },
+        "likely": {
+            "dash": "7 4",
+            "opacity": 1
+        },
+        "alternative": {
+            "dash": "4 3",
+            "opacity": 1
+        },
+        "schematic": {
+            "dash": "3 4",
+            "opacity": 1
+        },
+        "typological": {
+            "dash": "1 4",
+            "opacity": 1
+        }
+    }
+}

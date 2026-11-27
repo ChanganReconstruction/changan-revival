@@ -1,0 +1,1117 @@
+{
+    "type": "FeatureCollection",
+    "features": [
+        {
+            "type": "Feature",
+            "properties": {
+                "id": "AR-WARD",
+                "layer": "ward",
+                "type": "ward-boundary",
+                "grade": "B",
+                "inference": "likely",
+                "source": "AR-S01/AR-S02/AR-S05/AR-S06",
+                "position_precision": "schematic",
+                "period": "high-tang",
+                "tianbao_visible": "yes",
+                "note": "坊界按 350步×350步（约514.5×514.5米）示意绘制。南墙、西墙有2017年发掘，西北角有2021–22年墙基；东墙与正式东西坊门未发掘，坊界并未四边闭合。"
+            },
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [
+                            0,
+                            0
+                        ],
+                        [
+                            514.5,
+                            0
+                        ],
+                        [
+                            514.5,
+                            514.5
+                        ],
+                        [
+                            0,
+                            514.5
+                        ],
+                        [
+                            0,
+                            0
+                        ]
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "id": "AR-WALL-NW-W",
+                "layer": "ward-wall",
+                "type": "ward-wall",
+                "grade": "A",
+                "inference": "documented",
+                "source": "AR-S05",
+                "position_precision": "schematic",
+                "period": "high-tang",
+                "tianbao_visible": "yes",
+                "width": 2.85,
+                "width_basis": "documented",
+                "note": "2021–22年发掘的FQ墙基西墙残段，残长约10米；基宽2.85米、残深1.1米、夯层0.08–0.10米。另有墙基宽5–6米说，并列待核。"
+            },
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [
+                            0,
+                            504.5
+                        ],
+                        [
+                            2.85,
+                            504.5
+                        ],
+                        [
+                            2.85,
+                            514.5
+                        ],
+                        [
+                            0,
+                            514.5
+                        ],
+                        [
+                            0,
+                            504.5
+                        ]
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "id": "AR-WALL-NW-N",
+                "layer": "ward-wall",
+                "type": "ward-wall",
+                "name": "安仁坊西北角北墙残段",
+                "label": "西北角墙基：西10米、北13米、宽2.85米",
+                "labelPoint": [
+                    120,
+                    503
+                ],
+                "label_kind": "note",
+                "label_priority": 2,
+                "grade": "A",
+                "inference": "documented",
+                "source": "AR-S05",
+                "position_precision": "schematic",
+                "period": "high-tang",
+                "tianbao_visible": "yes",
+                "width": 2.85,
+                "width_basis": "documented",
+                "note": "2021–22年发掘的FQ墙基北墙残段，残长约13米；基宽2.85米。墙基宽度另有5–6米说，待核。"
+            },
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [
+                            0,
+                            511.65
+                        ],
+                        [
+                            13,
+                            511.65
+                        ],
+                        [
+                            13,
+                            514.5
+                        ],
+                        [
+                            0,
+                            514.5
+                        ],
+                        [
+                            0,
+                            511.65
+                        ]
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "id": "AR-GATE-W",
+                "layer": "gate",
+                "type": "gate",
+                "name": "安仁坊西门（位置示意）",
+                "label": "西门",
+                "labelPoint": [
+                    -24,
+                    270
+                ],
+                "label_priority": 1,
+                "grade": "B",
+                "inference": "schematic",
+                "source": "AR-S01/AR-S02",
+                "position_precision": "gate",
+                "period": "high-tang",
+                "tianbao_visible": "yes",
+                "note": "文献称皇城以南诸坊“各东西二门”；门位未发掘，图中居中示意，不是实测门址。"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    0,
+                    257.25
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "id": "AR-GATE-E",
+                "layer": "gate",
+                "type": "gate",
+                "name": "安仁坊东门（位置示意）",
+                "label": "东门",
+                "labelPoint": [
+                    538,
+                    270
+                ],
+                "label_priority": 1,
+                "grade": "B",
+                "inference": "schematic",
+                "source": "AR-S01/AR-S02",
+                "position_precision": "gate",
+                "period": "high-tang",
+                "tianbao_visible": "yes",
+                "note": "文献称东西二门；东墙与门址均未发掘，图中居中示意。"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    514.5,
+                    257.25
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "id": "AR-GATE-NW-CORNER",
+                "layer": "gate",
+                "type": "gate",
+                "name": "安仁坊北墙角门（便门）",
+                "label": "北墙角门†（距角13米）",
+                "labelPoint": [
+                    48,
+                    543
+                ],
+                "label_priority": 1,
+                "grade": "A",
+                "inference": "documented",
+                "source": "AR-S05/AR-S18",
+                "position_precision": "gate",
+                "tianbao_visible": "unknown",
+                "note": "2021–22年发掘，距坊西北角约13米；门址受破坏、未见墩台、门宽不详。推测为荐福寺浮图院便门，不是正式坊门；涵洞手印砖被推为“大致盛唐以后”，不能定在750。"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    13,
+                    514.5
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "id": "AR-STREET-EW",
+                "layer": "street",
+                "type": "street-cross",
+                "name": "安仁坊东西横街",
+                "label": "东西横街（宽约10米，待核）",
+                "labelPoint": [
+                    400,
+                    257.25
+                ],
+                "label_priority": 1,
+                "grade": "B",
+                "inference": "likely",
+                "source": "AR-S01/AR-S02/AR-S08",
+                "position_precision": "street",
+                "period": "high-tang",
+                "tianbao_visible": "yes",
+                "street_class": "cross",
+                "width": 10,
+                "width_basis": "schematic",
+                "note": "连接东西二门的中央东西横街。街宽约10米、两侧水渠各约2米，据博客转引考古，原始报告未核；图中宽度为示意。"
+            },
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [
+                            0,
+                            252.25
+                        ],
+                        [
+                            514.5,
+                            252.25
+                        ],
+                        [
+                            514.5,
+                            262.25
+                        ],
+                        [
+                            0,
+                            262.25
+                        ],
+                        [
+                            0,
+                            252.25
+                        ]
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "id": "AR-STREET-ZHUQUE",
+                "layer": "street",
+                "type": "street-external",
+                "name": "朱雀大街",
+                "label": "朱雀大街（约130米）",
+                "labelPoint": [
+                    -65,
+                    450
+                ],
+                "label_priority": 1,
+                "grade": "A",
+                "inference": "likely",
+                "source": "AR-S05/AR-S06",
+                "position_precision": "street",
+                "period": "high-tang",
+                "tianbao_visible": "yes",
+                "street_class": "external",
+                "width": 130,
+                "width_basis": "documented",
+                "note": "安仁坊西界。2024年报告称考古实测约130米；2023年简报残宽约101米、推算全宽约127米；《长安志》称“东西广百步”，约147米。口径不同，图中取130米示意。"
+            },
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [
+                            -130,
+                            0
+                        ],
+                        [
+                            0,
+                            0
+                        ],
+                        [
+                            0,
+                            514.5
+                        ],
+                        [
+                            -130,
+                            514.5
+                        ],
+                        [
+                            -130,
+                            0
+                        ]
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "id": "AR-STREET-7TH",
+                "layer": "street",
+                "type": "street-external",
+                "name": "第七横街",
+                "label": "第七横街（残宽约23.6米）",
+                "labelPoint": [
+                    350,
+                    526
+                ],
+                "label_priority": 2,
+                "grade": "A",
+                "inference": "likely",
+                "source": "AR-S05/AR-S06",
+                "position_precision": "street",
+                "period": "high-tang",
+                "tianbao_visible": "yes",
+                "street_class": "external",
+                "width": 23.6,
+                "width_basis": "documented",
+                "note": "安仁坊北界，与开化坊相隔。L1东西残长约80米、南北残宽约23.6米、路土厚约0.5米，有密集车辙；图中延伸为坊北界示意。"
+            },
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [
+                            0,
+                            514.5
+                        ],
+                        [
+                            514.5,
+                            514.5
+                        ],
+                        [
+                            514.5,
+                            538.1
+                        ],
+                        [
+                            0,
+                            538.1
+                        ],
+                        [
+                            0,
+                            514.5
+                        ]
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "id": "AR-STREET-8TH",
+                "layer": "street",
+                "type": "street-external",
+                "name": "第八横街",
+                "label": "第八横街（宽度未得）",
+                "labelPoint": [
+                    257,
+                    -34
+                ],
+                "label_priority": 2,
+                "grade": "B",
+                "inference": "likely",
+                "source": "AR-S03/AR-S04",
+                "position_precision": "street",
+                "period": "high-tang",
+                "tianbao_visible": "yes",
+                "street_class": "external",
+                "note": "安仁坊南界，与光福坊相隔。2017年发掘，宽度未得可靠数据；图中仅画线位，不填宽度。"
+            },
+            "geometry": {
+                "type": "LineString",
+                "coordinates": [
+                    [
+                        0,
+                        -12
+                    ],
+                    [
+                        514.5,
+                        -12
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "id": "AR-STREET-ANSHANG",
+                "layer": "street",
+                "type": "street-external",
+                "name": "安上门街（东界，线位示意）",
+                "label": "安上门街（宽度未得）",
+                "labelPoint": [
+                    552,
+                    400
+                ],
+                "label_priority": 2,
+                "grade": "B",
+                "inference": "likely",
+                "source": "AR-S01/AR-S02",
+                "position_precision": "street",
+                "period": "high-tang",
+                "tianbao_visible": "yes",
+                "street_class": "external",
+                "note": "安仁坊东界，即朱雀街东第二街北当安上门者。文献未直接写安仁坊东界街名，宽度未得；图中仅画线位。"
+            },
+            "geometry": {
+                "type": "LineString",
+                "coordinates": [
+                    [
+                        530,
+                        0
+                    ],
+                    [
+                        530,
+                        514.5
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "id": "AR-ZONE-TA",
+                "layer": "zone",
+                "type": "temple-zone",
+                "name": "荐福寺浮图院（西北隅）",
+                "label": "荐福寺浮图院\n（院界未定）",
+                "labelPoint": [
+                    60,
+                    438
+                ],
+                "label_kind": "quadrant",
+                "label_priority": 1,
+                "grade": "A",
+                "inference": "schematic",
+                "source": "AR-S01/AR-S02/AR-S18",
+                "position_precision": "quadrant",
+                "period": "high-tang",
+                "tianbao_visible": "yes",
+                "note": "塔院在安仁坊西北隅，院门北开，正与开化坊大荐福寺寺门隔街相对；景龙中宫人率钱所立。范围仅为隅内示意，不是院界；院内塔位、门塔距、院墙均未定。详见 ../../jianfu/README.md。"
+            },
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [
+                            0,
+                            394.5
+                        ],
+                        [
+                            120,
+                            394.5
+                        ],
+                        [
+                            120,
+                            514.5
+                        ],
+                        [
+                            0,
+                            514.5
+                        ],
+                        [
+                            0,
+                            394.5
+                        ]
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "id": "AR-ZONE-SW-RES",
+                "layer": "zone",
+                "type": "residence-zone",
+                "name": "安仁坊西南隅宅邸遗址",
+                "label": "西南隅宅邸遗址\n（10房址，院界未定）",
+                "labelPoint": [
+                    90,
+                    78
+                ],
+                "label_kind": "quadrant",
+                "label_priority": 1,
+                "grade": "A",
+                "inference": "schematic",
+                "source": "AR-S03/AR-S04/AR-S07",
+                "position_precision": "quadrant",
+                "tianbao_visible": "unknown",
+                "note": "2017年发掘，发现10个房址，大致在东西相连的几个院落内，排列有序，有的以长廊连接；见散水、排水沟。完整发掘平面未刊，院界、房址编号与年代待核；宅主未定，不能定为王昕宅。"
+            },
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [
+                            0,
+                            0
+                        ],
+                        [
+                            180,
+                            0
+                        ],
+                        [
+                            180,
+                            160
+                        ],
+                        [
+                            0,
+                            160
+                        ],
+                        [
+                            0,
+                            0
+                        ]
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "id": "AR-ZONE-NE-RES",
+                "layer": "zone",
+                "type": "residence-zone",
+                "name": "安仁坊东北隅住宅遗址",
+                "label": "东北隅住宅遗址\n（范围、年代待核）",
+                "labelPoint": [
+                    424.5,
+                    424.5
+                ],
+                "label_kind": "quadrant",
+                "label_priority": 1,
+                "grade": "C",
+                "inference": "schematic",
+                "source": "AR-S06",
+                "position_precision": "quadrant",
+                "tianbao_visible": "unknown",
+                "note": "2024年韩建华报告提及“安仁坊东北隅的住宅遗址”，无详细简报或图版。博客称其为普通百姓住所，属转引待核；不能据此划出百姓住区。"
+            },
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [
+                            334.5,
+                            334.5
+                        ],
+                        [
+                            514.5,
+                            334.5
+                        ],
+                        [
+                            514.5,
+                            514.5
+                        ],
+                        [
+                            334.5,
+                            514.5
+                        ],
+                        [
+                            334.5,
+                            334.5
+                        ]
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "id": "AR-FIND-SW-WALL",
+                "layer": "findspot",
+                "type": "findspot",
+                "name": "2017年安仁坊南墙、西墙发掘点",
+                "label": "2017年南墙/西墙发掘",
+                "labelPoint": [
+                    66,
+                    8
+                ],
+                "label_kind": "note",
+                "label_priority": 2,
+                "grade": "A",
+                "inference": "documented",
+                "source": "AR-S03/AR-S04",
+                "position_precision": "point",
+                "period": "high-tang",
+                "tianbao_visible": "yes",
+                "note": "2017年配合小雁塔历史文化片区改造发掘安仁坊南墙、西墙及光福坊北墙、第八横街等。具体墙段长度未刊，不画假长度。"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    66,
+                    8
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "id": "AR-LABEL-TA",
+                "layer": "label",
+                "type": "label",
+                "name": "荐福寺塔（院内位置未定）",
+                "label": "塔（院内位置未定）",
+                "labelPoint": [
+                    60,
+                    474
+                ],
+                "label_kind": "note",
+                "label_priority": 2,
+                "grade": "A",
+                "inference": "schematic",
+                "source": "AR-S01/AR-S02/AR-S18",
+                "position_precision": "quadrant",
+                "period": "high-tang",
+                "tianbao_visible": "yes",
+                "note": "塔在浮图院内，但院内具体位置、塔基、塔刹未定；此点只用于排字，不是塔位。"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    60,
+                    474
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "id": "AR-LABEL-KAIHUA",
+                "layer": "label",
+                "type": "label",
+                "name": "开化坊",
+                "label": "开化坊（北）",
+                "labelPoint": [
+                    257,
+                    570
+                ],
+                "label_kind": "object",
+                "label_priority": 2,
+                "grade": "B",
+                "inference": "likely",
+                "source": "AR-S01/AR-S02",
+                "position_precision": "adjacent",
+                "period": "high-tang",
+                "tianbao_visible": "yes",
+                "note": "北邻开化坊；大荐福寺在开化坊，不在安仁坊。邻坊位置仅示相对方位。"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    257,
+                    570
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "id": "AR-LABEL-GUANGFU",
+                "layer": "label",
+                "type": "label",
+                "name": "光福坊",
+                "label": "光福坊（南）",
+                "labelPoint": [
+                    257,
+                    -92
+                ],
+                "label_kind": "object",
+                "label_priority": 2,
+                "grade": "B",
+                "inference": "likely",
+                "source": "AR-S01/AR-S02",
+                "position_precision": "adjacent",
+                "period": "high-tang",
+                "tianbao_visible": "yes",
+                "note": "南邻光福坊；邻坊位置仅示相对方位。"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    257,
+                    -92
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "id": "AR-LABEL-CHANGXING",
+                "layer": "label",
+                "type": "label",
+                "name": "长兴坊",
+                "label": "长兴坊（东）",
+                "labelPoint": [
+                    568,
+                    257
+                ],
+                "label_kind": "object",
+                "label_priority": 2,
+                "grade": "B",
+                "inference": "likely",
+                "source": "AR-S01/AR-S02",
+                "position_precision": "adjacent",
+                "period": "high-tang",
+                "tianbao_visible": "yes",
+                "note": "东邻长兴坊；邻坊位置仅示相对方位。"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    568,
+                    257
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "id": "AR-LABEL-FENGLE",
+                "layer": "label",
+                "type": "label",
+                "name": "丰乐坊",
+                "label": "丰乐坊（西）",
+                "labelPoint": [
+                    -210,
+                    257
+                ],
+                "label_kind": "object",
+                "label_priority": 2,
+                "grade": "B",
+                "inference": "likely",
+                "source": "AR-S01/AR-S02",
+                "position_precision": "adjacent",
+                "period": "high-tang",
+                "tianbao_visible": "yes",
+                "note": "西隔朱雀大街与丰乐坊相望；邻坊位置仅示相对方位。"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -210,
+                    257
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "id": "AR-DIM-W",
+                "layer": "dimension",
+                "type": "dimension",
+                "name": "东西约 514.5 米",
+                "labelPoint": [
+                    257,
+                    -70
+                ],
+                "label_kind": "dimension",
+                "label_priority": 2,
+                "grade": "C",
+                "inference": "documented",
+                "source": "AR-S01/AR-S02",
+                "position_precision": "schematic",
+                "period": "high-tang",
+                "tianbao_visible": "yes",
+                "note": "坊界东西边长的图面尺寸注记；按350步×350步、1步≈1.47米换算。562×540米说见A1.2，待核。"
+            },
+            "geometry": {
+                "type": "LineString",
+                "coordinates": [
+                    [
+                        0,
+                        -58
+                    ],
+                    [
+                        514.5,
+                        -58
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "id": "AR-DIM-W-W",
+                "layer": "dimension",
+                "type": "dimension",
+                "grade": "C",
+                "inference": "documented",
+                "source": "AR-S01/AR-S02",
+                "position_precision": "schematic",
+                "period": "high-tang",
+                "tianbao_visible": "yes",
+                "note": "东西尺寸线西端界线。"
+            },
+            "geometry": {
+                "type": "LineString",
+                "coordinates": [
+                    [
+                        0,
+                        -66
+                    ],
+                    [
+                        0,
+                        -50
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "id": "AR-DIM-W-E",
+                "layer": "dimension",
+                "type": "dimension",
+                "grade": "C",
+                "inference": "documented",
+                "source": "AR-S01/AR-S02",
+                "position_precision": "schematic",
+                "period": "high-tang",
+                "tianbao_visible": "yes",
+                "note": "东西尺寸线东端界线。"
+            },
+            "geometry": {
+                "type": "LineString",
+                "coordinates": [
+                    [
+                        514.5,
+                        -66
+                    ],
+                    [
+                        514.5,
+                        -50
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "id": "AR-DIM-H",
+                "layer": "dimension",
+                "type": "dimension",
+                "name": "南北约 514.5 米",
+                "labelPoint": [
+                    -132,
+                    100
+                ],
+                "label_kind": "dimension",
+                "label_priority": 2,
+                "grade": "C",
+                "inference": "documented",
+                "source": "AR-S01/AR-S02",
+                "position_precision": "schematic",
+                "period": "high-tang",
+                "tianbao_visible": "yes",
+                "note": "坊界南北边长的图面尺寸注记；按350步×350步、1步≈1.47米换算。"
+            },
+            "geometry": {
+                "type": "LineString",
+                "coordinates": [
+                    [
+                        -150,
+                        0
+                    ],
+                    [
+                        -150,
+                        514.5
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "id": "AR-DIM-H-S",
+                "layer": "dimension",
+                "type": "dimension",
+                "grade": "C",
+                "inference": "documented",
+                "source": "AR-S01/AR-S02",
+                "position_precision": "schematic",
+                "period": "high-tang",
+                "tianbao_visible": "yes",
+                "note": "南北尺寸线南端界线。"
+            },
+            "geometry": {
+                "type": "LineString",
+                "coordinates": [
+                    [
+                        -158,
+                        0
+                    ],
+                    [
+                        -142,
+                        0
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "id": "AR-DIM-H-N",
+                "layer": "dimension",
+                "type": "dimension",
+                "grade": "C",
+                "inference": "documented",
+                "source": "AR-S01/AR-S02",
+                "position_precision": "schematic",
+                "period": "high-tang",
+                "tianbao_visible": "yes",
+                "note": "南北尺寸线北端界线。"
+            },
+            "geometry": {
+                "type": "LineString",
+                "coordinates": [
+                    [
+                        -158,
+                        514.5
+                    ],
+                    [
+                        -142,
+                        514.5
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "id": "AR-LB-NW",
+                "layer": "label",
+                "type": "label",
+                "name": "西北隅",
+                "label": "西北隅",
+                "labelPoint": [
+                    200,
+                    470
+                ],
+                "label_kind": "quadrant",
+                "label_priority": 3,
+                "grade": "C",
+                "inference": "schematic",
+                "source": "AR-S01/AR-S02",
+                "position_precision": "quadrant",
+                "period": "high-tang",
+                "tianbao_visible": "yes",
+                "note": "四隅为方位分区，不是考古边界或院界。"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    200,
+                    470
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "id": "AR-LB-SW",
+                "layer": "label",
+                "type": "label",
+                "name": "西南隅",
+                "label": "西南隅",
+                "labelPoint": [
+                    200,
+                    80
+                ],
+                "label_kind": "quadrant",
+                "label_priority": 3,
+                "grade": "C",
+                "inference": "schematic",
+                "source": "AR-S01/AR-S02",
+                "position_precision": "quadrant",
+                "period": "high-tang",
+                "tianbao_visible": "yes",
+                "note": "四隅为方位分区，不是考古边界或院界。"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    200,
+                    80
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "id": "AR-LB-NE",
+                "layer": "label",
+                "type": "label",
+                "name": "东北隅",
+                "label": "东北隅",
+                "labelPoint": [
+                    300,
+                    470
+                ],
+                "label_kind": "quadrant",
+                "label_priority": 3,
+                "grade": "C",
+                "inference": "schematic",
+                "source": "AR-S01/AR-S02",
+                "position_precision": "quadrant",
+                "period": "high-tang",
+                "tianbao_visible": "yes",
+                "note": "四隅为方位分区，不是考古边界或院界。"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    300,
+                    470
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "id": "AR-LB-SE",
+                "layer": "label",
+                "type": "label",
+                "name": "东南隅",
+                "label": "东南隅",
+                "labelPoint": [
+                    300,
+                    80
+                ],
+                "label_kind": "quadrant",
+                "label_priority": 3,
+                "grade": "C",
+                "inference": "schematic",
+                "source": "AR-S01/AR-S02",
+                "position_precision": "quadrant",
+                "period": "high-tang",
+                "tianbao_visible": "yes",
+                "note": "四隅为方位分区，不是考古边界或院界。"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    300,
+                    80
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "id": "AR-LB-GATE-NOTE",
+                "layer": "label",
+                "type": "label",
+                "name": "坊界未闭合；仅东西二门，无南北门",
+                "label": "坊界未闭合；仅东西二门，无南北门",
+                "labelPoint": [
+                    257,
+                    300
+                ],
+                "label_kind": "note",
+                "label_priority": 3,
+                "grade": "B",
+                "inference": "schematic",
+                "source": "AR-S01/AR-S02/AR-S05",
+                "position_precision": "none",
+                "period": "high-tang",
+                "tianbao_visible": "yes",
+                "note": "坊界仅南、西墙及西北角有发掘，东墙未发掘；文献与考古均称本坊只开东西二门，北墙无正式坊门。"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    257,
+                    300
+                ]
+            }
+        }
+    ]
+}
