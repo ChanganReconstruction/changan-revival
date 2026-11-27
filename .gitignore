@@ -3,4 +3,4 @@ Thumbs.db
 *.swp
 *.tmp
 node_modules/
-/build/figures/agent/
+/build/

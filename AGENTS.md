@@ -2,6 +2,16 @@
 
 本文件适用于整个仓库。项目背景见 [README.md](README.md)，成员协作流程见 [CONTRIBUTING.md](CONTRIBUTING.md)。
 
+## 目录用途
+
+| 目录 | 放什么 |
+| --- | --- |
+| [`reconstructions/`](reconstructions/) | 复原资料、源数据和正式交付。天宝长安内容放在 [`reconstructions/changan-tianbao/`](reconstructions/changan-tianbao/)，按对象归档；坊市、院落绘图的 GeoJSON 和清单放在对应的 `data/` 下。 |
+| [`scripts/`](scripts/) | 仓库内的工具代码、测试和最小示例，不放实际复原数据或生成产物。坊市、院落平面图的生成命令见[绘图器使用指南](scripts/ward-render/README.md)。 |
+| `build/` | 本地生成产物、缓存和试验图。根目录下的整个 `build/` 都被 Git 忽略；不要在这里保存唯一的源数据或正式交付。 |
+
+优先在任务所属目录修改；不要根据项目规划提前创建模块目录或引入未约定的工具链。
+
 ## 分支与提交
 
 - `dev` 用于日常联调，`main` 用于正式交付。日常任务从最新的 `dev` 开短期分支，例如 `geometry/pingkang-blockout`，PR 的目标是 `dev`。不要直接向 `dev` 或 `main` 提交或推送。
@@ -39,8 +49,6 @@ docs(pingkang): 补充坊门复原依据
 
 ## 复原资料与资产
 
-- 现有天宝长安交付位于 `reconstructions/changan-tianbao/`。优先在任务所属范围内修改，不提前创建规划中的模块目录或引入未约定的工具链。
-- 需要生成或查看坊市、院落的本地平面 PNG 时，见[绘图器使用指南](scripts/ward-render/README.md)。PNG 和缓存不入 Git。
 - 修改复原结论时保留出处，区分实证、推断和展示假设；不把示意图或生成式结果当作历史证据。
 - 下游引用已交付的固定版本，不直接依赖上游工作文件。改变共享接口、坐标系或资产格式时，说明受影响的模块，并请相关负责人核对。
 - 大模型、贴图、扫描件和视频不直接进 Git；记录固定版本、链接和上游依据，不用实验产物覆盖正式交付。
