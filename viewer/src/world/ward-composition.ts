@@ -42,7 +42,7 @@ const intersects = (a: Rect, b: Rect): boolean =>
 
 // 先切坊内道路和留白院落，再在明确的住宅地块中落屋，避免庭院被填满。
 export function planWard(ward: Ward): WardPlan {
-  const family = districtFor(ward).family;
+  const { family, southwest } = districtFor(ward);
   const rng = random(hash(ward.id));
   const w = ward.width - 12;
   const d = ward.depth - 12;
@@ -87,7 +87,8 @@ export function planWard(ward: Ward): WardPlan {
     }
   };
   // 每坊南门x=0有一条实路接入内部主巷；道路允许通到坊墙门洞。
-  lane(0, ward.depth / 4, 4, ward.depth / 2);
+  const gateZ = ward.depth / 2 + (southwest ? 3 : 0);
+  lane(0, gateZ / 2, 4, gateZ);
   if (ward.id === 'E2-8') {
     // 曲井台既有巷景保留原坐标，并用短横巷接入坊门主路。
     publicSquares.push({ x: 223, z: 538, width: 14, depth: 12 });
@@ -156,6 +157,7 @@ export function planWard(ward: Ward): WardPlan {
         const tree = { x: ward.x + point.x, z: ward.z + point.z, size: 0.7 };
         const box = { ...tree, width: 5, depth: 5 };
         if (Math.abs(point.x) < w / 2 - 4 && Math.abs(point.z) < d / 2 - 4
+          && (!southwest || roads.every((lane) => !intersects(box, lane)))
           && houses.every((house) => !intersects(box, house))
           && courtyards.every((area) => !intersects(box, area))
           && greenplots.every((area) => !intersects(box, area))
@@ -166,6 +168,51 @@ export function planWard(ward: Ward): WardPlan {
   };
 
   const variant = hash(ward.id) % 3;
+  if (southwest) {
+    lane(0, 0, w - 10, 4);
+    if (southwest === 'yongyang') {
+      // 两寺分据东西；只搭建东侧大庄严寺意象，西侧大总持寺留地。
+      // 殿阁组合和塔的位置、尺度均为展示示意。
+      const axis = w * 0.27;
+      court(axis, 8, 24, 10);
+      court(axis, -15, 24, 9);
+      grove(-w * 0.29, -22, 26, 18);
+      court(-w * 0.27, 18, 30, 22);
+      putHouse(axis, -28, 34, 13, 'hip', 2.5);
+      putHouse(axis, -7, 17, 6, 'hipgable', 1.25);
+      putHouse(axis, 21, 21, 8, 'hipgable', 1.35);
+      putHouse(axis + 17, 13, 6, 17, 'gable', 0.92, Math.PI / 2);
+      putHouse(axis - 18, -18, 6, 14, 'gable', 0.92, Math.PI / 2);
+      putHouse(axis + 15, 30, 7, 7, 'tower', 1.7);
+    } else if (southwest === 'heping') {
+      // 相邻寺院扩入和平坊的关系只画作两侧留院，不在这里另造两座寺。
+      for (const side of [-1, 1]) {
+        const axis = side * w * 0.26;
+        court(axis, 21, 26, 17);
+        putHouse(axis, 33, 24, 7, 'hipgable', 1.2);
+      }
+      grove(-w * 0.27, -19, 24, 19);
+      court(w * 0.25, -14, 19, 11);
+      putHouse(w * 0.25, -26, 21, 8);
+    } else {
+      // 几块疏居坊采用不同的屋地、园圃配比，不把留白填成通铺草地。
+      const side = variant === 1 ? -1 : 1;
+      const axis = side * w * 0.25;
+      court(axis, -16, 21, 10);
+      grove(-axis, -20, 27, 18);
+      grove(axis + side * (variant - 1) * 6, 22, 20 + variant * 4, 18);
+      putHouse(axis, -27, 21, 8);
+      putHouse(axis + side * 15, -13, 6, 12, 'gable', 0.85, Math.PI / 2);
+      putHouse(-axis, 10, 18, 8);
+      court(-axis, 21, 20, 13);
+      putHouse(-axis, 32, 23, 8);
+      if (variant !== 0) putHouse(-axis - side * 16, 21, 7, 13, 'gable', 0.9, Math.PI / 2);
+    }
+    plantByLane();
+    return { family, topology: `southwest-${southwest}`, roads, courtyards, greenplots,
+      publicSquares, keepouts, houses, trees };
+  }
+
   if (family === 'temple') {
     const west = ward.side < 0;
     const cx = west ? -w * 0.22 : w * 0.22;

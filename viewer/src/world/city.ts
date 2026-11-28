@@ -58,10 +58,10 @@ export function createCity(scene: THREE.Scene, materials: Materials) {
     w: number, h: number, d: number, rotation = 0, tint = '#ffffff',
   ) => batches.add(box, material, x, y, z, w, h, d, rotation, tint);
 
-  const tree = (x: number, z: number, size = 1, y = groundAt(x, z)) => {
-    const tint = new THREE.Color().setHSL(0.23 + rng() * 0.07, 0.22, 0.72 + rng() * 0.18);
-    // 保持原树位、尺寸和随机数消费顺序；只改变距离表示，不增删林木或田草。
-    vegetation.add({ x, y, z, size, rotation: rng() * Math.PI, tint: `#${tint.getHexString()}` });
+  const tree = (x: number, z: number, size = 1, y = groundAt(x, z), treeRng = rng) => {
+    const tint = new THREE.Color().setHSL(0.23 + treeRng() * 0.07, 0.22,
+      0.72 + treeRng() * 0.18);
+    vegetation.add({ x, y, z, size, rotation: treeRng() * Math.PI, tint: `#${tint.getHexString()}` });
   };
 
   const perimeter = (
@@ -82,12 +82,12 @@ export function createCity(scene: THREE.Scene, materials: Materials) {
 
   const wardShell = (ward: Ward, y = 0) => {
     perimeter(ward.x, ward.z, ward.width, ward.depth, 3.4, 'earth', y);
-    if (ward.id === 'E1-7') {
+    if (ward.id === 'E1-7' || districtFor(ward).southwest) {
       // 游览坊门只留柱与檐口，门洞内不叠普通住宅的实心墙身。
       batches.hall(gable.filter((part) => part.material === 'roof'),
-        ward.x, ward.z + ward.depth / 2, 8, 4.5, 0.67);
+        ward.x, ward.z + ward.depth / 2, 8, 4.5, 0.67, 0, y);
       for (const dx of [-3.4, 3.4]) for (const dz of [-1.5, 1.5]) {
-        block('wood', ward.x + dx, 1.95, ward.z + 44 + dz, 0.35, 3.9, 0.35);
+        block('wood', ward.x + dx, y + 1.95, ward.z + ward.depth / 2 + dz, 0.35, 3.9, 0.35);
       }
     } else batches.hall(gable.filter((part) => !part.detail),
       ward.x, ward.z + ward.depth / 2, 8, 4.5, 0.78, 0, y);
@@ -177,6 +177,16 @@ export function createCity(scene: THREE.Scene, materials: Materials) {
     }
     // 曲江园苑跨坊连通，不让坊墙、门楼和巷道切割水面。
     if (!lakeside) wardShell(ward, elevation);
+    if (profile.southwest) {
+      const localRng = random(SEED + ward.column * 100 + ward.row);
+      buildWardInterior({
+        ...kit, tree: (x, z, size, y) => tree(x, z, size, y, localRng),
+      }, ward);
+      // 旧草坪生成 18 棵树，每棵消费位置、尺寸、颜色、朝向共 5 次取样；
+      // 保留共享随机序列的步数，不改相邻里坊、曲江与城郊的既有树位。
+      for (let i = 0; i < 18 * 5; i++) rng();
+      continue;
+    }
     if (profile.family === 'garden') {
       if (!lakeside) block('grass', ward.x, elevation + 0.12, ward.z,
         ward.width - 4, 0.12, ward.depth - 4);

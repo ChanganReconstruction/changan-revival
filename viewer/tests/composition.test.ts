@@ -1,6 +1,7 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { districtFor } from '../src/world/districts.ts';
+import { planWardGround } from '../src/world/ground-cover.ts';
 import { makeWards } from '../src/world/layout.ts';
 import { buildWardInterior, planWard } from '../src/world/ward-composition.ts';
 
@@ -116,6 +117,40 @@ test('既有曲井台广场与坊门侧鼓楼均留足净空', () => {
   assert.ok(gateWard.keepouts.some((area) => area.x === 112 && area.z === 458));
   assert.ok(gateWard.houses.every((house) => gateWard.keepouts.every((area) =>
     !intersects(house, area))));
+});
+
+test('西南六坊按相对坊序落位，仅保留局部园圃', () => {
+  const wards = makeWards();
+  const expected = Object.entries({
+    'W6-8': '和平坊', 'W6-9': '永阳坊', 'W5-8': '归义坊',
+    'W5-9': '昭行坊', 'W4-8': '大通坊', 'W4-9': '大安坊',
+  });
+  const scope = wards.filter((ward) => districtFor(ward).southwest);
+  assert.equal(scope.length, expected.length);
+  for (const [id, name] of expected) {
+    const named = wards.filter((ward) => districtFor(ward).name === name);
+    assert.deepEqual(named.map((ward) => ward.id), [id]);
+    const [ward] = named;
+    const plan = planWard(ward);
+    assert.ok(plan.houses.length >= 3 && plan.houses.length < 10, `${id} 疏居体量`);
+    assert.ok(plan.courtyards.length > 0 && plan.greenplots.length > 0, `${id} 缺院落或园圃`);
+    assert.deepEqual(planWardGround(ward), [], `${id} 不额外铺设草坪`);
+    assert.ok(plan.roads.some((road) => road.x === ward.x
+      && road.z - road.depth / 2 === ward.z
+      && road.z + road.depth / 2 > ward.z + ward.depth / 2), `${id} 巷道须穿过门洞`);
+  }
+  const corner = wards.find((ward) => ward.id === 'W6-9')!;
+  assert.equal(corner.x, Math.min(...wards.map((ward) => ward.x)));
+  assert.equal(corner.z, Math.max(...wards.map((ward) => ward.z)));
+  const temple = planWard(corner);
+  assert.ok(temple.houses.every((house) => house.x - house.width / 2 > corner.x));
+  assert.ok(temple.houses.some((house) => house.roof === 'tower'));
+  assert.ok(temple.courtyards.some((yard) => yard.x < corner.x), '大总持寺一侧只留院落');
+  const north = wards.find((ward) => ward.id === 'W6-8')!;
+  const heping = planWard(north);
+  assert.ok(heping.courtyards.some((yard) => yard.z > north.z && yard.x < north.x));
+  assert.ok(heping.courtyards.some((yard) => yard.z > north.z && yard.x > north.x));
+  assert.ok(!heping.houses.some((house) => house.roof === 'tower'));
 });
 
 test('建筑不越坊界、不压街巷且互不穿插', () => {

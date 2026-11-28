@@ -11,7 +11,7 @@ export interface GroundPatch {
 
 export function planWardGround(ward: Ward): GroundPatch[] {
   const profile = districtFor(ward);
-  if (profile.family === 'garden' || profile.family === 'market'
+  if (profile.southwest || profile.family === 'garden' || profile.family === 'market'
     || ['E4-9', 'E1-3'].includes(ward.id)) return [];
   const plan = planWard(ward);
   const reserved = [...plan.houses, ...plan.roads, ...plan.courtyards,

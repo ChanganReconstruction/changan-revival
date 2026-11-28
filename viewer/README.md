@@ -320,7 +320,7 @@ eastMarket / pagoda / xiaoyanta / qinglong / temple / wardGate / lane / lake / j
 ## 源码
 
 - `src/world/layout.ts`：坊位、随机种子、机位与地标。
-- `src/world/districts.ts`：原项目坊名表、七类空间性格与重点坊意象。
+- `src/world/districts.ts`：坊名表、空间类型与重点坊意象；西南六坊的相对位置见[考证记录](RESEARCH.md#外郭城西南角六坊的相对位置)。
 - `src/world/architecture.ts`：共享屋顶、建筑与阁楼原型。
 - [appearance.ts](<src/world/appearance.ts>)：全城比例、街区色组、两档屋坡与共享几何缓存。
 - [resolution.ts](<src/render/resolution.ts>)：独立渲染比例和缓冲尺寸计算。

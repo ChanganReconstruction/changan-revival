@@ -2,7 +2,7 @@ import type { Ward } from './layout';
 import { terrainHeight } from './terrain.ts';
 
 export type DistrictFamily = 'dense' | 'artisan' | 'manor' | 'office'
-  | 'temple' | 'market' | 'garden';
+  | 'temple' | 'market' | 'garden' | 'sparse';
 
 export interface DistrictProfile {
   family: DistrictFamily;
@@ -10,6 +10,7 @@ export interface DistrictProfile {
   feature: string;
   elevation: number;
   roadTint: string;
+  southwest?: 'sparse' | 'heping' | 'yongyang';
 }
 
 // 沿用原项目坊表的列序；部分坊名本有推定成分，压缩位置不能作为考古证据。
@@ -22,12 +23,12 @@ const NAMES_E = [
   '长乐 永福 崇让 广化 丰安 临晋 永和 芙蓉 曲江',
 ].flatMap((column) => column.split(' '));
 const NAMES_W = [
-  '光德 善和 延康 昭行 崇业 永阳 丰乐 大安 居安',
+  '光德 善和 延康 — 崇业 — 丰乐 — 居安',
   '崇贤 太平 通义 长寿 嘉会 永平 普宁 修真 怀德',
   '兴化 延寿 崇化 布政 醴泉 居德 义宁 颁政 辅兴',
-  '安定 休祥 金城 灵化 西市 西市 怀远 丰邑 待贤',
-  '崇德 群贤 道德 光行 和平 安业 永达 淳和 永安',
-  '修德 广恩 灵应 永光 敦行 景行 咸宁 通善 延祚',
+  '安定 休祥 金城 灵化 西市 西市 怀远 大通 大安',
+  '崇德 群贤 道德 光行 — 安业 永达 归义 昭行',
+  '修德 广恩 灵应 永光 敦行 景行 咸宁 和平 永阳',
 ].flatMap((column) => column.split(' '));
 
 const NAMED: Record<string, Partial<DistrictProfile>> = {
@@ -47,6 +48,13 @@ const NAMED: Record<string, Partial<DistrictProfile>> = {
   'W3-5': { feature: '波斯胡寺意象 · 邻市廊院', family: 'temple' },
   'W3-7': { feature: '胡客聚居意象 · 邸店与货院', family: 'artisan' },
   'W3-9': { feature: '胡饼铺意象 · 沿巷作坊', family: 'artisan' },
+  // 只校核西南角的相对坊序；其他已移出的旧标签留待全城坊表校核。
+  'W4-8': { family: 'sparse', southwest: 'sparse' },
+  'W4-9': { family: 'sparse', southwest: 'sparse' },
+  'W5-8': { family: 'sparse', southwest: 'sparse' },
+  'W5-9': { family: 'sparse', southwest: 'sparse' },
+  'W6-8': { family: 'sparse', southwest: 'heping', feature: '寺院关联用地 · 院落为示意' },
+  'W6-9': { family: 'temple', southwest: 'yongyang', feature: '大庄严寺意象 · 坊东殿院' },
   'E4-9': { feature: '大慈恩寺 · 大雁塔', family: 'temple' },
   'E5-6': { feature: '新昌高地 · 青龙寺意象', family: 'temple', elevation: 9 },
   'E5-7': { feature: '乐游原游赏意象 · 疏林望城', family: 'garden', elevation: 5 },
@@ -58,7 +66,7 @@ const FEATURES: Record<DistrictFamily, string> = {
   dense: '密居里巷 · 长短宅列与井台', artisan: '街肆作坊 · 店棚与货院',
   manor: '府第园居 · 深院与附院', office: '官署学舍 · 规整庭院与讲堂',
   temple: '寺观廊院 · 殿阁与林荫', market: '市肆货院 · 布棚与仓场',
-  garden: '疏林园圃 · 亭台与游路',
+  garden: '疏林园圃 · 亭台与游路', sparse: '疏居坊巷 · 小院与园圃示意',
 };
 
 export function districtFor(ward: Ward): DistrictProfile {
@@ -69,7 +77,7 @@ export function districtFor(ward: Ward): DistrictProfile {
   else if (ward.kind === 'manor') family = ward.column === 0 ? 'office' : 'manor';
   else if (Math.abs(ward.column - 3) <= 1 && ward.row >= 2 && ward.row <= 5) {
     family = 'artisan';
-  } else if (ward.row >= 7 && ward.column >= 3) family = 'garden';
+  } else if (ward.side === 1 && ward.row >= 7 && ward.column >= 3) family = 'garden';
   const named = NAMED[ward.id] || {};
   family = named.family || family;
   const tone = family === 'market' ? '#bdad95' : family === 'temple' || family === 'office'
@@ -77,7 +85,7 @@ export function districtFor(ward: Ward): DistrictProfile {
   const names = ward.side === 1 ? NAMES_E : NAMES_W;
   const name = names[ward.column * 9 + ward.row];
   return {
-    family, name: name.endsWith('市') ? name : `${name}坊`,
+    family, name: name === '—' ? '坊名待考' : name.endsWith('市') ? name : `${name}坊`,
     feature: FEATURES[family], roadTint: tone, ...named,
     elevation: Math.max(terrainHeight(ward.x, ward.z),
       named.elevation ?? (family === 'manor' ? 0.8 : 0)),

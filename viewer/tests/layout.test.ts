@@ -86,9 +86,10 @@ test('曲江树木避开不规则水岸，保留干燥岸边', () => {
   assert.equal(isDryShore(QUJIANG.x, QUJIANG.z - QUJIANG.radiusZ * 1.25), true);
 });
 
-test('坊市样板保留命名依据与七类空间性格', () => {
+test('坊市样板保留已有空间类型，并加入西南疏居', () => {
   const profiles = makeWards().map((ward) => ({ id: ward.id, ...districtFor(ward) }));
-  assert.equal(new Set(profiles.map((profile) => profile.family)).size, 7);
+  assert.deepEqual(new Set(profiles.map((profile) => profile.family)),
+    new Set(['dense', 'artisan', 'manor', 'office', 'temple', 'market', 'garden', 'sparse']));
   assert.equal(profiles.find((profile) => profile.id === 'E1-5')!.name, '靖善坊');
   assert.equal(profiles.find((profile) => profile.id === 'E3-2')!.family, 'artisan');
   assert.ok(profiles.every((profile) => profile.name && !profile.name.includes('undefined')));
