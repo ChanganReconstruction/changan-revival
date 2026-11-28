@@ -2,7 +2,7 @@
 
 东西两市是有边界、门路和管理机构的城市空间；有关坊内商业的记载不等于市场内部格局。
 
-找长安铺屋基址和街沟，见[街与坊市](modeling-references.md#streets)；比较敦煌壁画中的营业空间，见[铺面与摊棚](modeling-references.md#shops)。
+找长安铺屋基址和街沟，见[街与坊市](modeling-references.md#streets)；比较敦煌壁画中的营业空间，见[铺面与摊棚](modeling-references.md#shops)。市场街宽、围墙和临街房址的可核尺寸见[尺度参考](dimensions.md#streets)。
 
 ## MK-01
 
