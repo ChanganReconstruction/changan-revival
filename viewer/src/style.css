@@ -142,6 +142,11 @@ select { background: transparent; border: 0; outline: none; font-size: 10px; cur
   color: #f8f0d5; text-shadow: 0 1px 4px #273a2e, 0 0 12px #273a2e88;
   transform: translate(-50%, -100%); padding-bottom: 30px; transition: opacity .3s;
 }
+.place-label-action {
+  pointer-events: auto; font: inherit; letter-spacing: inherit; text-shadow: inherit;
+  text-decoration: underline; text-underline-offset: 4px;
+}
+.place-label-action:hover, .place-label-action:focus-visible { color: #fff; }
 .place-label::after {
   content: ""; position: absolute; width: 1px; height: 22px; left: 50%; bottom: 0;
   background: linear-gradient(#f3e6c43b, #f3e6c4bb);

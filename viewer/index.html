@@ -8,7 +8,7 @@
     <title>长安 · 一城盛唐</title>
   </head>
   <body>
-    <canvas id="world" aria-label="唐代长安城交互三维场景"></canvas>
+    <canvas id="world" tabindex="-1" aria-label="唐代长安城交互三维场景"></canvas>
     <div id="loading" role="status">
       <div class="loading-seal">唐</div>
       <h1>长安</h1>
@@ -35,7 +35,7 @@
       </header>
 
       <div class="compass" aria-label="指北针"><span>北</span><div id="compass-needle">↑</div><small>南</small></div>
-      <div id="labels" aria-hidden="true"></div>
+      <div id="labels"></div>
 
       <section class="view-story" aria-live="polite">
         <div class="eyebrow"><span id="view-number">01</span><span class="short-rule"></span>长 安 十 二 时 辰</div>
@@ -95,6 +95,16 @@
       <div id="stats" hidden></div>
     </div>
     <button id="restore-ui" hidden>显 示 界 面 <kbd>H</kbd></button>
+    <div id="jianfusi-selection" hidden>
+      <span class="jianfusi-marker" aria-hidden="true"></span>
+      <section class="jianfusi-card" aria-labelledby="jianfusi-selection-title">
+        <p id="jianfusi-selection-title">小雁塔 · 荐福寺</p>
+        <div class="jianfusi-actions">
+          <button type="button" id="jianfusi-enter">进入庭院</button>
+          <button type="button" id="jianfusi-cancel">取消</button>
+        </div>
+      </section>
+    </div>
     <dialog id="help">
       <button id="close-help" class="dialog-close" aria-label="关闭说明">×</button>
       <span class="eyebrow">长 安 游 记</span>
@@ -102,6 +112,7 @@
       <p>拖动鼠标环顾城市，滚轮靠近或远离，右键拖动平移。触屏可单指旋转、双指缩放与平移。</p>
       <p>下方横向浏览十八景与坊市样板，切换四种光阴；「自动巡游」依次游览。「H」隐去界面，Esc 停止巡游。</p>
       <p>桌面可点右侧小地图查看各坊名称与特点；「暮鼓夜禁」自动入夜，游览坊门随昼夜开合。</p>
+      <p>点小雁塔塔身或画面中的「小雁塔」地标名称即可选中；再点「进入庭院」才播放短片。</p>
       <hr />
       <h3>关于这座长安</h3>
       <p>以开元—天宝为年代意象，参考长安里坊、宫城和两市。坊名沿用原项目表，部分为推定；尺度、位置与院落均作艺术化压缩，并非逐坊考古复原。</p>

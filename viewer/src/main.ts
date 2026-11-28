@@ -188,11 +188,43 @@ async function start() {
   let labelsEnabled = params.get('labels') !== '0';
   const viewKeys: string[] = ['city', 'basin', ...CLASSIC_VIEWS, 'manor', 'artisan', 'craft'];
   const nav = $('#view-nav');
-  function openJianfusi(trigger: HTMLElement) {
+  const jianfusiSelection = $('#jianfusi-selection');
+  const jianfusiCard = $('.jianfusi-card');
+  let selectionTap: { x: number; y: number; at: number } | undefined;
+  function clearJianfusiSelection() {
+    jianfusiSelection.hidden = true;
+    selectionTap = undefined;
+  }
+  function showJianfusiSelection(x: number, y: number) {
+    selectionTap = { x, y, at: performance.now() };
+    const style = jianfusiSelection.style;
+    style.setProperty('--marker-x', `${x}px`);
+    style.setProperty('--marker-y', `${y}px`);
+    jianfusiSelection.hidden = false;
+    const { offsetWidth: width, offsetHeight: height } = jianfusiCard;
+    const margin = 16;
+    const gap = 28;
+    // 桌面卡片默认在标记右侧，空间不足则翻到左侧，不覆盖点击点。
+    const left = x + gap + width <= innerWidth - margin ? x + gap : x - gap - width;
+    const top = Math.min(Math.max(margin, y - height / 2), innerHeight - height - margin);
+    style.setProperty('--card-x', `${Math.max(margin, left)}px`);
+    style.setProperty('--card-y', `${top}px`);
+  }
+  addEventListener('resize', clearJianfusiSelection);
+  $('#jianfusi-enter').addEventListener('click', (event) => {
+    if (jianfusiSelection.hidden) return;
+    // 触屏底栏若出现在刚才的落点上，不把快速连点当作确认。
+    if (event.detail && selectionTap && performance.now() - selectionTap.at < 400
+      && Math.hypot(event.clientX - selectionTap.x, event.clientY - selectionTap.y) < 24) return;
+    clearJianfusiSelection();
     flight = null;
     setTour(false);
-    jianfusi.open(trigger);
-  }
+    void jianfusi.open(canvas);
+  });
+  $('#jianfusi-cancel').addEventListener('click', () => {
+    clearJianfusiSelection();
+    canvas.focus({ preventScroll: true });
+  });
 
   // 只拾取小雁塔的包围盒，不遍历全城实例。OrbitControls 的拖动不能触发入口。
   const tower = PAGODAS.xiaoyan;
@@ -225,7 +257,7 @@ async function start() {
     const start = tap;
     tap = undefined;
     if (start?.id === event.pointerId && Math.hypot(event.clientX - start.x, event.clientY - start.y) <= 6
-      && hitsTower(event)) openJianfusi(canvas);
+      && hitsTower(event)) showJianfusiSelection(event.clientX, event.clientY);
   });
   const navSubtitles: Record<string, string> = {
     city: '盛唐全景', avenue: '都城中轴', palace: '大明宫阙', market: '西市棚肆',
@@ -245,6 +277,7 @@ async function start() {
   function setView(id: string, immediate = false) {
     const view = VIEWS[id];
     if (!view) return;
+    clearJianfusiSelection();
     if (id === 'curfew') setHour('night');
     activeView = id;
     document.querySelectorAll('[data-ward].selected').forEach((item) => {
@@ -278,7 +311,11 @@ async function start() {
         behavior: immediate || reducedMotion ? 'instant' : 'smooth' });
     });
   }
-  controls.addEventListener('start', () => { flight = null; setTour(false); });
+  controls.addEventListener('start', () => {
+    clearJianfusiSelection();
+    flight = null;
+    setTour(false);
+  });
   $('#home').addEventListener('click', (event) => {
     event.preventDefault(); setTour(false); setView('city');
   });
@@ -334,17 +371,43 @@ async function start() {
   $('#stats-button').addEventListener('click', () => { $('#stats').hidden = !$('#stats').hidden; });
   addEventListener('keydown', (event) => {
     if (event.key.toLowerCase() === 'h' && !dialog.open) toggleInterface();
-    if (event.key === 'Escape') setTour(false);
+    if (event.key === 'Escape') {
+      clearJianfusiSelection();
+      setTour(false);
+    }
   });
 
   const labelRoot = $('#labels');
   const labels = PLACES.map((place) => {
     const element = document.createElement('span');
     element.className = 'place-label';
-    element.textContent = place.name;
+    element.dataset.place = place.id;
+    let action: HTMLButtonElement | undefined;
+    if (place.id === 'xiaoyan') {
+      const button = document.createElement('button');
+      button.type = 'button';
+      button.className = 'place-label-action';
+      button.textContent = place.name;
+      button.setAttribute('aria-controls', 'jianfusi-selection');
+      button.hidden = true;
+      button.addEventListener('click', (event) => {
+        if (event.detail) {
+          showJianfusiSelection(event.clientX, event.clientY);
+        } else {
+          const { left, top, width, height } = button.getBoundingClientRect();
+          showJianfusiSelection(left + width / 2, top + height / 2);
+          $('#jianfusi-enter').focus({ preventScroll: true });
+        }
+      });
+      element.append(button);
+      action = button;
+    } else {
+      element.textContent = place.name;
+      element.setAttribute('aria-hidden', 'true');
+    }
     labelRoot.append(element);
-    return { ...place, element, position: new THREE.Vector3(place.x, place.y, place.z) };
-  });
+    return { ...place, element, action, position: new THREE.Vector3(place.x, place.y, place.z) };
+  }).sort((a, b) => Number(Boolean(b.action)) - Number(Boolean(a.action)));
   const projected = new THREE.Vector3();
   const direction = new THREE.Vector3();
   function updateLabels() {
@@ -361,8 +424,9 @@ async function start() {
       const visible = distance < labelRange && projected.z < 1 && projected.z > -1
         && x > 40 && x < innerWidth - 40
         && y > 150 && y < innerHeight - 210 && !overlaps
-        && (distance < 2600 || label.rank === 1) && (distance > 100 || label.id !== 'zhuque');
+        && (distance < 2600 || label.rank === 1 || label.action) && (distance > 100 || label.id !== 'zhuque');
       label.element.style.opacity = visible ? '1' : '0';
+      if (label.action) label.action.hidden = !visible;
       if (visible) {
         label.element.style.left = `${x}px`;
         label.element.style.top = `${y}px`;
@@ -372,6 +436,7 @@ async function start() {
   }
 
   function inspectWard(ward: Ward) {
+    clearJianfusiSelection();
     const profile = districtFor(ward);
     setTour(false);
     invalidate();
