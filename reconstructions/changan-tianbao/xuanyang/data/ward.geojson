@@ -1,0 +1,1130 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "XY-WARD",
+        "layer": "ward",
+        "type": "ward-boundary",
+        "grade": "B",
+        "inference": "likely",
+        "source": "XY-S01/XY-S02/XY-S03/XY-S14",
+        "position_precision": "schematic",
+        "period": "high-tang",
+        "tianbao_visible": "yes",
+        "note": "坊界按东西650步、南北350步（约955.5×514.5米）绘制。东西650步见吕大临《长安图》；南北350步参照同街平康坊及皇城以南九坊推定，不是本坊实测。田文1022×544米说与‘未直接发掘’矛盾，只作C级并列。"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [0, 0],
+            [955.5, 0],
+            [955.5, 514.5],
+            [0, 514.5],
+            [0, 0]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "XY-WALL-S1",
+        "layer": "ward-wall",
+        "type": "ward-wall",
+        "grade": "A",
+        "inference": "likely",
+        "source": "XY-S01/XY-S02/XY-S17",
+        "position_precision": "schematic",
+        "period": "high-tang",
+        "tianbao_visible": "yes",
+        "width": 3.5,
+        "width_basis": "转引待核",
+        "note": "南墙西段。墙厚3.5米据平康—宣阳间街道论坛转引，原报告未核；门址未发掘，开口为示意。"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [0, 0],
+            [462.75, 0],
+            [462.75, 3.5],
+            [0, 3.5],
+            [0, 0]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "XY-WALL-S2",
+        "layer": "ward-wall",
+        "type": "ward-wall",
+        "grade": "A",
+        "inference": "likely",
+        "source": "XY-S01/XY-S02/XY-S17",
+        "position_precision": "schematic",
+        "period": "high-tang",
+        "tianbao_visible": "yes",
+        "width": 3.5,
+        "width_basis": "转引待核",
+        "note": "南墙东段。墙厚、门宽均待核。"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [492.75, 0],
+            [955.5, 0],
+            [955.5, 3.5],
+            [492.75, 3.5],
+            [492.75, 0]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "XY-WALL-N1",
+        "layer": "ward-wall",
+        "type": "ward-wall",
+        "grade": "A",
+        "inference": "likely",
+        "source": "XY-S01/XY-S02/XY-S17",
+        "position_precision": "schematic",
+        "period": "high-tang",
+        "tianbao_visible": "yes",
+        "width": 3.5,
+        "width_basis": "转引待核",
+        "note": "北墙西段。北侧外街残宽29米见论坛转引，原报告未核。"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [0, 511],
+            [462.75, 511],
+            [462.75, 514.5],
+            [0, 514.5],
+            [0, 511]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "XY-WALL-N2",
+        "layer": "ward-wall",
+        "type": "ward-wall",
+        "grade": "A",
+        "inference": "likely",
+        "source": "XY-S01/XY-S02/XY-S17",
+        "position_precision": "schematic",
+        "period": "high-tang",
+        "tianbao_visible": "yes",
+        "width": 3.5,
+        "width_basis": "转引待核",
+        "note": "北墙东段。墙厚、门宽均待核。"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [492.75, 511],
+            [955.5, 511],
+            [955.5, 514.5],
+            [492.75, 514.5],
+            [492.75, 511]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "XY-WALL-W1",
+        "layer": "ward-wall",
+        "type": "ward-wall",
+        "grade": "A",
+        "inference": "likely",
+        "source": "XY-S01/XY-S02/XY-S17",
+        "position_precision": "schematic",
+        "period": "high-tang",
+        "tianbao_visible": "yes",
+        "width": 3.5,
+        "width_basis": "转引待核",
+        "note": "西墙南段。西侧启夏门街宽度未得。"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [0, 0],
+            [3.5, 0],
+            [3.5, 242.25],
+            [0, 242.25],
+            [0, 0]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "XY-WALL-W2",
+        "layer": "ward-wall",
+        "type": "ward-wall",
+        "grade": "A",
+        "inference": "likely",
+        "source": "XY-S01/XY-S02/XY-S17",
+        "position_precision": "schematic",
+        "period": "high-tang",
+        "tianbao_visible": "yes",
+        "width": 3.5,
+        "width_basis": "转引待核",
+        "note": "西墙北段。西门之北有韦巨源宅群，门址未发掘。"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [0, 272.25],
+            [3.5, 272.25],
+            [3.5, 514.5],
+            [0, 514.5],
+            [0, 272.25]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "XY-WALL-E1",
+        "layer": "ward-wall",
+        "type": "ward-wall",
+        "grade": "A",
+        "inference": "likely",
+        "source": "XY-S01/XY-S02/XY-S17",
+        "position_precision": "schematic",
+        "period": "high-tang",
+        "tianbao_visible": "yes",
+        "width": 3.5,
+        "width_basis": "转引待核",
+        "note": "东墙南段。东侧为东市西街，街广百步见《长安志》东市条。"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [952, 0],
+            [955.5, 0],
+            [955.5, 242.25],
+            [952, 242.25],
+            [952, 0]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "XY-WALL-E2",
+        "layer": "ward-wall",
+        "type": "ward-wall",
+        "grade": "A",
+        "inference": "likely",
+        "source": "XY-S01/XY-S02/XY-S17",
+        "position_precision": "schematic",
+        "period": "high-tang",
+        "tianbao_visible": "yes",
+        "width": 3.5,
+        "width_basis": "转引待核",
+        "note": "东墙北段。东门之北有李济物宅，门址未发掘。"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [952, 272.25],
+            [955.5, 272.25],
+            [955.5, 514.5],
+            [952, 514.5],
+            [952, 272.25]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "XY-GATE-S",
+        "layer": "gate",
+        "type": "gate",
+        "name": "宣阳坊南门（位置示意）",
+        "label": "南门",
+        "labelPoint": [520, -30],
+        "label_priority": 2,
+        "grade": "A",
+        "inference": "schematic",
+        "source": "XY-S01/XY-S02",
+        "position_precision": "gate",
+        "period": "high-tang",
+        "tianbao_visible": "yes",
+        "note": "由‘南门之西，杞国公窦毅宅’知有南门；门址未发掘，图中按坊边中点示意，门洞宽30米仅为图面开口。"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [477.75, 0]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "XY-GATE-N",
+        "layer": "gate",
+        "type": "gate",
+        "name": "宣阳坊北门（位置示意）",
+        "label": "北门",
+        "labelPoint": [520, 530],
+        "label_priority": 2,
+        "grade": "A",
+        "inference": "schematic",
+        "source": "XY-S02",
+        "position_precision": "gate",
+        "period": "high-tang",
+        "tianbao_visible": "yes",
+        "note": "由韩公武‘居宣阳里之北门’知有北门；韩公武卒822，门本身按唐坊制处理，门址未发掘。"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [477.75, 514.5]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "XY-GATE-W",
+        "layer": "gate",
+        "type": "gate",
+        "name": "宣阳坊西门（位置示意）",
+        "label": "西门",
+        "labelPoint": [-40, 257.25],
+        "label_priority": 2,
+        "grade": "A",
+        "inference": "schematic",
+        "source": "XY-S01/XY-S02",
+        "position_precision": "gate",
+        "period": "high-tang",
+        "tianbao_visible": "yes",
+        "note": "由‘西门之北，韦巨源宅’‘西门之南，高仙芝宅’知有西门；门址未发掘。"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [0, 257.25]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "XY-GATE-E",
+        "layer": "gate",
+        "type": "gate",
+        "name": "宣阳坊东门（位置示意）",
+        "label": "东门",
+        "labelPoint": [990, 257.25],
+        "label_priority": 2,
+        "grade": "A",
+        "inference": "schematic",
+        "source": "XY-S02",
+        "position_precision": "gate",
+        "period": "high-tang",
+        "tianbao_visible": "yes",
+        "note": "由‘东门之北，京兆尹李济物宅’知有东门；门址未发掘。"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [955.5, 257.25]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "XY-STREET-EW",
+        "layer": "street",
+        "type": "street-cross",
+        "name": "宣阳坊东西横街",
+        "label": "东西横街（宽15米示意）",
+        "labelPoint": [620, 257.25],
+        "label_priority": 2,
+        "grade": "A",
+        "inference": "likely",
+        "source": "XY-S01/XY-S02",
+        "position_precision": "street",
+        "period": "high-tang",
+        "tianbao_visible": "yes",
+        "street_class": "cross",
+        "width": 15,
+        "width_basis": "schematic",
+        "note": "连接东西二门的横街，存在见‘十字街’记载；街宽、线位未记，图中取15米示意。"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [0, 249.75],
+            [955.5, 249.75],
+            [955.5, 264.75],
+            [0, 264.75],
+            [0, 249.75]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "XY-STREET-NS",
+        "layer": "street",
+        "type": "street-cross",
+        "name": "宣阳坊南北纵街",
+        "label": "南北纵街（宽15米示意）",
+        "labelPoint": [477.75, 450],
+        "label_priority": 2,
+        "grade": "A",
+        "inference": "likely",
+        "source": "XY-S01/XY-S02",
+        "position_precision": "street",
+        "period": "high-tang",
+        "tianbao_visible": "yes",
+        "street_class": "cross",
+        "width": 15,
+        "width_basis": "schematic",
+        "note": "连接南北二门的纵街，与东西横街构成十字街；街宽、线位未记，图中取15米示意。"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [470.25, 0],
+            [485.25, 0],
+            [485.25, 514.5],
+            [470.25, 514.5],
+            [470.25, 0]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "XY-STREET-N",
+        "layer": "street",
+        "type": "street-external",
+        "name": "平康—宣阳之间东西向街道",
+        "label": "平康—宣阳间街（29米，待核）",
+        "labelPoint": [250, 529],
+        "label_priority": 2,
+        "grade": "B",
+        "inference": "likely",
+        "source": "XY-S17",
+        "position_precision": "street",
+        "period": "high-tang",
+        "tianbao_visible": "yes",
+        "street_class": "external",
+        "width": 29,
+        "width_basis": "转引待核",
+        "note": "论坛转引考古称街宽29米左右，两侧有土挡、排水沟，坊墙残宽3.5米；原报告未核。图中画29米街带，不作实测。"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [0, 514.5],
+            [955.5, 514.5],
+            [955.5, 543.5],
+            [0, 543.5],
+            [0, 514.5]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "XY-STREET-E",
+        "layer": "street",
+        "type": "street-external",
+        "name": "东市西街",
+        "label": "东市西街\n（广百步，约147米）",
+        "labelPoint": [1030, 400],
+        "label_priority": 2,
+        "grade": "A",
+        "inference": "likely",
+        "source": "XY-S01",
+        "position_precision": "street",
+        "period": "high-tang",
+        "tianbao_visible": "yes",
+        "street_class": "external",
+        "width": 147,
+        "width_basis": "documented",
+        "note": "《长安志》东市条称‘四面街各广百步’，西侧即宣阳坊东界；按1步≈1.47米折算147米。街面具体线位未发掘。"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [955.5, 0],
+            [1102.5, 0],
+            [1102.5, 514.5],
+            [955.5, 514.5],
+            [955.5, 0]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "XY-STREET-W",
+        "layer": "street",
+        "type": "street-external",
+        "name": "启夏门街（西界，线位示意）",
+        "label": "启夏门街\n（宽未得）",
+        "labelPoint": [-75, 420],
+        "label_priority": 2,
+        "grade": "B",
+        "inference": "likely",
+        "source": "XY-S01/XY-S02",
+        "position_precision": "street",
+        "period": "high-tang",
+        "tianbao_visible": "yes",
+        "street_class": "external",
+        "note": "宣阳坊西界，即朱雀门街东第三街，北当兴安门、南当启夏门；宽度未得，图中只画线位。"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [-15, 0],
+          [-15, 514.5]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "XY-STREET-S",
+        "layer": "street",
+        "type": "street-external",
+        "name": "亲仁坊北街（南界，线位示意）",
+        "label": "亲仁坊北街（宽未得）",
+        "labelPoint": [200, -28],
+        "label_priority": 2,
+        "grade": "B",
+        "inference": "likely",
+        "source": "XY-S01/XY-S02",
+        "position_precision": "street",
+        "period": "high-tang",
+        "tianbao_visible": "yes",
+        "street_class": "external",
+        "note": "宣阳坊南界，与亲仁坊相隔；宽度未得，图中只画线位。"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [0, -15],
+          [955.5, -15]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "XY-ZONE-WANNIAN",
+        "layer": "zone",
+        "type": "government-zone",
+        "name": "万年县廨（东南隅）",
+        "label": "万年县廨",
+        "labelPoint": [760, 120],
+        "label_kind": "quadrant",
+        "label_priority": 1,
+        "grade": "A",
+        "inference": "schematic",
+        "source": "XY-S01/XY-S02",
+        "position_precision": "quadrant",
+        "period": "high-tang",
+        "tianbao_visible": "yes",
+        "note": "坊条直书‘东南隅，万年县廨’。范围仅为隅内示意，不是廨署院界；县门屋、厅堂、狱库均未定。"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [560, 6],
+            [948, 6],
+            [948, 240],
+            [560, 240],
+            [560, 6]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "XY-ZONE-JINGYU",
+        "layer": "zone",
+        "type": "temple-zone",
+        "name": "净域寺（西南隅）",
+        "label": "净域寺",
+        "labelPoint": [150, 110],
+        "label_kind": "quadrant",
+        "label_priority": 1,
+        "grade": "A",
+        "inference": "schematic",
+        "source": "XY-S01/XY-S02/XY-S08",
+        "position_precision": "quadrant",
+        "period": "high-tang",
+        "tianbao_visible": "yes",
+        "note": "坊条直书‘坊西南隅净域寺’。范围仅为隅内示意，不是寺院院界；三阶院、万菩萨院、古佛堂、塔位均未定。"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [6, 6],
+            [200, 6],
+            [200, 130],
+            [6, 130],
+            [6, 6]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "XY-ZONE-GUO",
+        "layer": "zone",
+        "type": "residence-zone",
+        "name": "郭元振宅（东北隅）",
+        "label": "郭元振宅†",
+        "labelPoint": [820, 440],
+        "label_kind": "quadrant",
+        "label_priority": 1,
+        "grade": "A",
+        "inference": "schematic",
+        "source": "XY-S02/XY-S11/XY-S12",
+        "position_precision": "quadrant",
+        "period": "high-tang",
+        "tianbao_visible": "unknown",
+        "note": "坊条直书‘东北隅，兵部尚书郭元振宅’。范围仅为隅内示意，不是宅界；郭元振713年卒，750存续待核。"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [700, 360],
+            [948, 360],
+            [948, 508],
+            [700, 508],
+            [700, 360]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "XY-ZONE-LIHUI",
+        "layer": "zone",
+        "type": "residence-zone",
+        "name": "李诲宅（十字街西北）",
+        "label": "李诲宅†",
+        "labelPoint": [382, 350],
+        "label_kind": "object",
+        "label_priority": 1,
+        "grade": "A",
+        "inference": "schematic",
+        "source": "XY-S01/XY-S02",
+        "position_precision": "adjacent",
+        "period": "high-tang",
+        "tianbao_visible": "unknown",
+        "note": "坊条‘十字街之西北，秋官尚书、谯国公李诲宅’。范围仅为相对位置示意，不是宅界；后为韦温宅，750存续待核。"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [300, 300],
+            [465, 300],
+            [465, 400],
+            [300, 400],
+            [300, 300]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "XY-ZONE-WEIJUYUAN",
+        "layer": "zone",
+        "type": "residence-zone",
+        "name": "韦巨源宅及宅东、隔巷诸宅（西门之北）",
+        "label": "韦巨源宅等†",
+        "labelPoint": [78, 365],
+        "label_kind": "object",
+        "label_priority": 1,
+        "grade": "A",
+        "inference": "schematic",
+        "source": "XY-S01/XY-S02",
+        "position_precision": "adjacent",
+        "period": "high-tang",
+        "tianbao_visible": "unknown",
+        "note": "坊条‘西门之北，韦巨源宅。宅东有刘希进、杨务廉宅。次西北隔巷，有韦叔夏、单思远宅’。范围仅为门旁示意，不是五宅院界；750存续待核。"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [6, 300],
+            [150, 300],
+            [150, 430],
+            [6, 430],
+            [6, 300]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "XY-ZONE-LIYI",
+        "layer": "zone",
+        "type": "residence-zone",
+        "name": "李乂宅及次西二宅（十字街东之北）",
+        "label": "李乂宅等†",
+        "labelPoint": [575, 350],
+        "label_kind": "object",
+        "label_priority": 1,
+        "grade": "A",
+        "inference": "schematic",
+        "source": "XY-S01/XY-S02",
+        "position_precision": "adjacent",
+        "period": "high-tang",
+        "tianbao_visible": "unknown",
+        "note": "坊条‘十字街东之北，刑部尚书李乂宅。次西有益州长史李衮、太子宾客郑惟忠宅’。范围仅为相对位置示意，不是三宅院界；750存续待核。"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [500, 300],
+            [650, 300],
+            [650, 400],
+            [500, 400],
+            [500, 300]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "XY-ZONE-GAOXIANZHI",
+        "layer": "zone",
+        "type": "residence-zone",
+        "name": "高仙芝宅（西门之南）",
+        "label": "高仙芝宅",
+        "labelPoint": [78, 195],
+        "label_kind": "object",
+        "label_priority": 1,
+        "grade": "A",
+        "inference": "schematic",
+        "source": "XY-S01/XY-S02/XY-S07",
+        "position_precision": "adjacent",
+        "period": "high-tang",
+        "tianbao_visible": "yes",
+        "note": "坊条‘西门之南，右羽林军大将军高仙芝宅’。范围仅为门旁示意，不是宅界；高仙芝天宝间在世，始居年未记。"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [6, 150],
+            [150, 150],
+            [150, 240],
+            [6, 240],
+            [6, 150]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "XY-ZONE-DOUYI",
+        "layer": "zone",
+        "type": "residence-zone",
+        "name": "窦毅宅、归宁院与杞公庙（南门之西）",
+        "label": "窦毅宅·杞公庙†",
+        "labelPoint": [340, 68],
+        "label_kind": "object",
+        "label_priority": 1,
+        "grade": "A",
+        "inference": "schematic",
+        "source": "XY-S01/XY-S02",
+        "position_precision": "adjacent",
+        "period": "high-tang",
+        "tianbao_visible": "unknown",
+        "note": "坊条‘南门之西，杞国公窦毅宅。宅西有皇后归宁院，后施净域寺。宅南有杞公庙’。范围仅为门旁示意，不是宅、院、庙界；750存续待核。"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [210, 6],
+            [430, 6],
+            [430, 130],
+            [210, 130],
+            [210, 6]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "XY-ZONE-LIJIWU",
+        "layer": "zone",
+        "type": "residence-zone",
+        "name": "李济物宅（东门之北）",
+        "label": "李济物宅†",
+        "labelPoint": [890, 332],
+        "label_kind": "object",
+        "label_priority": 1,
+        "grade": "A",
+        "inference": "schematic",
+        "source": "XY-S02",
+        "position_precision": "adjacent",
+        "period": "high-tang",
+        "tianbao_visible": "unknown",
+        "note": "坊条‘东门之北，京兆尹李济物宅’。范围仅为门旁示意，不是宅界；齐平宅是否同在东门之北待核，750存续待核。"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [800, 260],
+            [948, 260],
+            [948, 345],
+            [800, 345],
+            [800, 260]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "XY-ZONE-YANG",
+        "layer": "zone",
+        "type": "residence-zone",
+        "name": "杨国忠宅与虢国夫人宅（相对位置待核）",
+        "label": "杨国忠宅·虢国宅",
+        "labelPoint": [705, 307],
+        "label_kind": "object",
+        "label_priority": 1,
+        "grade": "B",
+        "inference": "alternative",
+        "source": "XY-S02/XY-S04/XY-S05",
+        "position_precision": "adjacent",
+        "period": "high-tang",
+        "tianbao_visible": "yes",
+        "note": "《新唐书》‘虢国居宣阳坊左，国忠在其南’。绝对方位有东侧、十字街东南二说；图中只画相对位置示意区，不画二宅院界，也不表示‘坊左’已定。"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [660, 265],
+            [790, 265],
+            [790, 350],
+            [660, 350],
+            [660, 265]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "XY-ZONE-DUGUMING",
+        "layer": "zone",
+        "type": "residence-zone",
+        "name": "独孤明宅（近净域寺）",
+        "label": "独孤明宅†",
+        "labelPoint": [360, 185],
+        "label_kind": "object",
+        "label_priority": 1,
+        "grade": "B",
+        "inference": "schematic",
+        "source": "XY-S02/XY-S08",
+        "position_precision": "adjacent",
+        "period": "high-tang",
+        "tianbao_visible": "unknown",
+        "note": "《寺塔记》‘天宝初，驸马独孤明宅与寺相近’。只知邻净域寺，不知在寺东、寺西；图中示意区不表示真实点位或宅界。"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [310, 140],
+            [410, 140],
+            [410, 230],
+            [310, 230],
+            [310, 140]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "XY-LABEL-PINGKANG",
+        "layer": "label",
+        "type": "label",
+        "name": "平康坊",
+        "label": "平康坊",
+        "labelPoint": [477.75, 575],
+        "label_priority": 3,
+        "grade": "C",
+        "inference": "schematic",
+        "source": "XY-S01/XY-S02",
+        "position_precision": "none",
+        "period": "high-tang",
+        "tianbao_visible": "yes",
+        "note": "邻坊方位注记，只排字，不表示坊界。"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [477.75, 575]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "XY-LABEL-QINREN",
+        "layer": "label",
+        "type": "label",
+        "name": "亲仁坊",
+        "label": "亲仁坊",
+        "labelPoint": [477.75, -70],
+        "label_priority": 3,
+        "grade": "C",
+        "inference": "schematic",
+        "source": "XY-S01/XY-S02",
+        "position_precision": "none",
+        "period": "high-tang",
+        "tianbao_visible": "yes",
+        "note": "邻坊方位注记，只排字，不表示坊界。"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [477.75, -70]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "XY-LABEL-CHONGYI",
+        "layer": "label",
+        "type": "label",
+        "name": "崇义坊",
+        "label": "崇义坊",
+        "labelPoint": [-90, 300],
+        "label_priority": 3,
+        "grade": "C",
+        "inference": "schematic",
+        "source": "XY-S01/XY-S02",
+        "position_precision": "none",
+        "period": "high-tang",
+        "tianbao_visible": "yes",
+        "note": "邻坊方位注记，只排字，不表示坊界。"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-90, 300]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "XY-LABEL-DONGSHI",
+        "layer": "label",
+        "type": "label",
+        "name": "东市",
+        "label": "东市",
+        "labelPoint": [1180, 250],
+        "label_priority": 3,
+        "grade": "A",
+        "inference": "schematic",
+        "source": "XY-S01",
+        "position_precision": "none",
+        "period": "high-tang",
+        "tianbao_visible": "yes",
+        "note": "东市在宣阳坊之东，占二坊之地；只排字，不画市场内部。"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [1180, 250]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "XY-DIM-W",
+        "layer": "dimension",
+        "type": "dimension",
+        "name": "东西约 955.5 米",
+        "labelPoint": [477.75, -125],
+        "label_kind": "dimension",
+        "label_priority": 2,
+        "grade": "C",
+        "inference": "documented",
+        "source": "XY-S03",
+        "position_precision": "schematic",
+        "period": "high-tang",
+        "tianbao_visible": "yes",
+        "note": "坊界东西边长的图面尺寸注记；按650步、1步≈1.47米换算。不是实测。"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [0, -100],
+          [955.5, -100]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "XY-DIM-W-W",
+        "layer": "dimension",
+        "type": "dimension",
+        "grade": "C",
+        "inference": "documented",
+        "source": "XY-S03",
+        "position_precision": "schematic",
+        "period": "high-tang",
+        "tianbao_visible": "yes",
+        "note": "东西尺寸线西端界线。"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [0, -108],
+          [0, -92]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "XY-DIM-W-E",
+        "layer": "dimension",
+        "type": "dimension",
+        "grade": "C",
+        "inference": "documented",
+        "source": "XY-S03",
+        "position_precision": "schematic",
+        "period": "high-tang",
+        "tianbao_visible": "yes",
+        "note": "东西尺寸线东端界线。"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [955.5, -108],
+          [955.5, -92]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "XY-DIM-H",
+        "layer": "dimension",
+        "type": "dimension",
+        "name": "南北约 514.5 米",
+        "labelPoint": [-175, 257.25],
+        "label_kind": "dimension",
+        "label_priority": 2,
+        "grade": "C",
+        "inference": "documented",
+        "source": "XY-S03/XY-S02",
+        "position_precision": "schematic",
+        "period": "high-tang",
+        "tianbao_visible": "yes",
+        "note": "坊界南北边长的图面尺寸注记；按350步、1步≈1.47米换算。350步为参照同街平康坊推定，不是本坊实测。"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [-140, 0],
+          [-140, 514.5]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "XY-DIM-H-S",
+        "layer": "dimension",
+        "type": "dimension",
+        "grade": "C",
+        "inference": "documented",
+        "source": "XY-S03/XY-S02",
+        "position_precision": "schematic",
+        "period": "high-tang",
+        "tianbao_visible": "yes",
+        "note": "南北尺寸线南端界线。"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [-148, 0],
+          [-132, 0]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "XY-DIM-H-N",
+        "layer": "dimension",
+        "type": "dimension",
+        "grade": "C",
+        "inference": "documented",
+        "source": "XY-S03/XY-S02",
+        "position_precision": "schematic",
+        "period": "high-tang",
+        "tianbao_visible": "yes",
+        "note": "南北尺寸线北端界线。"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [-148, 514.5],
+          [-132, 514.5]
+        ]
+      }
+    }
+  ]
+}

@@ -7,7 +7,15 @@
     },
     "files": {
         "ignoreUnknown": true,
-        "includes": ["**", "!**/*.md", "!**/*.mdx", "!reconstructions/**/*.svg"]
+        "includes": [
+            "**",
+            "!**/*.md",
+            "!**/*.mdx",
+            "!reconstructions/**/*.svg",
+            "!viewer/index.html",
+            "!viewer/src",
+            "!viewer/tests"
+        ]
     },
     "formatter": {
         "indentStyle": "space",

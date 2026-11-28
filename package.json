@@ -6,7 +6,8 @@
         "node": "26.13.1"
     },
     "scripts": {
-        "check": "biome check .",
+        "preview:viewer": "pnpm --filter viewer dev --port 5174",
+        "check": "biome check . && pnpm --filter viewer typecheck",
         "format": "biome format --write .",
         "render:ward": "node scripts/ward-render/render.ts",
         "render:agent": "node scripts/ward-render/render.ts --all"
