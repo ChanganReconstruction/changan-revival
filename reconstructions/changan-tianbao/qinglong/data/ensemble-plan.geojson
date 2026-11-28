@@ -1,0 +1,711 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "QL-01",
+        "type": "courtyard-wall",
+        "layer": "courtyard-wall",
+        "name": "塔院",
+        "labelPoint": [
+          49,
+          65
+        ],
+        "source": "QL-S06 / QL-S07 / QL-S08",
+        "grade": "A",
+        "inference": "documented",
+        "period": "high-tang",
+        "tianbao_visible": "yes",
+        "note": "塔院范围东西98米、南北132米；外框表示塔院范围/回廊外缘，不是独立院墙，也不是寺界。北侧寺界未定。"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              0,
+              0
+            ],
+            [
+              98,
+              0
+            ],
+            [
+              98,
+              132
+            ],
+            [
+              0,
+              132
+            ],
+            [
+              0,
+              0
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "QL-02",
+        "type": "gate",
+        "layer": "gate",
+        "name": "中三门",
+        "labelPoint": [
+          49,
+          -7
+        ],
+        "source": "QL-S08",
+        "grade": "A",
+        "inference": "documented",
+        "period": "high-tang",
+        "tianbao_visible": "yes",
+        "note": "1号遗址。夯土东西17米、残存南北宽2.94米、保存厚0.5-0.7米；门道净宽5.83米为残存最宽值。2.94米不是原门屋进深；原开间、屋顶、门楼未定。"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              40.5,
+              0
+            ],
+            [
+              57.5,
+              0
+            ],
+            [
+              57.5,
+              2.94
+            ],
+            [
+              40.5,
+              2.94
+            ],
+            [
+              40.5,
+              0
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "QL-03",
+        "type": "hall",
+        "layer": "temple",
+        "name": "塔基（木塔）",
+        "labelPoint": [
+          49,
+          16
+        ],
+        "source": "QL-S08 / QL-S11",
+        "grade": "B",
+        "inference": "likely",
+        "period": "high-tang",
+        "tianbao_visible": "yes",
+        "note": "2号遗址。方形木塔塔基；15×15米边长为二手转引，未核原报告。层数、总高、檐口、塔刹、塔身柱网均未定。绘图器无塔类，type借用hall仅表示建筑台基，不表示其为殿堂。"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              41.5,
+              23.4
+            ],
+            [
+              56.5,
+              23.4
+            ],
+            [
+              56.5,
+              38.4
+            ],
+            [
+              41.5,
+              38.4
+            ],
+            [
+              41.5,
+              23.4
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "QL-03-PIT",
+        "type": "findspot",
+        "layer": "dimension",
+        "source": "QL-S08",
+        "grade": "A",
+        "inference": "documented",
+        "period": "high-tang",
+        "tianbao_visible": "yes",
+        "note": "塔心坑/舍利地宫：坑口约4×4米、深1.8米，位于塔基中央。深度写属性，平面不按比例；坑壁、券顶、甬道和遗物未详。"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              47,
+              28.9
+            ],
+            [
+              51,
+              28.9
+            ],
+            [
+              51,
+              32.9
+            ],
+            [
+              47,
+              32.9
+            ],
+            [
+              47,
+              28.9
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "QL-04",
+        "type": "hall",
+        "layer": "hall",
+        "name": "金堂",
+        "labelPoint": [
+          49,
+          99
+        ],
+        "source": "QL-S08",
+        "grade": "A",
+        "inference": "documented",
+        "period": "high-tang",
+        "tianbao_visible": "yes",
+        "note": "3号遗址早期基址。夯基东西57.2米、南北26.2米；五花夯土厚1.6-2.0米。报告称面阔十三间、进深五间、间距约4米，但与总尺寸不能简单整除，故不画柱网，也不做上部。"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              20.4,
+              85.4
+            ],
+            [
+              77.6,
+              85.4
+            ],
+            [
+              77.6,
+              111.6
+            ],
+            [
+              20.4,
+              111.6
+            ],
+            [
+              20.4,
+              85.4
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "QL-04-YUETAI",
+        "type": "open-ground",
+        "layer": "open-ground",
+        "name": "月台",
+        "labelPoint": [
+          49,
+          76
+        ],
+        "source": "QL-S08",
+        "grade": "A",
+        "inference": "documented",
+        "period": "high-tang",
+        "tianbao_visible": "yes",
+        "note": "金堂南侧正中月台：东西13.2米、南北约5米；贴金堂南缘。5米为约值，台面高度和踏道未定。"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              42.4,
+              80.4
+            ],
+            [
+              55.6,
+              80.4
+            ],
+            [
+              55.6,
+              85.4
+            ],
+            [
+              42.4,
+              85.4
+            ],
+            [
+              42.4,
+              80.4
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "QL-04-RAMP-W",
+        "type": "corridor",
+        "layer": "corridor",
+        "source": "QL-S08",
+        "grade": "B",
+        "inference": "schematic",
+        "period": "high-tang",
+        "tianbao_visible": "yes",
+        "note": "金堂西慢道：宽3米有据；长度未详。图中从西配房东缘接到金堂西缘（约11.15米），只表示已知相接关系，不是实测长度。"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              9.25,
+              97
+            ],
+            [
+              20.4,
+              97
+            ],
+            [
+              20.4,
+              100
+            ],
+            [
+              9.25,
+              100
+            ],
+            [
+              9.25,
+              97
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "QL-04-RAMP-E",
+        "type": "corridor",
+        "layer": "corridor",
+        "source": "QL-S08",
+        "grade": "B",
+        "inference": "schematic",
+        "period": "high-tang",
+        "tianbao_visible": "yes",
+        "note": "金堂东慢道：宽3米有据；长度未详，图中6米仅示位置。"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              77.6,
+              97
+            ],
+            [
+              83.6,
+              97
+            ],
+            [
+              83.6,
+              100
+            ],
+            [
+              77.6,
+              100
+            ],
+            [
+              77.6,
+              97
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "QL-05-SW",
+        "type": "corridor",
+        "layer": "corridor",
+        "source": "QL-S08",
+        "grade": "A",
+        "inference": "likely",
+        "period": "high-tang",
+        "tianbao_visible": "yes",
+        "note": "回廊南廊西段，宽3.33米；在中三门西侧断开。分段只为避让门址，不表示独立建筑。"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              0,
+              0
+            ],
+            [
+              40.5,
+              0
+            ],
+            [
+              40.5,
+              3.33
+            ],
+            [
+              0,
+              3.33
+            ],
+            [
+              0,
+              0
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "QL-05-SE",
+        "type": "corridor",
+        "layer": "corridor",
+        "source": "QL-S08",
+        "grade": "A",
+        "inference": "likely",
+        "period": "high-tang",
+        "tianbao_visible": "yes",
+        "note": "回廊南廊东段，宽3.33米；在中三门东侧断开。"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              57.5,
+              0
+            ],
+            [
+              98,
+              0
+            ],
+            [
+              98,
+              3.33
+            ],
+            [
+              57.5,
+              3.33
+            ],
+            [
+              57.5,
+              0
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "QL-05-N",
+        "type": "corridor",
+        "layer": "corridor",
+        "source": "QL-S08",
+        "grade": "A",
+        "inference": "likely",
+        "period": "high-tang",
+        "tianbao_visible": "yes",
+        "note": "回廊北廊，宽3.33米；连续。"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              0,
+              128.67
+            ],
+            [
+              98,
+              128.67
+            ],
+            [
+              98,
+              132
+            ],
+            [
+              0,
+              132
+            ],
+            [
+              0,
+              128.67
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "QL-05-WN",
+        "type": "corridor",
+        "layer": "corridor",
+        "source": "QL-S08",
+        "grade": "A",
+        "inference": "likely",
+        "period": "high-tang",
+        "tianbao_visible": "yes",
+        "note": "回廊西廊北段，宽3.33米；西配房以北。"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              0,
+              109.57
+            ],
+            [
+              3.33,
+              109.57
+            ],
+            [
+              3.33,
+              128.67
+            ],
+            [
+              0,
+              128.67
+            ],
+            [
+              0,
+              109.57
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "QL-05-WS",
+        "type": "corridor",
+        "layer": "corridor",
+        "source": "QL-S08",
+        "grade": "A",
+        "inference": "likely",
+        "period": "high-tang",
+        "tianbao_visible": "yes",
+        "note": "回廊西廊南段，宽3.33米；西配房以南。"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              0,
+              3.33
+            ],
+            [
+              3.33,
+              3.33
+            ],
+            [
+              3.33,
+              87
+            ],
+            [
+              0,
+              87
+            ],
+            [
+              0,
+              3.33
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "QL-05-E",
+        "type": "corridor",
+        "layer": "corridor",
+        "source": "QL-S08",
+        "grade": "A",
+        "inference": "likely",
+        "period": "high-tang",
+        "tianbao_visible": "yes",
+        "note": "回廊东廊，宽3.33米；连续。已核综述未给东配房尺寸，本图不补东配房。"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              94.67,
+              3.33
+            ],
+            [
+              98,
+              3.33
+            ],
+            [
+              98,
+              128.67
+            ],
+            [
+              94.67,
+              128.67
+            ],
+            [
+              94.67,
+              3.33
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "QL-06",
+        "type": "wing",
+        "layer": "wing",
+        "name": "西配房",
+        "labelPoint": [
+          12,
+          78
+        ],
+        "source": "QL-S08",
+        "grade": "A",
+        "inference": "likely",
+        "period": "high-tang",
+        "tianbao_visible": "yes",
+        "note": "7号遗址。南北22.57米、东西8.40-10.09米；图中取9.25米示意宽度。西南外扩未详；中间穿堂门道可出入塔院，门洞尺寸未定。"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              0,
+              87
+            ],
+            [
+              9.25,
+              87
+            ],
+            [
+              9.25,
+              109.57
+            ],
+            [
+              0,
+              109.57
+            ],
+            [
+              0,
+              87
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "QL-LBL-CORRIDOR",
+        "type": "note",
+        "layer": "label",
+        "name": "回廊 3.33 米",
+        "source": "QL-S08",
+        "grade": "A",
+        "inference": "documented",
+        "label_kind": "note",
+        "note": "注记位于塔院东北部，不表示柱网或开间。"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          88,
+          121
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "QL-DIM-NS",
+        "type": "note",
+        "layer": "label",
+        "name": "南北 132 米",
+        "source": "QL-S08",
+        "grade": "A",
+        "inference": "documented",
+        "label_kind": "dimension"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          49,
+          138
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "QL-DIM-EW",
+        "type": "note",
+        "layer": "label",
+        "name": "东西 98 米",
+        "source": "QL-S08",
+        "grade": "A",
+        "inference": "documented",
+        "label_kind": "dimension"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          49,
+          -16
+        ]
+      }
+    }
+  ]
+}

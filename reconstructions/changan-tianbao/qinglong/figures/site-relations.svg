@@ -1,0 +1,106 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="820" viewBox="0 0 1200 820" role="img" aria-labelledby="title desc">
+  <title id="title">青龙寺塔院与周边关系示意</title>
+  <desc id="desc">不按比例的关系图。中央为塔院，南侧标新昌坊南门方向，北侧标北门方向，东侧标东院方向；东塔院为775年对象，不在750年图内。不表示距离、院界或建筑点位。</desc>
+
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#6b5b45"/>
+    </marker>
+    <pattern id="hatch" width="7" height="7" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+      <line x1="0" y1="0" x2="0" y2="7" stroke="#d8cdbb" stroke-width="1"/>
+    </pattern>
+  </defs>
+
+  <rect width="1200" height="820" fill="#f8f4ea"/>
+
+  <text x="56" y="58" font-family="Noto Serif CJK SC, Source Han Serif SC, Songti SC, serif" font-size="30" fill="#2f2921" letter-spacing="2">青龙寺遗址关系示意 · 天宝九载（750）</text>
+  <text x="58" y="90" font-family="Noto Sans CJK SC, Source Han Sans SC, sans-serif" font-size="15" fill="#7a6a54">不按比例；不表示距离、院界或建筑点位。仅读方向与先后关系。</text>
+
+  <!-- north note -->
+  <g font-family="Noto Sans CJK SC, Source Han Sans SC, sans-serif">
+    <text x="1080" y="120" font-size="15" fill="#6b5b45" text-anchor="end">北（文献方位）</text>
+    <line x1="1088" y1="132" x2="1088" y2="188" stroke="#6b5b45" stroke-width="1.4" marker-end="url(#arrow)"/>
+    <text x="1088" y="212" font-size="12" fill="#8a7b64" text-anchor="middle">乐游原北高南低</text>
+  </g>
+
+  <!-- east pagoda courtyard excluded, top left -->
+  <g>
+    <rect x="56" y="122" width="318" height="94" fill="#fffdf7" stroke="#b9a98f" stroke-width="1" stroke-dasharray="4 4"/>
+    <text x="72" y="150" font-family="Noto Sans CJK SC, Source Han Sans SC, sans-serif" font-size="15" fill="#6e4f3a">东塔院（775 年敕赐惠果）</text>
+    <text x="72" y="174" font-family="Noto Sans CJK SC, Source Han Sans SC, sans-serif" font-size="13" fill="#7a6a54">不在 750 年图内；840 年圆仁记其仍存。</text>
+    <text x="72" y="196" font-family="Noto Sans CJK SC, Source Han Sans SC, sans-serif" font-size="13" fill="#7a6a54">惠果、空海事迹均晚于目标时点。</text>
+  </g>
+
+  <!-- north gate direction -->
+  <g>
+    <text x="580" y="154" font-family="Noto Sans CJK SC, Source Han Sans SC, sans-serif" font-size="17" fill="#3d352b" text-anchor="middle">北门（6 号遗址）方向</text>
+    <text x="580" y="177" font-family="Noto Sans CJK SC, Source Han Sans SC, sans-serif" font-size="13" fill="#7a6a54" text-anchor="middle">寺址正北 · 乐游原顶部最高处 · 与塔院距离未定</text>
+    <line x1="580" y1="194" x2="580" y2="276" stroke="#6b5b45" stroke-width="1.2" stroke-dasharray="7 5" marker-end="url(#arrow)"/>
+    <text x="596" y="240" font-family="Noto Sans CJK SC, Source Han Sans SC, sans-serif" font-size="12" fill="#8a7b64">只示方位，非门址</text>
+  </g>
+
+  <!-- tower courtyard -->
+  <g>
+    <text x="580" y="292" font-family="Noto Serif CJK SC, Source Han Serif SC, Songti SC, serif" font-size="19" fill="#2f2921" text-anchor="middle">塔院 · 132 × 98 米</text>
+    <rect x="475" y="306" width="210" height="280" fill="#fffdf7" stroke="#3d352b" stroke-width="1.8"/>
+    <rect x="484" y="315" width="192" height="262" fill="none" stroke="#8a7b64" stroke-width="1.1"/>
+    <text x="676" y="326" font-family="Noto Sans CJK SC, Source Han Sans SC, sans-serif" font-size="11" fill="#8a7b64" text-anchor="end">回廊范围</text>
+
+    <!-- hall -->
+    <rect x="505" y="334" width="150" height="54" fill="#e9e0cf" stroke="#3d352b" stroke-width="1.2"/>
+    <text x="580" y="366" font-family="Noto Serif CJK SC, Source Han Serif SC, Songti SC, serif" font-size="16" fill="#2f2921" text-anchor="middle">金堂（3 号）</text>
+
+    <!-- west wing -->
+    <rect x="475" y="352" width="18" height="52" fill="#f3eadb" stroke="#7a6a54" stroke-width="1.1"/>
+    <text x="467" y="381" font-family="Noto Sans CJK SC, Source Han Sans SC, sans-serif" font-size="12" fill="#6b5b45" text-anchor="end">西配房</text>
+
+    <!-- tower -->
+    <rect x="565" y="465" width="30" height="30" fill="#dcd0bb" stroke="#3d352b" stroke-width="1.4"/>
+    <rect x="574" y="474" width="12" height="12" fill="none" stroke="#3d352b" stroke-width="1" stroke-dasharray="2 2"/>
+    <text x="580" y="457" font-family="Noto Sans CJK SC, Source Han Sans SC, sans-serif" font-size="13" fill="#3d352b" text-anchor="middle">塔基（2 号）</text>
+
+    <!-- gate -->
+    <rect x="562" y="578" width="36" height="8" fill="#3d352b"/>
+    <text x="580" y="606" font-family="Noto Sans CJK SC, Source Han Sans SC, sans-serif" font-size="13" fill="#3d352b" text-anchor="middle">中三门（1 号）</text>
+
+    <!-- axis -->
+    <line x1="580" y1="338" x2="580" y2="578" stroke="#b9a98f" stroke-width="1" stroke-dasharray="3 4"/>
+    <text x="596" y="520" font-family="Noto Sans CJK SC, Source Han Sans SC, sans-serif" font-size="11" fill="#8a7b64">门—塔—殿轴线</text>
+  </g>
+
+  <!-- east courtyard direction -->
+  <g>
+    <line x1="685" y1="430" x2="842" y2="430" stroke="#6b5b45" stroke-width="1.2" stroke-dasharray="7 5" marker-end="url(#arrow)"/>
+    <text x="858" y="414" font-family="Noto Sans CJK SC, Source Han Sans SC, sans-serif" font-size="16" fill="#3d352b">东院方向</text>
+    <text x="858" y="438" font-family="Noto Sans CJK SC, Source Han Sans SC, sans-serif" font-size="13" fill="#7a6a54">4 号殿址 · 8 号院墙</text>
+    <text x="858" y="461" font-family="Noto Sans CJK SC, Source Han Sans SC, sans-serif" font-size="13" fill="#7a6a54">塔院东侧；距离、院界未定</text>
+    <text x="858" y="484" font-family="Noto Sans CJK SC, Source Han Sans SC, sans-serif" font-size="12" fill="#8a7b64">4 号上层为 845 年后重建，不作 750 年原状</text>
+  </g>
+
+  <!-- south street -->
+  <g>
+    <line x1="580" y1="618" x2="580" y2="664" stroke="#6b5b45" stroke-width="1.2" stroke-dasharray="2 5" marker-end="url(#arrow)"/>
+    <text x="596" y="646" font-family="Noto Sans CJK SC, Source Han Sans SC, sans-serif" font-size="12" fill="#8a7b64">南门方向；寺在门东</text>
+    <text x="580" y="682" font-family="Noto Sans CJK SC, Source Han Sans SC, sans-serif" font-size="17" fill="#3d352b" text-anchor="middle">新昌坊南门方向</text>
+    <text x="580" y="708" font-family="Noto Sans CJK SC, Source Han Sans SC, sans-serif" font-size="13" fill="#7a6a54" text-anchor="middle">南街东出延兴门 · 寺界与寺门位置未定</text>
+  </g>
+
+  <!-- west side unknown -->
+  <g>
+    <text x="248" y="402" font-family="Noto Sans CJK SC, Source Han Sans SC, sans-serif" font-size="15" fill="#6b5b45" text-anchor="end">寺院其余部分</text>
+    <text x="248" y="426" font-family="Noto Sans CJK SC, Source Han Sans SC, sans-serif" font-size="13" fill="#8a7b64" text-anchor="end">寺界、寺门与西侧建筑均未定</text>
+    <line x1="260" y1="415" x2="463" y2="415" stroke="#b9a98f" stroke-width="1" stroke-dasharray="2 5"/>
+  </g>
+
+  <!-- legend -->
+  <g font-family="Noto Sans CJK SC, Source Han Sans SC, sans-serif" font-size="13" fill="#5a4c3c">
+    <text x="56" y="742" font-size="15" fill="#3d352b">图例</text>
+    <line x1="56" y1="766" x2="112" y2="766" stroke="#3d352b" stroke-width="1.8"/>
+    <text x="124" y="771">塔院及已知相对关系</text>
+    <line x1="300" y1="766" x2="356" y2="766" stroke="#6b5b45" stroke-width="1.2" stroke-dasharray="7 5"/>
+    <text x="368" y="771">方向推定，位置未定</text>
+    <line x1="544" y1="766" x2="600" y2="766" stroke="#6b5b45" stroke-width="1.2" stroke-dasharray="2 5"/>
+    <text x="612" y="771">文献方位/道路方向</text>
+    <text x="56" y="798" font-size="12" fill="#8a7b64">本图不闭合寺界，不画东院、北门或东塔院的院墙；图中所有位置只用于读关系，不能量距。</text>
+  </g>
+</svg>
