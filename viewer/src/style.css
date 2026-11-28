@@ -90,6 +90,7 @@ body.night .view-story::before, body.night .atlas::before { background: #14262bd
 }
 .map-wall { fill: none; stroke: #495e47; stroke-width: 12; }
 .map-axis { fill: #d1b98c44; stroke: #936f48; stroke-width: 12; }
+.map-ward.map-northern { cursor: default; }
 #map-target { fill: var(--red); stroke: #f1e3be; stroke-width: 15; pointer-events: none; }
 .atlas-footer { border-top: 1px solid var(--line); padding-top: 9px; font-size: 8px; }
 .explorer { position: absolute; left: 38px; right: 38px; bottom: 22px; }

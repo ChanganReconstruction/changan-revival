@@ -4,7 +4,7 @@ import type { PrototypePart } from './architecture';
 
 // 地标使用同一套批次工具，不允许为了景点逐件建立独立 Mesh 或材质。
 export interface LandmarkKit {
-  batches: Batches;
+  batches: Pick<Batches, 'add' | 'hall'>;
   prototypes: {
     gable: PrototypePart[];
     hip: PrototypePart[];

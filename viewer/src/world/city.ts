@@ -10,6 +10,8 @@ import { CITY, makeWards, random, SEED, type Ward } from './layout';
 import { buildWardInterior } from './ward-composition';
 import { createMarkets } from './markets';
 import { createImperialCity, createNorthernQuarters } from './imperial-city';
+import { DAMING_WALL, FANGLIN_X, KAIYUAN_STREET_Z } from './northern-layout';
+import { CITY_SURFACES } from './land-colors.ts';
 import { createQujiang, nearQujiang } from './city-landscape';
 import { terrainHeight, terrainGeometry, ribbonGeometry } from './terrain';
 import { createLakeGeometry } from './waterscape';
@@ -133,12 +135,12 @@ export function createCity(scene: THREE.Scene, materials: Materials) {
   block('grass', 0, -2.6, -160, 2000, 1.8, 2160, 0, '#b9c9a5');
   // 御道侧沟真正留槽；三条连续路带合计仍占原54米，不在完整路面上涂蓝线。
   for (const [x, width] of [[-22.65, 8.7], [0, 33.4], [22.65, 8.7]]) {
-    road(line(-280, 705, x, false), width, '#e2ded1');
+    road(line(-280, 705, x, false), width, CITY_SURFACES.avenue);
   }
   for (let row = 0; row < 10; row++) {
     const z = -269 + row * 106;
     road(line(-825, row >= 7 ? 545 : 825, z, true), row === 0 ? 17 : 14,
-      row === 0 ? '#d4d6ca' : '#bdc3ba');
+      row === 0 ? CITY_SURFACES.crossStreet : CITY_SURFACES.wardRoad);
   }
   for (const sign of [-1, 1]) for (const x of [139, 267, 405, 543, 681, 819]) {
     const street = westernRoadLayout(sign * x);
@@ -163,11 +165,11 @@ export function createCity(scene: THREE.Scene, materials: Materials) {
     if (profile.family === 'market') continue;
     if (!lakeside) block('yard', ward.x, elevation / 2 + 0.025, ward.z,
       ward.width, elevation + 0.06, ward.depth, 0,
-      profile.family === 'artisan' ? '#c7c9c5' : '#e4e3d9');
+       profile.family === 'artisan' ? '#c7c9c5' : CITY_SURFACES.wardYard);
     // 绿地只落在规划净空内，不穿建筑、通巷、井台和既有水岸。
     for (const patch of planWardGround(ward)) {
       block('grass', patch.x, elevation + 0.12, patch.z,
-        patch.width, 0.06, patch.depth, 0, '#b7cba7');
+       patch.width, 0.06, patch.depth, 0, CITY_SURFACES.planting);
     }
     // 曲江园苑跨坊连通，不让坊墙、门楼和巷道切割水面。
     if (!lakeside) wardShell(ward, elevation);
@@ -207,7 +209,7 @@ export function createCity(scene: THREE.Scene, materials: Materials) {
   createMarkets(kit);
   createWesternChannels(kit);
   createAvenueDrains(kit, groundAt);
-  createNorthernQuarters(kit);
+  createNorthernQuarters(kit, (points, width) => road(points, width, CITY_SURFACES.wardRoad));
   createImperialCity(kit);
 
   // 外郭城门拆为门墩与上部横梁，保留真实贯通的门洞。
@@ -224,7 +226,7 @@ export function createCity(scene: THREE.Scene, materials: Materials) {
     batches.hall(hip, x, z, span + 4, 19, main ? 1.6 : 1.25, rotation, 13);
   };
   const wallSpan = (
-    x: number, z: number, length: number, rotation: number, gates: number[],
+    x: number, z: number, length: number, rotation: number, gates: number[], gateHalf = 34,
   ) => {
     const half = length / 2;
     const sorted = [-half, ...gates, half];
@@ -235,8 +237,8 @@ export function createCity(scene: THREE.Scene, materials: Materials) {
         ? { center: z - LONGSHOU_INLET.wallZ, width: LONGSHOU_INLET.clearWidth,
           height: LONGSHOU_INLET.clearHeight } : undefined;
     for (let i = 0; i < sorted.length - 1; i++) {
-      const start = sorted[i] + (i === 0 ? 0 : 34);
-      const end = sorted[i + 1] - (i === sorted.length - 2 ? 0 : 34);
+      const start = sorted[i] + (i === 0 ? 0 : gateHalf);
+      const end = sorted[i + 1] - (i === sorted.length - 2 ? 0 : gateHalf);
       const mid = (start + end) / 2;
       const cx = x + mid * Math.cos(rotation);
       const cz = z - mid * Math.sin(rotation);
@@ -267,10 +269,13 @@ export function createCity(scene: THREE.Scene, materials: Materials) {
     }
   };
   wallSpan(0, CITY.south, 1680, 0, [-560, 0, 560]);
-  // 北墙接至大明宫两侧，不穿过宫前龙尾阶，也不在殿台中保留旧门楼。
-  wallSpan(-255, CITY.north, 1170, 0, [-305, 255]);
-  wallSpan(775, CITY.north, 130, 0, []);
-  wallSpan(CITY.west, -55, 1530, Math.PI / 2, [-470, 30, 530]);
+  // 大明宫南墙与外郭北墙共线；两端接合而不在丹凤门处叠墙。
+  const westNorthMid = (CITY.west + DAMING_WALL.west) / 2;
+  wallSpan(westNorthMid, CITY.north, DAMING_WALL.west - CITY.west, 0,
+    [FANGLIN_X - westNorthMid, -westNorthMid], 20);
+  wallSpan((DAMING_WALL.east + CITY.east) / 2, CITY.north,
+    CITY.east - DAMING_WALL.east, 0, []);
+  wallSpan(CITY.west, -55, 1530, Math.PI / 2, [-470, 30, -55 - KAIYUAN_STREET_Z]);
   wallSpan(CITY.east, -55, 1530, Math.PI / 2, [-470, 30, 530]);
 
   createPalaces(kit);

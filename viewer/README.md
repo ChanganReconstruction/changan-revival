@@ -248,6 +248,14 @@ pnpm --filter viewer preview --port 4174
 依赖统一锁定在仓库根目录的 [`pnpm-lock.yaml`](../pnpm-lock.yaml)。
 生产部署将 `viewer/dist/` 整体放到静态 HTTP 服务，不直接双击 HTML；服务器无需安装 Node.js。
 
+若只验收鸟瞰和标注，构建后可让 Playwright 直接读取 `viewer/dist/`，无需启动服务：
+
+```sh
+AERIAL_DIST=1 LABELS=1 VIEWS=northwest,northeast,taiji,imperial,hanyuanDetail,xingqing node viewer/tests/aerial.mjs
+```
+
+皇城与民居的尺度对照用 `imperialContext`，官署前庭和园庭近景用 `imperialCourt`。
+
 ## 操作与样板入口
 
 **荐福寺庭院 · 本地样板**：仓库根目录放置 `jianfusi.mp4` 和 `古塔庭院_完整高斯高清漫游.html`，
@@ -324,6 +332,7 @@ eastMarket / pagoda / xiaoyanta / qinglong / temple / wardGate / lane / lake / j
 
 - `src/world/layout.ts`：坊位、随机种子、机位与地标。
 - `src/world/districts.ts`：坊名表、空间类型与重点坊意象；西南六坊的相对位置见[考证记录](RESEARCH.md#外郭城西南角六坊的相对位置)。
+- `src/world/northern-layout.ts`：太极宫、皇城与外郭北垣的衔接，丹凤门大街、西北与东北坊序；见[考证记录](RESEARCH.md#外郭城北部宫墙与坊序)。北部坊块在小地图上仅作标示。
 - `src/world/architecture.ts`：共享屋顶、建筑与阁楼原型。
 - [appearance.ts](<src/world/appearance.ts>)：全城比例、街区色组、两档屋坡与共享几何缓存。
 - [resolution.ts](<src/render/resolution.ts>)：独立渲染比例和缓冲尺寸计算。
@@ -331,7 +340,7 @@ eastMarket / pagoda / xiaoyanta / qinglong / temple / wardGate / lane / lake / j
 - [city.ts](src/world/city.ts)：城市装配、坊墙、雁塔与日夜门扇。
 - [ward-composition.ts](src/world/ward-composition.ts)：不等宅地、巷道、院落与净空规划。
 - [markets.ts](src/world/markets.ts)：完整两市井字街、九区铺栈与水渠。
-- [imperial-city.ts](src/world/imperial-city.ts)：太极宫、皇城与北部服务院。
+- [imperial-city.ts](src/world/imperial-city.ts)：太极宫的正殿前庭、皇城署院及北部街坊。
 - [terrain.ts](src/world/terrain.ts)：连续原坡和顺坡道路。
 - [geography.ts](<src/world/geography.ts>)：八水方位、五渠分期和来源索引。
 - [channel-geometry.ts](<src/world/channel-geometry.ts>)：共享水位、可变宽深断面及城墙涵口裁分。

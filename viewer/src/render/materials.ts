@@ -94,6 +94,39 @@ function facadeGlow(): THREE.CanvasTexture {
   return texture;
 }
 
+function palaceFacade(): THREE.CanvasTexture {
+  const canvas = document.createElement('canvas');
+  canvas.width = canvas.height = 128;
+  const ctx = canvas.getContext('2d')!;
+  ctx.fillStyle = '#d8cbb6';
+  ctx.fillRect(0, 0, 128, 128);
+  // 一开间循环；柱、檐下阴影、斗栱和格扇都在墙面贴图上。
+  ctx.fillStyle = '#4b3a31';
+  ctx.fillRect(0, 0, 128, 26);
+  ctx.fillStyle = '#894b39';
+  ctx.fillRect(0, 23, 128, 10);
+  ctx.fillRect(0, 23, 11, 103);
+  ctx.fillRect(117, 23, 11, 103);
+  ctx.fillRect(18, 45, 92, 70);
+  ctx.fillStyle = '#514c42';
+  ctx.fillRect(24, 51, 80, 56);
+  ctx.fillStyle = '#ab8a65';
+  for (let x = 31; x < 104; x += 9) ctx.fillRect(x, 51, 2, 56);
+  for (const y of [63, 76, 91]) ctx.fillRect(24, y, 80, 2);
+  ctx.fillStyle = '#ad7853';
+  for (const x of [4, 56, 108]) {
+    ctx.fillRect(x, 12, 16, 6);
+    ctx.fillRect(x + 4, 18, 8, 9);
+  }
+  ctx.fillStyle = '#807466';
+  ctx.fillRect(0, 117, 128, 11);
+  const texture = new THREE.CanvasTexture(canvas);
+  texture.wrapS = THREE.RepeatWrapping;
+  texture.colorSpace = THREE.SRGBColorSpace;
+  texture.anisotropy = 4;
+  return texture;
+}
+
 export function createMaterials() {
   const roofMap = surface('roof');
   // 瓦垄约四十厘米一级，避免把贴图拉成夸张的波浪形屋面。
@@ -116,6 +149,7 @@ export function createMaterials() {
       map: facadeMap, emissive: '#ffbf67', emissiveMap: facadeGlowMap,
       emissiveIntensity: 0, side: THREE.DoubleSide,
     }),
+    palaceFacade: lambert('#ffffff', { map: palaceFacade() }),
     wood: lambert('#805137'),
     vermilion: lambert('#b24b39'),
     dark: standard('#342c24'),

@@ -14,6 +14,8 @@ export interface Ward {
 }
 
 export const CITY = { west: -840, east: 840, north: -820, south: 710 };
+// 把既有大明宫组合的丹凤门移至外郭北墙，兴庆宫及普通坊网不随之移动。
+export const DAMING_SHIFT_Z = CITY.north + 744;
 export const SEED = 20261116;
 export const QUJIANG = { x: 689, z: 593, radiusX: 112, radiusZ: 72 };
 
@@ -64,7 +66,7 @@ export const PLACES = [
   { id: 'zhuque', name: '朱雀大街', x: 0, y: 2, z: 170, rank: 1 },
   { id: 'taiji', name: '太极宫', x: 0, y: 32, z: -670, rank: 1 },
   { id: 'imperial', name: '皇城', x: -80, y: 15, z: -370, rank: 2 },
-  { id: 'daming', name: '大明宫', x: 520, y: 48, z: -920, rank: 1 },
+  { id: 'daming', name: '大明宫', x: 520, y: 48, z: -920 + DAMING_SHIFT_Z, rank: 1 },
   { id: 'east', name: '东市', x: 474, y: 10, z: 261, rank: 2 },
   { id: 'west', name: '西市', x: -474, y: 10, z: 261, rank: 1 },
   { id: 'yongan', name: '永安渠（街段示意）', x: -408, y: 3, z: 100, rank: 2 },
@@ -98,19 +100,19 @@ export const VIEWS: Record<string, ViewPreset> = {
     position: [110, 65, 865], target: [0, 13, 710],
   },
   hengjie: {
-    name: '横街广场', subtitle: '承天横街 · 轴线相逢',
-    description: '横街在皇城南缘铺展，槐荫与街亭退让中央通行带。道路用色区分御道和横街。',
+    name: '横街广场', subtitle: '朱雀门外 · 轴线相逢',
+    description: '横街在皇城南缘铺展，槐荫与街亭退让中央通行带；宫城与皇城之间另有承天门前的横街。',
     position: [190, 80, -120], target: [0, 5, -268],
   },
   hanyuanTop: {
     name: '含元俯瞰', subtitle: '龙首原上 · 殿阁临城',
     description: '从含元殿上空回望南向长安，重台、双阁、龙尾阶与坊市屋海串成朝仪序列。',
-    position: [650, 180, -1010], target: [450, 8, -550],
+    position: [650, 180, -1010 + DAMING_SHIFT_Z], target: [450, 8, -550],
   },
   taiye: {
     name: '太液蓬莱', subtitle: '蓬莱叠翠 · 仙山倒影',
     description: '殿后曲岸围合池面，蓬莱山岛与岸廊保留水庭层次。当前为艺术化意象，未作考古尺度复原。',
-    position: [790, 120, -925], target: [600, 12, -1080],
+    position: [790, 120, -925 + DAMING_SHIFT_Z], target: [600, 12, -1080 + DAMING_SHIFT_Z],
   },
   xingqing: {
     name: '花萼龙池', subtitle: '相辉楼阁 · 龙池清波',
@@ -156,7 +158,7 @@ export const VIEWS: Record<string, ViewPreset> = {
   palace: {
     name: '龙尾含元', subtitle: '九天阊阖 · 万国衣冠',
     description: '龙首原上，大明宫俯临长安。含元殿居高而立，两翼楼阁与龙尾道展开朝仪的序列。',
-    position: [820, 280, -405], target: [520, 30, -830],
+    position: [820, 280, -405 + DAMING_SHIFT_Z], target: [520, 30, -830 + DAMING_SHIFT_Z],
   },
   market: {
     name: '西市胡尘', subtitle: '东西万货 · 丝路回响',

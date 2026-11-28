@@ -47,13 +47,14 @@
 
       <aside class="atlas" aria-label="长安城市方位图">
         <div class="atlas-title"><span>长安舆图</span><span>北 ↑</span></div>
-        <svg id="minimap" viewBox="-920 -1220 1840 2040" role="group" aria-label="可点选的长安坊区图">
+        <svg id="minimap" viewBox="-920 -1310 1840 2130" role="group" aria-label="可点选的长安坊区图">
+          <g id="map-northern-wards"></g>
           <g id="map-wards"></g>
-          <path d="M-840-820H840V710H-840Z M330-1180H710V-744H330Z" class="map-wall" />
-          <path d="M-250-795H250V-285H-250Z M0-285V710" class="map-axis" />
+          <path id="map-city-wall" class="map-wall" />
+          <path id="map-palace-axes" class="map-axis" />
           <circle id="map-target" cx="0" cy="-120" r="24" />
         </svg>
-        <div class="atlas-footer"><span>一百零八坊</span><span>点坊入览 ↗</span></div>
+        <div class="atlas-footer"><span>坊市示意</span><span>点常规坊位入览 ↗</span></div>
       </aside>
 
       <footer class="explorer">

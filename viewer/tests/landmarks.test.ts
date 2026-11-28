@@ -8,6 +8,8 @@ import { createLakeGeometry, createShoreGeometry, createIslandGeometry,
 import { hanyuanPrototype, HANYUAN_LAYOUT } from '../src/world/royal-architecture.ts';
 import { HANYUAN_APPROACH } from '../src/world/palace-approach.ts';
 import { terrainHeight, ribbonGeometry } from '../src/world/terrain.ts';
+import { CITY, DAMING_SHIFT_Z } from '../src/world/layout.ts';
+import { DANFENG_LAYOUT } from '../src/world/danfeng-gate.ts';
 
 function recordPalaces() {
   const blocks: Parameters<LandmarkKit['block']>[] = [];
@@ -15,6 +17,7 @@ function recordPalaces() {
     y: number; z: number }> = [];
   const ponds: Parameters<LandmarkKit['pond']>[] = [];
   const perimeters: Parameters<LandmarkKit['perimeter']>[] = [];
+  const trees: Parameters<LandmarkKit['tree']>[] = [];
   // 记录组合指令，不依赖 WebGL；曲岸几何也必须进入断言，不能跳过验证。
   const kit = {
     prototypes: { gable: [], hip: [], hipgable: [], pavilion: [], tower: [] },
@@ -23,12 +26,44 @@ function recordPalaces() {
         geometry.push({ shape, material, x, y, z }) },
     block: (...args: Parameters<LandmarkKit['block']>) => { blocks.push(args); },
     pond: (...args: Parameters<LandmarkKit['pond']>) => { ponds.push(args); },
-    tree: () => undefined,
+    tree: (...args: Parameters<LandmarkKit['tree']>) => trees.push(args),
     perimeter: (...args: Parameters<LandmarkKit['perimeter']>) => perimeters.push(args),
   } as unknown as LandmarkKit;
   createPalaces(kit);
-  return { blocks, ponds, geometry, perimeters };
+  return { blocks, ponds, geometry, perimeters, trees };
 }
+
+test('太液池后苑与龙池园路分处不同标高，路径与池岸树干不落入两池', () => {
+  const { geometry, trees } = recordPalaces();
+  const walks = geometry.filter(({ material }) => material === 'paving');
+  assert.equal(walks.filter(({ z }) => z === DAMING_SHIFT_Z).length, 2);
+  assert.equal(walks.filter(({ z }) => z === 0).length, 2);
+  for (const [cx, cz, outline] of [
+    [626, -1090 + DAMING_SHIFT_Z, TAIYE_OUTLINE],
+    [750, -155, LONGCHI_OUTLINE],
+  ] as const) {
+    const ring = sampleOutline(outline);
+    const inside = (worldX: number, worldZ: number) => {
+      const x = worldX - cx;
+      const z = worldZ - cz;
+      return ring.reduce((hit, [ax, az], i) => {
+        const [bx, bz] = ring[(i + 1) % ring.length];
+        return (az > z) !== (bz > z) && x < ax + (bx - ax) * (z - az) / (bz - az) ? !hit : hit;
+      }, false);
+    };
+    for (const { shape, x, z } of walks) {
+      const points = shape.getAttribute('position');
+      for (let i = 0; i < points.count; i++) {
+        assert.ok(!inside(x + points.getX(i), z + points.getZ(i)), '园路进入池内');
+      }
+    }
+    for (const [x, z] of trees) {
+      // 蓬莱山是太液池中刻意留设的岛上植栽。
+      if (cx === 626 && Math.abs(x - 628) <= 12 && Math.abs(z - cz) <= 12) continue;
+      assert.ok(!inside(x, z), `树干 ${x},${z} 落入池内`);
+    }
+  }
+});
 
 test('两处宫苑用独立曲岸水面，池水不被完整地基盖住', () => {
   const { blocks, ponds, geometry } = recordPalaces();
@@ -47,16 +82,18 @@ test('两处宫苑用独立曲岸水面，池水不被完整地基盖住', () =>
     }
   }
   assert.ok(blocks.some(([material, x, y, z, w, h, d]) => material === 'earth'
-    && Math.abs(600 - x) < w / 2 && Math.abs(-1147 - z) < d / 2 && y + h / 2 >= 10));
+    && Math.abs(600 - x) < w / 2 && Math.abs(-1147 + DAMING_SHIFT_Z - z) < d / 2 && y + h / 2 >= 10));
 });
 
 test('丹凤门五条门道地面不被高台或实心门楼封堵', () => {
   const { blocks, perimeters } = recordPalaces();
-  assert.ok(perimeters.some(([x, z, , , , , , gate]) =>
-    x === 520 && z === -962 && gate === 108), '南宫墙须为五门道整体让位');
+  assert.equal(DANFENG_LAYOUT.z, CITY.north);
+  assert.ok(perimeters.some(([x, z, , depth, , , floor, gate]) =>
+    x === DANFENG_LAYOUT.x && z + depth / 2 === CITY.north && floor === 0 && gate === 108),
+  '南宫墙须与外郭北垣共线，从地面围合并为五门道整体让位');
   for (const px of [480, 500, 520, 540, 560]) {
     for (const [material, x, y, z, w, h, d] of blocks) {
-      const inside = Math.abs(px - x) < w / 2 && Math.abs(-744 - z) < d / 2
+      const inside = Math.abs(px - x) < w / 2 && Math.abs(DANFENG_LAYOUT.z - z) < d / 2
         && 3 > y - h / 2 && 3 < y + h / 2;
       assert.equal(inside, false, `${material} 封堵了 ${px} 门道`);
     }
@@ -110,8 +147,14 @@ test('含元保留两侧盘道，不再混用早期正南三条直阶', () => {
   for (let i = 1; i < HANYUAN_APPROACH.length; i++) {
     assert.ok(HANYUAN_APPROACH[i][2] >= HANYUAN_APPROACH[i - 1][2]);
   }
-  assert.ok(!blocks.some(([material, x, , z, width]) => material === 'stone'
-    && x === 520 && z > -792 && z < -752 && width <= 10), '主轴不留旧中阶');
+  for (const x of [500, 520, 540]) {
+    for (const z of [-775, -780, -790, -801]) {
+      assert.ok(terrainHeight(x, z + DAMING_SHIFT_Z) < 0.2, '门内前庭保持低平');
+      assert.ok(!blocks.some(([, bx, y, bz, w, h, d]) => y + h / 2 > 0.3 && y - h / 2 < 1
+        && Math.abs(x - bx) < w / 2 && Math.abs(z + DAMING_SHIFT_Z - bz) < d / 2),
+      '前导空间不再有任何横贯主轴的提前登台');
+    }
+  }
 });
 
 test('原坡标高连续，道路沿坡且法线朝上', () => {

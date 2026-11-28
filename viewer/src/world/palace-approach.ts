@@ -2,6 +2,7 @@ import type { LandmarkKit } from './landmark-kit';
 
 // 按两侧盘上关系压缩成折道；具体折数、尺度不是遗址实测复原。
 export const HANYUAN_APPROACH = [
+  [104, 77, -9.85],
   [104, 62, 0.4], [88, 62, 1.2], [88, 50, 2.2], [80, 50, 3.2],
   [80, 36, 4.2], [72, 36, 5.2], [72, 16, 6.25], [58, 16, 6.25],
 ] as const;
@@ -33,10 +34,12 @@ export function createHanyuanApproach(kit: LandmarkKit): void {
         const h = ah + (bh - ah) * ((step + 1) / count);
         const px = 520 + side * (ax + (bx - ax) * t);
         const pz = -860 + az + (bz - az) * t;
-        // 实心阶体一直落到十米平台，不使用悬空薄片坡道。
-        block('stone', px, 10 + h / 2, pz,
+        // 前半从低庭起步，台阶落地，进入台地后才改由台地承托。
+        const base = pz <= -811 ? 10 : 0;
+        const top = 10 + h;
+        block('stone', px, (top + base) / 2, pz,
           alongX ? length / count + 0.02 : 5,
-          h, alongX ? 5 : length / count + 0.02);
+          top - base, alongX ? 5 : length / count + 0.02);
       }
       // 折点外侧少量栏柱表明边界，不沿每级台阶堆高精石雕。
       block('stone', 520 + side * ax, 10 + ah + 0.55, -860 + az + 2.7,

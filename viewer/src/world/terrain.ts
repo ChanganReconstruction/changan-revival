@@ -1,5 +1,6 @@
 import * as THREE from 'three';
-import { groundColorAt } from './land-colors.ts';
+import { cityGroundColorAt } from './land-colors.ts';
+import { CITY, DAMING_SHIFT_Z } from './layout.ts';
 
 // 地势只控制连续原坡，不用随机尖峰；坊内平台另按中心标高整地。
 export function terrainHeight(x: number, z: number): number {
@@ -7,22 +8,24 @@ export function terrainHeight(x: number, z: number): number {
     h * Math.exp(-(((x - cx) / sx) ** 2 + ((z - cz) / sz) ** 2));
   const south = mound(620, 315, 160, 118, 8.2);
   const sacred = mound(0, 208, 180, 56, 2.7);
-  const north = z < -820 ? mound(510, -1100, 430, 260, 7) : 0;
+  // 前庭在龙首原南沿以下，低处保留从宫门向北的开敞地。
+  const north = mound(510, -1100 + DAMING_SHIFT_Z, 430, 260, 7)
+    * Math.min(1, Math.max(0, (-808 + DAMING_SHIFT_Z - z) / 105));
   const height = south + sacred + north;
   return height < 0.05 ? 0 : height;
 }
 
 export function terrainGeometry(heightAt: (x: number, z: number) => number) {
-  const geometry = new THREE.PlaneGeometry(2000, 2160, 100, 108);
+  const geometry = new THREE.PlaneGeometry(2000, 2240, 100, 112);
   geometry.rotateX(-Math.PI / 2);
-  geometry.translate(0, 0, -160);
+  geometry.translate(0, 0, -200);
   const positions = geometry.getAttribute('position');
   const colors: number[] = [];
   for (let i = 0; i < positions.count; i++) {
     const x = positions.getX(i), z = positions.getZ(i);
     const y = heightAt(x, z);
     positions.setY(i, y - 0.25);
-    const shade = new THREE.Color(groundColorAt(x, z));
+    const shade = new THREE.Color(cityGroundColorAt(x, z));
     shade.multiplyScalar(1 + Math.min(y, 10) * 0.008);
     colors.push(shade.r, shade.g, shade.b);
   }

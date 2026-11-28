@@ -5,6 +5,134 @@ import { roofGeometry, type PrototypePart } from './architecture.ts';
 type Box = [number, number, number, number, number, number];
 type Point = [number, number, number];
 
+type PalaceForm = 'state-hall' | 'east-hall' | 'gate';
+const palaceForms = new Map<PalaceForm, PrototypePart[]>();
+
+type PaintedForm = 'audience' | 'residence' | 'side';
+const paintedForms = new Map<PaintedForm, PrototypePart[]>();
+
+export function paintedPalacePrototype(form: PaintedForm): PrototypePart[] {
+  const cached = paintedForms.get(form);
+  if (cached) return cached;
+  const audience = form === 'audience';
+  const side = form === 'side';
+  const floor = audience ? 1.55 : 0.95;
+  const eave = audience ? 5.38 : side ? 4.65 : 4.22;
+  const floorParts: Box[] = [
+    [0, floor / 2, 0, 16.7, floor, 9.3], [0, floor, 0, 17.15, 0.14, 9.55],
+  ];
+  for (let i = 0; i < 4; i++) {
+    const h = floor * (i + 1) / 4;
+    floorParts.push([0, h / 2, 5.5 - i * 0.23, audience ? 4.5 : 3.6, h, 0.25]);
+  }
+  const walls = new THREE.BoxGeometry(side ? 12.7 : 15.2, eave - floor, 7.65)
+    .translate(0, (eave + floor) / 2, 0);
+  const uv = walls.getAttribute('uv');
+  const normals = walls.getAttribute('normal');
+  for (let i = 0; i < uv.count; i++) {
+    const bays = Math.abs(normals.getZ(i)) > 0.5 ? (audience ? 7 : side ? 3 : 5) : 3;
+    uv.setX(i, uv.getX(i) * bays);
+  }
+  // 屋顶轮廓和台基保留体积；墙面细节只用共享纹理，不提交额外构件。
+  const roof = roofGeometry(audience ? 'hipgable' : side ? 'pyramid' : 'hip')
+    .scale(side ? 0.80 : 0.87, side ? 1.55 : audience ? 1.12 : 0.76, 0.85)
+    .translate(0, eave, 0);
+  const parts: PrototypePart[] = [
+    { geometry: boxes(floorParts), material: 'stone' },
+    { geometry: walls, material: 'palaceFacade' },
+    { geometry: roof, material: 'roof', tint: audience ? '#aab4ad' : '#b5b5a9' },
+  ];
+  paintedForms.set(form, parts);
+  return parts;
+}
+
+/** 展示用宫殿形制，开间与台高均不是遗址实测。 */
+export function palacePrototype(form: PalaceForm): PrototypePart[] {
+  const cached = palaceForms.get(form);
+  if (cached) return cached;
+  const gate = form === 'gate';
+  const state = form === 'state-hall';
+  const floor = gate ? 0 : state ? 1.7 : 1.1;
+  const eave = gate ? 5.3 : state ? 5.8 : 4.95;
+  const stone: Box[] = [];
+  const frames: Box[] = [];
+  const walls: Box[] = [];
+  const shadow: Box[] = [];
+  const capitals: Box[] = [];
+  const columns: Point[] = [];
+  const bay = state ? 2.13 : 2.67;
+  const span = state ? 4 : 3;
+  if (gate) {
+    // 中部真实通行，基座和门墩只在两侧。
+    for (const side of [-1, 1]) {
+      stone.push([side * 6, 0.38, 0, 7, 0.76, 8.6]);
+      walls.push([side * 6, 2.05, 0, 6.7, 2.6, 6.4]);
+    }
+  } else {
+    stone.push([0, floor * 0.24, 0, 18.6, floor * 0.48, 9.7],
+      [0, floor * 0.74, 0, 17.8, floor * 0.52, 9.1],
+      [0, floor, 0, 18, 0.12, 9.4]);
+    for (const x of state ? [-5.6, 0, 5.6] : [0]) {
+      for (let i = 0; i < 6; i++) {
+        const height = (i + 1) * floor / 6;
+        stone.push([x, height / 2, 5.03 + (5 - i) * 0.24, state ? 3.3 : 5, height, 0.26]);
+      }
+    }
+  }
+  for (const z of [-3.8, 3.8]) {
+    for (let i = -span; i <= span; i++) {
+      if (gate && i === 0) continue;
+      const x = i * bay;
+      columns.push([x, eave - 0.69, z]);
+      stone.push([x, floor + 0.06, z, 0.6, 0.12, 0.64]);
+      capitals.push([x, eave - 0.61, z, 0.74, 0.23, 0.82],
+        [x, eave - 0.39, z, 1.02, 0.20, 1.18]);
+    }
+    frames.push([0, eave - 0.16, z, 17.9, 0.3, 0.58]);
+  }
+  for (const x of [-span * bay, span * bay]) {
+    columns.push([x, eave - 0.69, 0]);
+    frames.push([x, eave - 0.16, 0, 0.56, 0.3, 7.8]);
+  }
+  if (!gate) {
+    const height = eave - floor - 0.48;
+    const mid = floor + height / 2;
+    walls.push([0, mid, -3.05, 15, height, 0.28]);
+    for (const side of [-1, 1]) {
+      walls.push([side * 7.45, mid, -0.55, 0.28, height, 5.2],
+        [side * 4.56, mid, 2.08, 5.8, height, 0.25]);
+      frames.push([side * 1.62, mid, 2.17, 0.22, height, 0.32]);
+      for (const x of [3.1, 5.7]) {
+        shadow.push([x * side, mid + 0.32, 2.22, 1.53, 1.13, 0.08]);
+        for (const dx of [-0.48, 0, 0.48]) {
+          frames.push([x * side + dx, mid + 0.32, 2.29, 0.07, 1.15, 0.10]);
+        }
+      }
+    }
+    shadow.push([0, mid, -1.8, 3.4, height, 0.2]);
+  }
+  const rise = state ? 1.38 : gate ? 0.95 : 1.02;
+  const roof = roofGeometry(state ? 'hip' : 'hipgable').scale(1, rise, 1)
+    .translate(0, eave, 0);
+  const parts: PrototypePart[] = [
+    { geometry: boxes(stone), material: 'stone' },
+    { geometry: merge([posts(columns, state ? 0.22 : 0.20, floor + 0.12), boxes(frames)]),
+      material: 'vermilion', tint: '#dfbd9f' },
+    { geometry: boxes(walls), material: gate ? 'earth' : 'wall' },
+    { geometry: boxes(capitals), material: 'wood' },
+    { geometry: merge([roof, boxes([[0, eave + 3.5 * rise, 0,
+      state ? 11 : 15.5, 0.24, 0.35]])]), material: 'roof', tint: '#a9b4ac' },
+  ];
+  if (shadow.length) parts.push({ geometry: boxes(shadow), material: 'dark' });
+  // 批次宽深约定为 18×11；将设计坐标的 20×13 屋盖归一后再实例化。
+  for (const { geometry } of parts) {
+    geometry.scale(18 / 20, 1, 11 / 13);
+    geometry.computeBoundingSphere();
+  }
+  palaceForms.set(form, parts);
+  return parts;
+}
+
 // 依据复原论述区分主体十一间与周匝副阶；归一化尺寸不是遗址测绘坐标。
 export const HANYUAN_LAYOUT = {
   coreBays: 11, depthBays: 4, outerBays: 13, outerDepthBays: 6,

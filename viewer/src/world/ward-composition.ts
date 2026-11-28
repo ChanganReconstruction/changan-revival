@@ -2,7 +2,7 @@ import { districtFor } from './districts.ts';
 import { random, type Ward } from './layout.ts';
 import type { LandmarkKit } from './landmark-kit.ts';
 import { templeHallPrototype, type PrototypePart } from './architecture.ts';
-import { APPEARANCE_SAMPLES, proportionPrototype, districtAppearance } from './appearance.ts';
+import { APPEARANCE_SAMPLES, proportionPrototype, tintWardPrototype } from './appearance.ts';
 import { PAGODAS } from './temple-pagodas.ts';
 import { functionalPrototype, type BuildingForm } from './functional-architecture.ts';
 
@@ -515,12 +515,8 @@ export function buildWardInterior(kit: LandmarkKit, ward: Ward): void {
         .filter((part) => sample || !part.detail);
       variants.set(variant, tuned);
     }
-    const colors = districtAppearance(ward.id, plan.family, house.x, house.z);
     // 全城应用验证过的墙檐比例，背景不再生成柱梁；颜色只写实例属性。
-    const parts = tuned.map((part) => ({ ...part, tint: part.material === 'roof'
-      ? colors.roof : part.material === 'wall' || part.material === 'facade'
-        ? colors.wall : part.material === 'wood' || part.material === 'vermilion'
-          ? colors.wood : undefined }));
+    const parts = tintWardPrototype(tuned, ward.id, plan.family, house.x, house.z);
     kit.batches.hall(parts, house.x, house.z,
       width, depth, height, house.rotation, elevation, '#ffffff');
   }

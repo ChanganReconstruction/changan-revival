@@ -69,6 +69,15 @@ export function districtAppearance(id: string, family: string, x: number, z: num
   };
 }
 
+export function tintWardPrototype(parts: PrototypePart[], id: string, family: string,
+  x: number, z: number): PrototypePart[] {
+  const colors = districtAppearance(id, family, x, z);
+  return parts.map((part) => ({ ...part, tint: part.material === 'roof'
+    ? colors.roof : part.material === 'wall' || part.material === 'facade'
+      ? colors.wall : part.material === 'wood' || part.material === 'vermilion'
+        ? colors.wood : undefined }));
+}
+
 // 只在同一灰瓦色域内区分冷灰、旧瓦暖灰与青灰；不是唐代屋瓦考古定色。
 export function sampleRoofTint(x: number, z: number): string {
   const index = Math.abs(Math.round(x * 17 + z * 31)) % 4;

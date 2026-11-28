@@ -8,7 +8,8 @@ import { OutputPass } from 'three/addons/postprocessing/OutputPass.js';
 import { createMaterials } from './render/materials';
 import { Environment, type Hour } from './render/environment';
 import { createCity } from './world/city';
-import { CLASSIC_VIEWS, VIEWS, type Ward } from './world/layout';
+import { CITY, CLASSIC_VIEWS, VIEWS, type Ward } from './world/layout';
+import { DAMING_WALL, DANFENG_AVENUE, IMPERIAL, NORTHERN_WARDS, TAIJI } from './world/northern-layout';
 import { makeSceneLabels } from './world/landmark-labels';
 import { districtFor } from './world/districts';
 import { parseRenderScale, renderDimensions, type RenderScale } from './render/resolution';
@@ -482,6 +483,26 @@ async function start() {
     });
   }
   const svgNS = 'http://www.w3.org/2000/svg';
+  const { west, east, north, south } = CITY;
+  const palace = DAMING_WALL;
+  $('#map-city-wall').setAttribute('d', `M${west} ${north}H${palace.west}V${palace.north}`
+    + `H${palace.east}V${north}H${east}V${south}H${west}Z M${palace.west} ${north}H${palace.east}`);
+  $('#map-palace-axes').setAttribute('d', `M${TAIJI.west} ${TAIJI.north}V${TAIJI.south}`
+    + `H${TAIJI.east}V${TAIJI.north} M${IMPERIAL.west} ${IMPERIAL.north}H${IMPERIAL.east}`
+    + `V${IMPERIAL.south}H${IMPERIAL.west}Z M0 ${IMPERIAL.south}V${south}`
+    + ` M${DANFENG_AVENUE.x} ${DANFENG_AVENUE.north}V${DANFENG_AVENUE.south}`);
+  for (const ward of NORTHERN_WARDS) {
+    const rect = document.createElementNS(svgNS, 'rect');
+    rect.setAttribute('x', String(ward.x - ward.width / 2));
+    rect.setAttribute('y', String(ward.z - ward.depth / 2));
+    rect.setAttribute('width', String(ward.width));
+    rect.setAttribute('height', String(ward.depth));
+    rect.setAttribute('class', 'map-ward map-northern');
+    const title = document.createElementNS(svgNS, 'title');
+    title.textContent = ward.name || '坊区（示意）';
+    rect.append(title);
+    $('#map-northern-wards').append(rect);
+  }
   for (const ward of city.wards) {
     const rect = document.createElementNS(svgNS, 'rect');
     rect.setAttribute('x', String(ward.x - ward.width / 2));

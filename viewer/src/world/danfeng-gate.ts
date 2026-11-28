@@ -2,10 +2,11 @@ import * as THREE from 'three';
 import { mergeGeometries } from 'three/addons/utils/BufferGeometryUtils.js';
 import { boxGeometry, roofGeometry, type PrototypePart } from './architecture.ts';
 import type { LandmarkKit } from './landmark-kit.ts';
+import { DANFENG_AVENUE } from './northern-layout.ts';
 
 // 五门道与墩台长宽比来自考古综述；楼身层高、柱网、屋盖是可替换的推定层。
 export const DANFENG_LAYOUT = {
-  x: 520, z: -744, floor: 15,
+  x: DANFENG_AVENUE.x, z: DANFENG_AVENUE.north, floor: 15,
   doorCenters: [-40, -20, 0, 20, 40],
   pierCenters: [-50, -30, -10, 10, 30, 50],
   pierWidth: 8, depth: 48, passageHeight: 12,

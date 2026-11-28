@@ -1,5 +1,7 @@
 import { chromium } from 'playwright';
 import { mkdir, writeFile } from 'node:fs/promises';
+import { resolve, sep } from 'node:path';
+import { fileURLToPath } from 'node:url';
 
 const output = new URL(process.env.OUTPUT || '../artifacts/rebuild/', import.meta.url);
 await mkdir(output, { recursive: true });
@@ -13,22 +15,48 @@ const errors = [], report = { views: {}, errors };
 page.on('pageerror', (error) => errors.push(error.message));
 page.on('console', (message) => { if (message.type() === 'error') errors.push(message.text()); });
 try {
-  const url = new URL(process.env.BASE_URL || 'http://127.0.0.1:5174');
-  for (const [key, value] of Object.entries({ ui: '0', labels: '0', q: 'medium',
+  const offline = process.env.AERIAL_DIST === '1';
+  const url = new URL(offline ? 'http://viewer.test/' : process.env.BASE_URL || 'http://127.0.0.1:5174');
+  if (offline) {
+    const dist = fileURLToPath(new URL('../dist', import.meta.url));
+    await page.route(`${url.origin}/**`, async (route) => {
+      const pathname = new URL(route.request().url()).pathname;
+      const path = resolve(dist, `.${pathname === '/' ? '/index.html' : pathname}`);
+      if (!path.startsWith(`${dist}${sep}`)) return route.abort();
+      await route.fulfill({ path });
+    });
+  }
+  const labels = process.env.LABELS === '1';
+  for (const [key, value] of Object.entries({ ui: labels ? '1' : '0', labels: labels ? '1' : '0', q: 'medium',
     hour: process.env.HOUR || 'day' })) url.searchParams.set(key, value);
   await page.goto(url.href);
   await page.waitForFunction(() => window.__CHANGAN__?.ready && window.__CHANGAN__.stats.idle);
   await page.addStyleTag({ content: '#restore-ui { display: none !important; }' });
+  if (labels) await page.addStyleTag({ content: '#interface > :not(#labels) { visibility: hidden !important; }' });
   for (const view of (process.env.VIEWS || 'city,plan,palace,taiye,lake').split(',')) {
     const before = await page.evaluate(() => window.__CHANGAN__.stats.renderedFrames);
     await page.evaluate((id) => {
       const api = window.__CHANGAN__;
       api.controls.minPolarAngle = id === 'plan' ? 0.001 : 0.1;
       const details = {
-        hanyuanDetail: [[650, 88, -700], [520, 25, -855]],
-        lindeDetail: [[495, 83, -875], [402, 21, -970]],
-        danfengDetail: [[635, 60, -620], [520, 14, -744]],
-        danfengStreet: [[528, 6, -655], [520, 6, -744]],
+        hanyuanDetail: [[650, 88, -776], [520, 25, -931]],
+        lindeDetail: [[495, 83, -951], [402, 21, -1046]],
+        danfengDetail: [[635, 60, -696], [520, 14, -820]],
+        danfengStreet: [[528, 6, -731], [520, 6, -820]],
+         northernOverview: [[140, 1020, -20], [0, 0, -695]],
+         northwest: [[-750, 420, -244], [-536, 0, -628]],
+         northeast: [[690, 480, -267], [555, 0, -655]],
+         taiji: [[210, 212, -366], [0, 6, -680]],
+         taijiHall: [[91, 49, -546], [0, 17, -649]],
+         taijiComplex: [[117, 145, -868], [-11, 9, -714]],
+         eastPalace: [[248, 88, -550], [178, 12, -658]],
+         taijiGarden: [[-18, 56, -683], [-72, 2, -745]],
+         damingGarden: [[374, 115, -1137], [535, 13, -1180]],
+         imperial: [[153, 190, -202], [0, 4, -410]],
+         imperialContext: [[-275, 315, -115], [-20, 4, -344]],
+         imperialCourt: [[101, 39, -309], [142, 5, -355]],
+         xingqing: [[960, 175, -24], [750, 0, -183]],
+         xingqingGarden: [[820, 67, -86], [747, 3, -161]],
         huaeDetail: [[798, 54, -32], [725, 16, -104]],
         huaeShore: [[674, 26, -166], [730, 14, -100]],
         inletOverview: [[940, 230, 970], [725, 0, 733]],
