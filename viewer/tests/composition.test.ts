@@ -4,6 +4,7 @@ import { districtFor } from '../src/world/districts.ts';
 import { planWardGround } from '../src/world/ground-cover.ts';
 import { makeWards } from '../src/world/layout.ts';
 import { buildWardInterior, planWard } from '../src/world/ward-composition.ts';
+import { PAGODAS } from '../src/world/temple-pagodas.ts';
 
 const intersects = (a: { x: number; z: number; width: number; depth: number },
   b: { x: number; z: number; width: number; depth: number }) =>
@@ -58,13 +59,47 @@ test('寺观、官署与府第各有三种拓扑并明确留出院落', () => {
       }
     }
   }
-  for (const id of ['E1-5', 'W1-5']) {
-    const ward = makeWards().find((candidate) => candidate.id === id)!;
+});
+
+test('全城寺观在屋顶轮廓和院落组织上各有区别', () => {
+  const wards = makeWards();
+  const wardFor = (id: string) => wards.find((ward) => ward.id === id)!;
+  const axial = planWard(wardFor('E1-5'));
+  const paired = planWard(wardFor('W1-5'));
+  const highland = planWard(wardFor('E5-6'));
+  const enclosed = planWard(wardFor('E1-2'));
+  assert.equal(axial.topology, 'temple-axial');
+  assert.equal(axial.houses.filter((house) => house.roof === 'tower').length, 2);
+  assert.equal(paired.topology, 'temple-paired');
+  assert.equal(paired.courtyards.length, 2);
+  assert.ok(paired.courtyards[0].x < wardFor('W1-5').x && paired.courtyards[1].x > wardFor('W1-5').x);
+  assert.equal(highland.houses.filter((house) => house.roof === 'pavilion').length, 2);
+  assert.equal(enclosed.houses.filter((house) => house.rotation !== 0).length, 2);
+  const generic = wards.filter((ward) => districtFor(ward).feature.startsWith('寺观廊院'));
+  assert.ok(new Set(generic.map((ward) => planWard(ward).topology)).size >= 3);
+  for (const ward of wards.filter((entry) => districtFor(entry).family === 'temple')) {
     const plan = planWard(ward);
-    assert.equal(plan.topology, 'temple-full-axis');
-    assert.ok(plan.houses.length >= 5 && plan.houses.length <= 8);
-    assert.ok(plan.greenplots.length >= 2);
+    assert.ok(plan.roads.some((road) => road.x === ward.x
+      && road.z + road.depth / 2 > ward.z + ward.depth / 2), `${ward.id} 入口接通外坊门`);
+    assert.deepEqual(planWardGround(ward), []);
   }
+});
+
+test('大慈恩寺开敞、小雁塔院收拢，现有塔位与净空保留', () => {
+  const wards = makeWards();
+  const plans = (['dayan', 'xiaoyan'] as const).map((kind) => {
+    const p = PAGODAS[kind];
+    const plan = planWard(wards.find((ward) => ward.x === p.x && ward.z === p.z)!);
+    assert.equal(plan.topology, `temple-${kind}`);
+    const [keepout] = plan.keepouts;
+    assert.deepEqual(keepout, { x: p.x, z: p.z, width: p.plinth + 2, depth: p.plinth + 2 });
+    assert.ok(plan.houses.every((house) => !intersects(house, keepout) && house.roof !== 'tower'));
+    assert.ok(plan.trees.every((tree) => !intersects({ ...tree, width: 5, depth: 5 }, keepout)));
+    return plan;
+  });
+  const [dayan, xiaoyan] = plans;
+  assert.ok(dayan.courtyards[0].width > xiaoyan.courtyards[0].width * 1.8);
+  assert.ok(xiaoyan.greenplots.length > dayan.greenplots.length);
 });
 
 test('坊门道路由 builder 实际提交，连续接入坊内主巷', () => {

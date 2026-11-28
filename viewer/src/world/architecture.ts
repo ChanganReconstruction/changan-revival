@@ -166,6 +166,62 @@ export function hallPrototype(kind: RoofKind, formal = false): PrototypePart[] {
   ];
 }
 
+// 大兴善寺展示样板：开敞的前檐和后退的殿身分开做，不使用民居门窗图集。
+export function templeHallPrototype(): PrototypePart[] {
+  const stone = [boxGeometry(0, 0.42, 0, 16.8, 0.84, 7.5),
+    boxGeometry(0, 0.9, 0, 17.1, 0.14, 7.7)];
+  for (let step = 0; step < 4; step++) {
+    const height = (step + 1) * 0.24;
+    stone.push(boxGeometry(0, height / 2, 5.27 - step * 0.45, 5.4, height, 0.46));
+  }
+  const frame: THREE.BufferGeometry[] = [];
+  const brackets: THREE.BufferGeometry[] = [];
+  const column = (x: number, z: number) => {
+    stone.push(boxGeometry(x, 1.035, z, 0.64, 0.13, 0.64));
+    frame.push(new THREE.CylinderGeometry(0.2, 0.26, 3, 8).translate(x, 2.6, z));
+    brackets.push(boxGeometry(x, 4.12, z, 0.65, 0.22, 0.61),
+      boxGeometry(x, 4.31, z, 0.92, 0.18, 0.82));
+  };
+  for (const z of [-2.9, 2.9]) {
+    for (const x of [-7.7, -5.1, -2.05, 2.05, 5.1, 7.7]) column(x, z);
+    frame.push(boxGeometry(0, 4.02, z, 15.8, 0.26, 0.33));
+  }
+  for (const x of [-7.7, 7.7]) {
+    column(x, 0);
+    frame.push(boxGeometry(x, 4.02, 0, 0.33, 0.26, 5.8));
+  }
+  brackets.push(boxGeometry(0, 4.43, 0, 17.5, 0.2, 8.6));
+
+  const walls = [boxGeometry(0, 2.64, -2.55, 14.6, 3.34, 0.25),
+    boxGeometry(0, 3.87, 0.62, 3.7, 0.88, 0.26)];
+  for (const sign of [-1, 1]) {
+    walls.push(boxGeometry(sign * 7.15, 2.64, -0.96, 0.25, 3.34, 3.25),
+      boxGeometry(sign * 4.57, 2.64, 0.62, 5.44, 3.34, 0.26));
+    frame.push(boxGeometry(sign * 1.82, 2.22, 0.79, 0.23, 2.5, 0.2));
+  }
+  frame.push(boxGeometry(0, 3.46, 0.79, 3.86, 0.24, 0.2));
+  // 同一屋面拓扑另调挑檐与折坡，正面拉宽，角端仅作小幅起翘。
+  const roof = roofGeometry('hip');
+  const positions = roof.getAttribute('position');
+  for (let i = 0; i < positions.count; i++) {
+    const x = positions.getX(i);
+    const y = positions.getY(i);
+    const lift = y === 0 ? 0.32 * (Math.abs(x) / 10) ** 6 : 0;
+    positions.setXYZ(i, x * 0.9, 4.52 + (y > 1.8 && y < 2 ? 1.36 : y * 0.83) + lift,
+      positions.getZ(i) * 0.83);
+  }
+  roof.computeVertexNormals();
+  return [
+    { geometry: merged(stone), material: 'stone', tint: '#d7c9b5' },
+    { geometry: merged(walls), material: 'wall', tint: '#c1aa8e' },
+    { geometry: merged(frame), material: 'vermilion', tint: '#e9c6a7' },
+    { geometry: merged(brackets), material: 'wood', tint: '#c4a989' },
+    { geometry: boxGeometry(0, 2.22, -1.75, 3.9, 2.5, 0.18), material: 'dark' },
+    { geometry: merged([roof, boxGeometry(0, 7.49, 0, 10, 0.24, 0.25)]),
+      material: 'roof', tint: '#b0a9a0' },
+  ];
+}
+
 // 下层只保留环形挑檐，二层从开口中起建，禁止把完整屋顶塞进上层墙身。
 export function towerPrototype(kind: RoofKind = 'pyramid'): PrototypePart[] {
   const lower = hallPrototype(kind, true);

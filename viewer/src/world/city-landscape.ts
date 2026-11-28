@@ -4,6 +4,7 @@ import { createLakeGeometry, createShoreGeometry, createIslandGeometry } from '.
 
 import { QUJIANG_OUTLINE } from './water-layout';
 import { createQujiangInlet, inletMouthCut } from './qujiang-inlet';
+import { functionalPrototype } from './functional-architecture.ts';
 export { nearQujiang } from './water-layout';
 
 export function createQujiang(kit: LandmarkKit, material: THREE.Material): THREE.Mesh {
@@ -23,14 +24,14 @@ export function createQujiang(kit: LandmarkKit, material: THREE.Material): THREE
   // 东北湾设异形小岛，亭、堆山和西南大湾留白共同打破规整对称。
   batches.add(createIslandGeometry(), 'earth', 728, 0.3, 550, 0.62, 0.65, 0.72, 0.4);
   block('stone', 729, 4.04, 550, 7, 0.45, 6);
-  batches.hall(prototypes.pavilion, 729, 550, 8, 6, 0.62, 0.18, 4.3);
+  batches.hall(functionalPrototype('pavilion'), 729, 550, 8, 6, 0.8, 0.18, 4.3);
   tree(720, 554, 0.65, 1.4);
   tree(736, 543, 0.62, 1.1);
   // 紫云楼与临水厅不等距排队，沿北岸布置疏密与进退。
   block('stone', 645, 1.15, 492, 33, 2.2, 24);
   batches.hall(prototypes.tower, 645, 492, 29, 20, 1.25, 0, 2.3);
-  batches.hall(prototypes.hipgable, 578, 514, 24, 13, 1.1, -0.3);
-  batches.hall(prototypes.gable, 789, 506, 36, 10, 0.7, 0.2);
+  batches.hall(functionalPrototype('pavilion'), 578, 514, 24, 13, 1.1, -0.3);
+  batches.hall(functionalPrototype('pavilion'), 789, 506, 36, 10, 0.7, 0.2);
   for (const [x, z, size] of [[569, 569, 1.1], [620, 681, 1.4],
     [779, 681, 1.2], [678, 666, 0.95], [753, 489, 1.5], [602, 489, 1.25]]) {
     tree(x, z, size);

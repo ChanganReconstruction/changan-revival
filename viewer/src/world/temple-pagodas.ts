@@ -6,9 +6,9 @@ import type { LandmarkKit } from './landmark-kit';
 export type PagodaKind = 'dayan' | 'xiaoyan';
 export interface PagodaLevel { y: number; height: number; bottom: number; top: number }
 export const PAGODAS = {
-  dayan: { x: 474, z: 632, floors: 7, height: 66, width: 22,
+  dayan: { x: 474, z: 632, floors: 7, height: 66, width: 22, plinth: 30,
     note: '七层识别方案；武周至五代层数有异说，不作盛唐实测断言' },
-  xiaoyan: { x: 80, z: -4, floors: 15, height: 48, width: 15,
+  xiaoyan: { x: 80, z: -4, floors: 15, height: 48, width: 15, plinth: 24,
     note: '原十五层密檐轮廓；总高、间距与刹顶艺术处理' },
 } as const;
 
@@ -115,7 +115,7 @@ export function pagodaPrototype(kind: PagodaKind): PrototypePart[] {
 export function createTemplePagodas(kit: LandmarkKit): void {
   for (const kind of ['dayan', 'xiaoyan'] as const) {
     const p = PAGODAS[kind];
-    kit.block('paving', p.x, 0.2, p.z, 68, 0.4, 76);
+    kit.block('paving', p.x, 0.26, p.z, p.plinth, 0.42, p.plinth);
     for (const part of pagodaPrototype(kind)) {
       kit.batches.add(part.geometry, part.material, p.x, 0, p.z,
         1, 1, 1, 0, part.tint);

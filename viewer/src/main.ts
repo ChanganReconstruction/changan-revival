@@ -8,7 +8,8 @@ import { OutputPass } from 'three/addons/postprocessing/OutputPass.js';
 import { createMaterials } from './render/materials';
 import { Environment, type Hour } from './render/environment';
 import { createCity } from './world/city';
-import { CLASSIC_VIEWS, PLACES, VIEWS, type Ward } from './world/layout';
+import { CLASSIC_VIEWS, VIEWS, type Ward } from './world/layout';
+import { makeSceneLabels } from './world/landmark-labels';
 import { districtFor } from './world/districts';
 import { parseRenderScale, renderDimensions, type RenderScale } from './render/resolution';
 import { PAGODAS } from './world/temple-pagodas';
@@ -378,9 +379,10 @@ async function start() {
   });
 
   const labelRoot = $('#labels');
-  const labels = PLACES.map((place) => {
+  const labels = makeSceneLabels(city.wards).map((place) => {
     const element = document.createElement('span');
     element.className = 'place-label';
+    element.classList.toggle('place-label-detail', place.near !== undefined);
     element.dataset.place = place.id;
     let action: HTMLButtonElement | undefined;
     if (place.id === 'xiaoyan') {
@@ -406,32 +408,53 @@ async function start() {
       element.setAttribute('aria-hidden', 'true');
     }
     labelRoot.append(element);
-    return { ...place, element, action, position: new THREE.Vector3(place.x, place.y, place.z) };
-  }).sort((a, b) => Number(Boolean(b.action)) - Number(Boolean(a.action)));
+    return {
+      ...place, element, action, position: new THREE.Vector3(place.x, place.y, place.z),
+      width: place.name.length * (place.near ? 14 : 15) + 14,
+    };
+  });
+  const groupLabels = new Set(['taiji', 'imperial', 'daming', 'east', 'west', 'xingqing']);
   const projected = new THREE.Vector3();
   const direction = new THREE.Vector3();
   function updateLabels() {
     labelRoot.hidden = !labelsEnabled;
     if (!labelsEnabled) return;
-    const occupied: { x: number; y: number }[] = [];
+    const occupied: { x: number; y: number; width: number; near?: number }[] = [];
+    const candidates: { label: typeof labels[number]; x: number; y: number; distance: number }[] = [];
+    const labelRange = Math.max(250, camera.position.distanceTo(controls.target) * 4);
+    const detailBottom = innerHeight - (innerWidth <= 600 ? 175 : 145);
     for (const label of labels) {
+      const distance = camera.position.distanceTo(label.position);
+      if (distance >= Math.min(labelRange, label.near ?? Infinity)
+        || (groupLabels.has(label.id) && distance < (label.id === 'daming' ? 870 : 425))
+        || (distance >= 2600 && label.rank !== 1 && !label.action)
+        || (distance <= 100 && label.id === 'zhuque')) continue;
       projected.copy(label.position).project(camera);
       const x = (projected.x * 0.5 + 0.5) * innerWidth;
       const y = (-projected.y * 0.5 + 0.5) * innerHeight - 9;
-      const distance = camera.position.distanceTo(label.position);
-      const overlaps = occupied.some((other) => Math.abs(other.x - x) < 78 && Math.abs(other.y - y) < 47);
-      const labelRange = Math.max(250, camera.position.distanceTo(controls.target) * 4);
-      const visible = distance < labelRange && projected.z < 1 && projected.z > -1
-        && x > 40 && x < innerWidth - 40
-        && y > 150 && y < innerHeight - 210 && !overlaps
-        && (distance < 2600 || label.rank === 1 || label.action) && (distance > 100 || label.id !== 'zhuque');
-      label.element.style.opacity = visible ? '1' : '0';
-      if (label.action) label.action.hidden = !visible;
-      if (visible) {
-        label.element.style.left = `${x}px`;
-        label.element.style.top = `${y}px`;
-        occupied.push({ x, y });
+      const margin = Math.max(40, label.width / 2 + 5);
+      if (projected.z < 1 && projected.z > -1 && x > margin && x < innerWidth - margin
+        && y > (label.near ? 126 : 150)
+        && y < (label.near ? detailBottom : innerHeight - 210)) {
+        candidates.push({ label, x, y, distance });
       }
+    }
+    // 小雁塔的互动入口优先；近景中再按建筑重要程度与距离安排标注。
+    candidates.sort((a, b) => Number(Boolean(b.label.action)) - Number(Boolean(a.label.action))
+      || (a.label.rank - b.label.rank) || a.distance - b.distance);
+    const visible = new Set<string>();
+    for (const { label, x, y } of candidates) {
+      if (occupied.some((other) => Math.abs(other.x - x) < (other.width + label.width) / 2 + 5
+        && Math.abs(other.y - y) < (other.near && label.near ? 34 : 47))) continue;
+      label.element.style.left = `${x}px`;
+      label.element.style.top = `${y}px`;
+      occupied.push({ x, y, width: label.width, near: label.near });
+      visible.add(label.id);
+    }
+    for (const label of labels) {
+      const show = visible.has(label.id);
+      label.element.classList.toggle('place-label-visible', show);
+      if (label.action) label.action.hidden = !show;
     }
   }
 

@@ -51,7 +51,7 @@ button:focus-visible, a:focus-visible, select:focus-visible {
 }
 .compass { position: absolute; right: 42px; top: 145px; width: 34px; text-align: center; }
 .compass span { font-size: 10px; letter-spacing: 0; }
-.compass div { font: 40px Georgia, serif; color: var(--red); line-height: 1.4; }
+.compass div { font: 40px Georgia, "Changan Serif", serif; color: var(--red); line-height: 1.4; }
 .compass small { font-size: 8px; opacity: .5; }
 .view-story {
   position: absolute; left: 40px; bottom: 218px; width: 280px;
@@ -64,7 +64,7 @@ button:focus-visible, a:focus-visible, select:focus-visible {
 .atlas { isolation: isolate; }
 body.night .view-story::before, body.night .atlas::before { background: #14262bd6; }
 .eyebrow { display: flex; align-items: center; gap: 13px; font-size: 10px; letter-spacing: 2px; }
-.eyebrow > span:first-child { color: var(--red); font: italic 17px Georgia, serif; }
+.eyebrow > span:first-child { color: var(--red); font: italic 17px Georgia, "Changan Serif", serif; }
 .short-rule { width: 30px; height: 1px; background: var(--red); opacity: .7; }
 .view-story h1 { font-size: 39px; letter-spacing: 8px; font-weight: 500; margin: 17px 0 8px; }
 .poem { font-size: 12px; letter-spacing: 3px; margin: 0 0 20px; }
@@ -123,7 +123,7 @@ select { background: transparent; border: 0; outline: none; font-size: 10px; cur
   content: ""; position: absolute; right: 0; top: 23px; bottom: 23px; width: 1px; background: var(--line);
 }
 .view-nav button:last-child::after { display: none; }
-.view-nav .nav-number { font: italic 11px Georgia, serif; opacity: .45; }
+.view-nav .nav-number { font: italic 11px Georgia, "Changan Serif", serif; opacity: .45; }
 .view-nav strong { font-size: 13px; letter-spacing: 2px; font-weight: 500; display: block; }
 .view-nav small { display: block; font-size: 8px; color: #7c826c; margin-top: 7px; letter-spacing: 1.2px; }
 .view-nav button.active { color: var(--red); }
@@ -133,14 +133,20 @@ select { background: transparent; border: 0; outline: none; font-size: 10px; cur
 .view-nav button:hover { background: #ffffff35; }
 .bottomline { display: flex; justify-content: space-between; align-items: center; margin-top: 14px; font-size: 8px; letter-spacing: 1px; }
 .bottomline b { margin: 0 7px; font-weight: 400; opacity: .5; }
-.bottomline button { font: 8px Arial, sans-serif; letter-spacing: 1.6px; }
+.bottomline button { font: 8px Arial, "Changan Serif", sans-serif; letter-spacing: 1.6px; }
 .bottomline button span { margin-left: 7px; }
 .center-caption { color: #68735c; font-size: 9px; }
 #labels { position: absolute; inset: 0; pointer-events: none; overflow: hidden; }
 .place-label {
   position: absolute; font-size: 12px; letter-spacing: 3px; white-space: nowrap;
   color: #f8f0d5; text-shadow: 0 1px 4px #273a2e, 0 0 12px #273a2e88;
-  transform: translate(-50%, -100%); padding-bottom: 30px; transition: opacity .3s;
+  transform: translate(-50%, -100%); padding-bottom: 30px; opacity: 0; transition: opacity .3s;
+}
+.place-label-visible { opacity: 1; }
+.place-label-detail {
+  font-size: 12px; letter-spacing: 1px; padding: 3px 8px;
+  border: 1px solid #f2dfad85; border-radius: 3px; background: #253b31e8;
+  transform: translate(-50%, calc(-100% - 10px));
 }
 .place-label-action {
   pointer-events: auto; font: inherit; letter-spacing: inherit; text-shadow: inherit;
@@ -155,6 +161,8 @@ select { background: transparent; border: 0; outline: none; font-size: 10px; cur
   content: ""; position: absolute; width: 3px; height: 3px; border-radius: 50%;
   left: calc(50% - 1px); bottom: 0; background: #f8f0d5;
 }
+.place-label-detail::after { height: 9px; bottom: -10px; }
+.place-label-detail::before { bottom: -11px; }
 #stats {
   position: absolute; top: 120px; left: 38px; font: 10px/1.8 monospace;
   background: #f3eddddf; padding: 12px 16px; border: 1px solid var(--line); min-width: 230px;

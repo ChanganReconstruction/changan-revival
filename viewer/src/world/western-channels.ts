@@ -112,6 +112,11 @@ export function createWesternChannels(kit: LandmarkKit): void {
       kit.block('wood', channel.x, WESTERN_BRIDGE_TOP - 0.15, z, half * 2, 0.3, 14);
       for (const side of [-1, 1]) {
         kit.block('stone', channel.x + side * (half + 0.4), 0.65, z, 0.6, 2.1, 14);
+        const edge = z + side * 6.55;
+        kit.block('wood', channel.x, WESTERN_BRIDGE_TOP + 0.85, edge, half * 2, 0.18, 0.22);
+        for (const dx of [-half + 0.25, 0, half - 0.25]) {
+          kit.block('wood', channel.x + dx, WESTERN_BRIDGE_TOP + 0.48, edge, 0.24, 0.96, 0.28);
+        }
       }
     }
     // 两端收在短覆涵下，表示省略的上下游；不把断头渠说成已经接到水源。

@@ -1,5 +1,6 @@
 import * as THREE from 'three';
 import type { LandmarkKit } from './landmark-kit';
+import { functionalPrototype } from './functional-architecture.ts';
 
 // 街景只向统一批次提交共享原型，避免逐件 Mesh 与专属材质。
 export function createStreetScenes(kit: LandmarkKit): void {
@@ -11,8 +12,6 @@ export function createStreetScenes(kit: LandmarkKit): void {
   const neckGeo = new THREE.CylinderGeometry(0.16, 0.24, 1, 8);
   neckGeo.rotateZ(-0.48);
   const ropeGeo = new THREE.CylinderGeometry(0.035, 0.035, 1, 5);
-  const drumGeo = new THREE.CylinderGeometry(0.7, 0.7, 0.55, 8);
-  drumGeo.rotateZ(Math.PI / 2);
   // 横街广场留在朱雀大街轴线两侧，中央通行带保持完整。
   batches.add(box, 'paving', 0, 0.06, -268,
     340, 0.12, 28, 0, '#d7c6a4');
@@ -20,7 +19,7 @@ export function createStreetScenes(kit: LandmarkKit): void {
   for (const x of [-154, 154]) {
     batches.add(box, 'stone', x, 0.3, -268,
       8, 0.6, 8);
-    batches.hall(kit.prototypes.pavilion, x, -268, 9, 8, 0.55);
+    batches.hall(functionalPrototype('pavilion'), x, -268, 9, 8, 0.68, 0, 0.6);
     batches.add(box, 'vermilion', x, 4, -268, 0.14, 8, 0.14);
     batches.add(ico, 'gold', x, 8.3, -268, 0.28, 0.45, 0.28);
   }
@@ -64,8 +63,7 @@ export function createStreetScenes(kit: LandmarkKit): void {
     batches.add(box, 'wood', x, 2.1, 464,
       4.2, 0.35, 0.35, x < 80 ? -0.38 : 0.38, '#7a4930');
   }
-  batches.add(drumGeo, 'wood', 104, 5, 465, 1, 1, 1, 0, '#984b34');
-  batches.hall(kit.prototypes.tower, 112, 458, 11, 10, 0.82);
+  batches.hall(functionalPrototype('drum'), 112, 458, 11, 10, 1.12);
   for (const x of [68, 92]) {
     batches.add(box, 'wood', x, 3, 464, 0.14, 6, 0.14);
     batches.add(ico, 'lamp', x, 6.1, 464, 0.42, 0.48, 0.42);

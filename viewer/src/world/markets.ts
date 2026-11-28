@@ -1,6 +1,7 @@
 import { random } from './layout.ts';
 import { createCaoStorage } from './cao-storage.ts';
 import type { LandmarkKit } from './landmark-kit';
+import { functionalPrototype } from './functional-architecture.ts';
 
 export function createMarkets(kit: LandmarkKit): void {
   const { block, batches, prototypes } = kit;
@@ -30,22 +31,30 @@ export function createMarkets(kit: LandmarkKit): void {
       const cx = x + col * 40, cz = z + row * 64.6;
       // 每个区块采用铺前、货院、后栈组合。东西市的院深与铺面尺度不同。
       const frontages = east ? [14, 12] : [10, 9, 9];
+      const cloth = east ? '#a6afa1' : row % 2 ? '#a07c59' : '#c7ad83';
+      const shop = functionalPrototype('shop').map((part) =>
+        part.material === 'cloth' ? { ...part, tint: cloth } : part);
       let cursor = -14;
       for (const width of frontages) {
         for (const edge of [-1, 1]) {
           const hx = cx + cursor + width / 2;
-          batches.hall(east && col === 1 ? prototypes.hipgable : prototypes.gable,
-            hx, cz + edge * 21, width - 1, 7 + rng() * 3, 0.65 + rng() * 0.33,
-            0, 0.3, east ? '#e4d6bf' : '#c8b79d');
-          block('cloth', hx, 3.1, cz + edge * 15, width - 1, 0.1, 3,
-            0, east ? '#a6afa1' : row % 2 ? '#a07c59' : '#c7ad83');
+          batches.hall(shop, hx, cz + edge * 21, width - 1, 7 + rng() * 3, 0.65 + rng() * 0.33,
+            edge > 0 ? 0 : Math.PI, 0.3, east ? '#e4d6bf' : '#c8b79d');
         }
         cursor += width;
       }
       if (!east && row === 0 && col === -1) {
         createCaoStorage(kit);
-      } else if (row === 0 && col === 0) {
+      } else if (east && row === 0 && col === 0) {
         batches.hall(prototypes.tower, cx, cz, east ? 15 : 12, 10, 1.05, 0, 0.3);
+      } else if (!east && row === 0) {
+        // 中段铺面向外开，后方让出整块卸货坪；窄边置货架和堆箱。
+        block('paving', cx, 0.34, cz, 27, 0.09, 23, 0, '#c4ad88');
+        batches.hall(functionalPrototype('pavilion'), cx - 10, cz, 18, 5, 0.56,
+          Math.PI / 2, 0.32);
+        for (const [dx, dz, h] of [[7, -8, 1.4], [9, -4, 2], [8, 6, 1.25]]) {
+          block('wood', cx + dx, 0.38 + h / 2, cz + dz, 3, h, 3, 0, '#a37f54');
+        }
       } else if (east || row === -1) {
         batches.hall(prototypes.gable, cx - 11, cz, 22, 7, 0.74,
           Math.PI / 2, 0.3);

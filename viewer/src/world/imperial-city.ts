@@ -1,4 +1,5 @@
 import type { LandmarkKit } from './landmark-kit';
+import { functionalPrototype } from './functional-architecture.ts';
 
 export function createImperialCity(kit: LandmarkKit): void {
   const { block, batches, prototypes, perimeter, tree } = kit;
@@ -19,8 +20,12 @@ export function createImperialCity(kit: LandmarkKit): void {
       const x = side * 129, z = -366 - row * 96;
       perimeter(x, z, 184, 78, 3, 'wall', 0, 10);
       block('paving', x, 0.155, z + 4, 132, 0.05, 44, 0, '#d7dedc');
-      batches.hall(prototypes.hipgable, x - side * 13, z - 20,
+      batches.hall(functionalPrototype('office'), x - side * 13, z - 20,
         row === 0 ? 59 : 83, 17, 1.15 + row * 0.2);
+      // 署门退入南院，双边门柱分出正中通路；不把普通住宅横在入口。
+      const entryZ = z + 32;
+      batches.hall(functionalPrototype('passage'), x, entryZ, 15, 8, 0.92);
+      for (const dx of [-13, 13]) block('wall', x + dx, 1.3, entryZ, 10, 2.6, 0.9);
       for (const edge of [-1, 1]) {
         batches.hall(prototypes.gable, x + edge * 75, z, 49, 8, 0.7, Math.PI / 2);
       }

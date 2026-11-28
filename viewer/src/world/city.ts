@@ -22,6 +22,7 @@ import { createWesternChannels, westernRoadLayout, westernRoadCut, westernRoadBo
 import { createAvenueDrains } from './avenue-drains';
 import { createMingdeGate } from './mingde-gate';
 import { createTemplePagodas } from './temple-pagodas';
+import { functionalPrototype } from './functional-architecture.ts';
 
 export function createCity(scene: THREE.Scene, materials: Materials) {
   const batches = new Batches(scene, materials);
@@ -82,15 +83,8 @@ export function createCity(scene: THREE.Scene, materials: Materials) {
 
   const wardShell = (ward: Ward, y = 0) => {
     perimeter(ward.x, ward.z, ward.width, ward.depth, 3.4, 'earth', y);
-    if (ward.id === 'E1-7' || districtFor(ward).southwest) {
-      // 游览坊门只留柱与檐口，门洞内不叠普通住宅的实心墙身。
-      batches.hall(gable.filter((part) => part.material === 'roof'),
-        ward.x, ward.z + ward.depth / 2, 8, 4.5, 0.67, 0, y);
-      for (const dx of [-3.4, 3.4]) for (const dz of [-1.5, 1.5]) {
-        block('wood', ward.x + dx, y + 1.95, ward.z + ward.depth / 2 + dz, 0.35, 3.9, 0.35);
-      }
-    } else batches.hall(gable.filter((part) => !part.detail),
-      ward.x, ward.z + ward.depth / 2, 8, 4.5, 0.78, 0, y);
+    batches.hall(functionalPrototype('passage'),
+      ward.x, ward.z + ward.depth / 2, 8, 4.5, 0.84, 0, y);
     if (y > 0) {
       const steps = Math.min(14, Math.ceil(y / 0.4));
       for (let i = 0; i < steps; i++) {
@@ -202,16 +196,8 @@ export function createCity(scene: THREE.Scene, materials: Materials) {
       }
       continue;
     }
-    // 雁塔寺院预留完整地块，不能先生成住宅再把塔叠在屋顶上。
-    if (ward.id === 'E4-9' || ward.id === 'E1-3') {
-      block('paving', ward.x, 0.11, ward.z, ward.width - 5, 0.15, ward.depth - 5);
-      batches.hall(hip, ward.x, ward.z - 28, 34, 16, 1.3);
-      for (const sign of [-1, 1]) {
-        batches.hall(gable, ward.x + sign * 40, ward.z, 50, 9, 0.9, Math.PI / 2);
-      }
-      continue;
-    }
     buildWardInterior(kit, ward);
+    if (profile.family === 'temple') continue;
     for (let i = 0; i < 3; i++) {
       tree(ward.x - ward.width / 2 + 6 + rng() * 5,
         ward.z - 28 + i * 26, 0.7, elevation);

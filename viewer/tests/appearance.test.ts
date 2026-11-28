@@ -44,7 +44,7 @@ test('屋盖坡度与墙柱高度解耦，两档坡度仍复用墙身和立面',
   assert.ok(Array.from(roof.attributes.normal.array).every(Number.isFinite));
 });
 
-test('全城仅保留两档屋坡与一份基础立面，不按坊族额外拆绘制批次', () => {
+test('通用建筑仅保留两档屋坡与一份基础立面，不按坊族额外拆绘制批次', () => {
   const source = hallPrototype('gable');
   const calls: PrototypePart[][] = [];
   const kit = {
@@ -53,12 +53,14 @@ test('全城仅保留两档屋坡与一份基础立面，不按坊族额外拆�
     block: () => undefined, tree: () => undefined,
   };
   for (const ward of makeWards().filter((item) =>
-    ['W3-9', 'E1-5', 'E3-1', 'E3-2'].includes(item.id))) {
+    ['W3-9', 'E1-5', 'E3-2'].includes(item.id))) {
     buildWardInterior(kit as never, ward);
   }
   assert.ok(calls.length > 30);
-  const roofs = calls.map((parts) => parts.find((part) => part.material === 'roof')!.geometry);
-  const facades = calls.map((parts) => parts.find((part) => part.material === 'facade')!.geometry);
+  const shared = calls.filter((parts) => parts.some((part) => part.material === 'facade'));
+  assert.equal(calls.length - shared.length, 1, '只豁免大兴善寺主殿');
+  const roofs = shared.map((parts) => parts.find((part) => part.material === 'roof')!.geometry);
+  const facades = shared.map((parts) => parts.find((part) => part.material === 'facade')!.geometry);
   assert.ok(new Set(roofs).size <= 2);
   assert.equal(new Set(facades).size, 1);
 });

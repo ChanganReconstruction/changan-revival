@@ -1,16 +1,20 @@
 import { districtFor } from './districts.ts';
 import { random, type Ward } from './layout.ts';
 import type { LandmarkKit } from './landmark-kit.ts';
-import type { PrototypePart } from './architecture.ts';
+import { templeHallPrototype, type PrototypePart } from './architecture.ts';
 import { APPEARANCE_SAMPLES, proportionPrototype, districtAppearance } from './appearance.ts';
+import { PAGODAS } from './temple-pagodas.ts';
+import { functionalPrototype, type BuildingForm } from './functional-architecture.ts';
 
 const appearanceCache = new WeakMap<PrototypePart[], Map<string, PrototypePart[]>>();
+let templeHallParts: PrototypePart[] | undefined;
 
 type Rect = { x: number; z: number; width: number; depth: number };
 type House = Rect & {
   height: number;
   rotation: number;
-  roof: 'gable' | 'hipgable' | 'hip' | 'tower';
+  roof: 'gable' | 'hipgable' | 'hip' | 'pavilion' | 'tower';
+  form?: 'temple-hall' | 'screen' | BuildingForm;
 };
 export interface WardPlan {
   family: string;
@@ -42,7 +46,7 @@ const intersects = (a: Rect, b: Rect): boolean =>
 
 // 先切坊内道路和留白院落，再在明确的住宅地块中落屋，避免庭院被填满。
 export function planWard(ward: Ward): WardPlan {
-  const { family, southwest } = districtFor(ward);
+  const { family, southwest, templeLayout } = districtFor(ward);
   const rng = random(hash(ward.id));
   const w = ward.width - 12;
   const d = ward.depth - 12;
@@ -87,8 +91,11 @@ export function planWard(ward: Ward): WardPlan {
     }
   };
   // 每坊南门x=0有一条实路接入内部主巷；道路允许通到坊墙门洞。
-  const gateZ = ward.depth / 2 + (southwest ? 3 : 0);
-  lane(0, gateZ / 2, 4, gateZ);
+  const academy = ward.id === 'E2-1';
+  const manor = ward.id === 'E3-1';
+  const gateZ = ward.depth / 2 + (southwest || family === 'temple' || academy || manor ? 3 : 0);
+  const approachZ = manor ? 29 : academy ? 24 : family === 'temple' && !southwest ? 25 : 0;
+  lane(0, (approachZ + gateZ) / 2, 4, gateZ - approachZ);
   if (ward.id === 'E2-8') {
     // 曲井台既有巷景保留原坐标，并用短横巷接入坊门主路。
     publicSquares.push({ x: 223, z: 538, width: 14, depth: 12 });
@@ -99,9 +106,9 @@ export function planWard(ward: Ward): WardPlan {
     keepouts.push({ x: 112, z: 458, width: 20, depth: 18 });
   }
   const putHouse = (x: number, z: number, width: number, depth: number,
-    roof: House['roof'] = 'gable', height?: number, rotation = 0) => {
+    roof: House['roof'] = 'gable', height?: number, rotation = 0, form?: House['form']) => {
     const house = { ...rect(ward, x, z, width, depth),
-      height: height ?? 0.78 + rng() * 0.3, rotation, roof };
+      height: height ?? 0.78 + rng() * 0.3, rotation, roof, ...(form && { form }) };
     const inside = house.x - width / 2 >= ward.x - ward.width / 2 + 6
       && house.x + width / 2 <= ward.x + ward.width / 2 - 6
       && house.z - depth / 2 >= ward.z - ward.depth / 2 + 6
@@ -157,7 +164,7 @@ export function planWard(ward: Ward): WardPlan {
         const tree = { x: ward.x + point.x, z: ward.z + point.z, size: 0.7 };
         const box = { ...tree, width: 5, depth: 5 };
         if (Math.abs(point.x) < w / 2 - 4 && Math.abs(point.z) < d / 2 - 4
-          && (!southwest || roads.every((lane) => !intersects(box, lane)))
+          && (!(southwest || family === 'temple') || roads.every((lane) => !intersects(box, lane)))
           && houses.every((house) => !intersects(box, house))
           && courtyards.every((area) => !intersects(box, area))
           && greenplots.every((area) => !intersects(box, area))
@@ -214,53 +221,93 @@ export function planWard(ward: Ward): WardPlan {
   }
 
   if (family === 'temple') {
-    const west = ward.side < 0;
-    const cx = west ? -w * 0.22 : w * 0.22;
-    const bigTemple = ward.id === 'E1-5' || ward.id === 'W1-5';
-    const templeWidth = bigTemple ? w * 0.76 : w * 0.48;
-    const templeDepth = bigTemple ? d * 0.76 : d * 0.58;
-    const zCourt = bigTemple ? 5 : (variant === 1 ? 7 : -1);
-    const courtWidth = templeWidth * (variant === 2 ? 0.42 : 0.52);
-    const courtDepth = bigTemple ? 22 : 18;
-    const centerX = -ward.side * 20;
-    court(centerX, zCourt, courtWidth, courtDepth);
-    if (variant === 2 && !bigTemple) {
-      court(cx - templeWidth * 0.38, zCourt + 20, templeWidth * 0.25, 11);
-      grove(cx + templeWidth * 0.34, zCourt + 19, 11, 17);
-    } else if (bigTemple) {
-      grove(centerX - 22, z0 + 8, 4, 18);
-      grove(centerX + 22, z0 + 8, 4, 18);
+    // 具名配置与无名坊共用原型；分配的是展示平面，不是寺观形制考证。
+    const layout = templeLayout ?? (['grove', 'street', 'enclosed'] as const)[variant];
+    const wing = (x: number, z: number, length: number, height = 0.88) =>
+      putHouse(x, z, 6, length, 'gable', height, Math.PI / 2);
+    const offset = -ward.side * w * 0.24;
+    if (layout === 'axial') {
+      court(0, 13, 56, 24);
+      court(0, -24, 34, 10);
+      putHouse(0, -10, 53, 16, 'hip', 2.1, 0, 'temple-hall');
+      putHouse(0, -34, 32, 8, 'hipgable', 1.38);
+      for (const sign of [-1, 1]) {
+        wing(sign * 34, 8, 32);
+        putHouse(sign * 22, 32, 9, 9, 'tower', 1.3);
+        grove(sign * 34, -23, 12, 18);
+      }
+    } else if (layout === 'paired') {
+      lane(0, 23, 70, 4);
+      court(-22, 10, 34, 22);
+      court(23, 6, 27, 30);
+      putHouse(-22, -12, 32, 14, 'hipgable', 2.05);
+      putHouse(23, -17, 25, 12, 'gable', 1.5);
+      putHouse(23, -32, 14, 7, 'hipgable', 1.05);
+      putHouse(-22, 32, 15, 7, 'gable', 1);
+      grove(-22, -29, 26, 15);
+    } else if (layout === 'highland') {
+      court(0, 19, 65, 12);
+      court(0, -6, 40, 14);
+      putHouse(0, -25, 44, 16, 'hipgable', 2.65);
+      for (const sign of [-1, 1]) {
+        putHouse(sign * 27, 5, 10, 10, 'pavilion', 1.3);
+        wing(sign * 37, -15, 23);
+        grove(sign * 43, 22, 12, 20);
+      }
+    } else if (layout === 'dayan' || layout === 'xiaoyan') {
+      const pagoda = PAGODAS[layout];
+      const broad = layout === 'dayan';
+      // 两塔继续由独立地标模块生成；院落以现有塔心为锚，不挪塔或入口。
+      keepouts.push({ x: pagoda.x, z: pagoda.z, width: pagoda.plinth + 2, depth: pagoda.plinth + 2 });
+      court(0, broad ? 2 : 3, broad ? 62 : 32, broad ? 46 : 44);
+      putHouse(0, -30, broad ? 56 : 29, broad ? 14 : 10, broad ? 'hip' : 'hipgable', broad ? 2.2 : 1.55);
+      for (const sign of [-1, 1]) {
+        wing(sign * (broad ? 39 : 22), broad ? -4 : -9, broad ? 48 : 28);
+        if (broad) putHouse(sign * 26, 33, 17, 8, 'hipgable', 1.15);
+        else grove(sign * 35, 5, 13, 24);
+      }
+      if (!broad) putHouse(15, 32, 15, 8, 'gable', 0.9);
     } else {
-      grove(cx + (west ? 1 : -1) * templeWidth * 0.42, z0 + 11, 11, 16);
-    }
-    // 三种寺观关系：整坊中轴大寺、半坊寺院带邻里、偏轴双院与林圃。
-    const hallW = bigTemple ? 32 : 25;
-    const baseZ = bigTemple ? -24 : -21;
-    putHouse(centerX, baseZ, hallW, 11, 'hipgable', 1.8);
-    putHouse(centerX, zCourt + courtDepth / 2 + 9, hallW * 0.72, 12, 'hip', 2.0);
-    putHouse(centerX, zCourt - courtDepth / 2 - 6, hallW * 0.58, 8,
-      'hipgable', 1.45);
-    const sideOffset = bigTemple ? 21 : courtWidth / 2 + 8;
-    const sideWidth = bigTemple ? 5 : 8;
-    const sideDepth = bigTemple ? 18 : 22;
-    for (const side of [-1, 1]) {
-      putHouse(centerX + side * sideOffset, zCourt, sideWidth, sideDepth,
-        'gable', 0.82, Math.PI / 2);
-    }
-    putHouse(centerX, bigTemple ? -33 : z0 + templeDepth - 9,
-      10, bigTemple ? 7 : 9, 'tower', 1.15);
-    if (!bigTemple && variant !== 0) {
-      const neighborX = ward.side * w * 0.2;
-      parcelBand(neighborX - w * 0.19, z0 + 3, w * 0.38, d * 0.42, 'tight');
-      parcelBand(neighborX - w * 0.19, 4, w * 0.38, d * 0.39, 'tight');
+      const sign = Math.sign(offset);
+      lane(offset / 2, 24, Math.abs(offset) + 4, 4);
+      if (layout === 'grove') {
+        court(offset, 11, 30, 24);
+        putHouse(offset, -16, 33, 11, 'hipgable', 1.7);
+        wing(offset + sign * 19, 5, 22);
+        grove(-offset, -2, w * 0.38, 46);
+        putHouse(-offset, 28, 9, 9, 'pavilion', 1.15);
+      } else if (layout === 'street') {
+        court(offset, 13, 27, 20);
+        putHouse(offset, -7, 29, 10, 'gable', 1.45);
+        wing(offset + sign * 18, 13, 18);
+        grove(offset, -25, 24, 13);
+        parcelBand(-offset - w * 0.2, z0 + 3, w * 0.4, d - 6, 'tight');
+      } else {
+        court(offset, 12, 24, 22);
+        court(offset, -20, 21, 13);
+        putHouse(offset, -3, 30, 8, 'hipgable', 1.5);
+        putHouse(offset, -32, 22, 8, 'gable', 1.05);
+        for (const side of [-1, 1]) wing(offset + side * 17, 11, 18);
+        grove(-offset, -10, w * 0.37, 32);
+        putHouse(-offset, 19, 19, 8, 'gable', 0.9);
+      }
     }
     plantByLane();
-    return { family, topology: bigTemple ? 'temple-full-axis'
-      : ['temple-full-court', 'temple-half-neighbor', 'temple-offset-courts'][variant],
-    roads, courtyards, greenplots, publicSquares, keepouts, houses, trees };
+    return { ...empty(), topology: `temple-${layout}` };
   }
 
   if (family === 'office') {
+    if (academy) {
+      court(0, 8, 49, 32);
+      court(0, -31, 24, 8);
+      putHouse(0, -18, 36, 14, 'hip', 1.6, 0, 'academy');
+      for (const side of [-1, 1]) {
+        putHouse(side * 32, 1, 8, 40, 'gable', 0.8, Math.PI / 2);
+        grove(side * 38, -28, 12, 13);
+      }
+      plantByLane();
+      return { ...empty(), topology: 'office-academy-court' };
+    }
     const axis = -w * 0.12;
     const yardZ = 3;
     if (variant === 0) {
@@ -303,6 +350,21 @@ export function planWard(ward: Ward): WardPlan {
   }
 
   if (family === 'manor') {
+    if (manor) {
+      // 入门先转过屏院，再串前庭与后寝；侧园不占南门通路。
+      lane(0, 27, 35, 4);
+      lane(-15, 21, 4, 8);
+      court(0, 11, 32, 12);
+      court(0, -14, 25, 11);
+      putHouse(0, 22, 14, 1.5, 'gable', 0.6, 0, 'screen');
+      putHouse(0, -1, 33, 9, 'hipgable', 1.37, 0, 'manor');
+      putHouse(0, -26, 30, 11, 'hipgable', 1.18, 0, 'manor');
+      putHouse(-28, 2, 8, 31, 'gable', 0.9, Math.PI / 2);
+      grove(32, 1, 23, 28);
+      putHouse(32, -21, 9, 8, 'pavilion', 0.9, 0, 'pavilion');
+      plantByLane();
+      return { ...empty(), topology: 'manor-screen-garden' };
+    }
     const side = variant === 1 ? 1 : variant === 2 ? -1 : (ward.side < 0 ? -1 : 1);
     const cx = side * w * 0.2;
     if (variant === 0) {
@@ -396,6 +458,7 @@ export function buildWardInterior(kit: LandmarkKit, ward: Ward): void {
     gable: kit.prototypes.gable,
     hipgable: kit.prototypes.hipgable,
     hip: kit.prototypes.hip,
+    pavilion: kit.prototypes.pavilion,
     tower: kit.prototypes.tower,
   };
   // 共享批次绘制巷道、院坪与林圃，保持南门到主巷的通路连续。
@@ -419,6 +482,22 @@ export function buildWardInterior(kit: LandmarkKit, ward: Ward): void {
     const rotated = Math.abs(house.rotation) > 0.1;
     const width = rotated ? house.depth : house.width;
     const depth = rotated ? house.width : house.depth;
+    if (house.form === 'screen') {
+      kit.block('wall', house.x, elevation + 1.35, house.z, width, 2.7, depth);
+      kit.block('roof', house.x, elevation + 2.78, house.z, width + 0.4, 0.2, depth + 0.25);
+      continue;
+    }
+    if (house.form === 'temple-hall') {
+      templeHallParts ??= templeHallPrototype();
+      kit.batches.hall(templeHallParts, house.x, house.z,
+        width, depth, house.height, house.rotation, elevation);
+      continue;
+    }
+    if (house.form) {
+      kit.batches.hall(functionalPrototype(house.form), house.x, house.z,
+        width, depth, house.height, house.rotation, elevation);
+      continue;
+    }
     const source = roofParts[house.roof];
     let variants = appearanceCache.get(source);
     if (!variants) {

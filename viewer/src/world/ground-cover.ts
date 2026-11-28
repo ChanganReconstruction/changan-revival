@@ -11,8 +11,9 @@ export interface GroundPatch {
 
 export function planWardGround(ward: Ward): GroundPatch[] {
   const profile = districtFor(ward);
+  // 西南疏居坊和寺观已有单独划定的园圃，不把空院自动补成草地。
   if (profile.southwest || profile.family === 'garden' || profile.family === 'market'
-    || ['E4-9', 'E1-3'].includes(ward.id)) return [];
+    || profile.family === 'temple') return [];
   const plan = planWard(ward);
   const reserved = [...plan.houses, ...plan.roads, ...plan.courtyards,
     ...plan.publicSquares, ...plan.keepouts, ...plan.greenplots];
@@ -23,7 +24,7 @@ export function planWardGround(ward: Ward): GroundPatch[] {
   const width = (ward.width - 12) / columns;
   const depth = (ward.depth - 12) / rows;
   const patches: GroundPatch[] = [];
-  const formal = ['temple', 'manor', 'office'].includes(profile.family);
+  const formal = profile.family === 'manor' || profile.family === 'office';
   // 优先保留墙边、后院和社树周边的连续绿地，居住与商业区不强行塞满草坪。
   for (let row = 0; row < rows; row++) {
     let start = -1;
